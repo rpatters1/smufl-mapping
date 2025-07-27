@@ -26,6 +26,7 @@
 #include "detail/glyphnames_smufl.h"
 #include "detail/glyphnames_finale.h"
 #include "detail/glyphnames_bravura.h"
+#include "detail/glyphnames_legacy.h"
 
 namespace smufl_mapping {
 

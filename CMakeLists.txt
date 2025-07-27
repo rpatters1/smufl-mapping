@@ -22,16 +22,22 @@ find_package(Python3 REQUIRED COMPONENTS Interpreter)
 include(cmake/GenerateSmuflMaps.cmake)
 generate_smuflmap_headers()
 add_custom_target(generate_smuflmaps DEPENDS ${SMUFL_MAPPING_GENERATED_HEADERS})
+include(cmake/GenerateLegacyMaps.cmake)
+generate_legacy_fontmap_headers()
+add_custom_target(generate_legacy_maps DEPENDS ${GENERATED_LEGACY_HEADERS})
+
 
 # Library target
 add_library(smufl_mapping STATIC
     src/smufl_mapping.cpp
     src/smufl_mapping.h
     ${SMUFL_MAPPING_GENERATED_HEADERS}
+    ${GENERATED_LEGACY_HEADERS}
 )
 
 add_dependencies(smufl_mapping
     generate_smuflmaps
+    generate_legacy_maps
 )
 
 # Public headers are in src/
