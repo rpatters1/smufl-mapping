@@ -47,3 +47,12 @@ target_compile_options(smufl_mapping PRIVATE
     $<$<CXX_COMPILER_ID:GNU,Clang>:-Wall -Wextra -pedantic>
     $<$<CXX_COMPILER_ID:MSVC>:/W4>
 )
+
+# === Testing ===
+option(smufl_mapping_BUILD_TESTING "Build smufl_mapping unit tests" ON)
+
+include(CTest)  # sets BUILD_TESTING
+
+if(smufl_mapping_BUILD_TESTING)
+    add_subdirectory(tests)
+endif()

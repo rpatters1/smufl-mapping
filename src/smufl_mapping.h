@@ -52,7 +52,6 @@ struct LegacyGlyphInfo {
     std::optional<char32_t> codepoint{};    ///< The SMuFL codepoint, if known (nullopt means unspecified)
     std::string_view description{};         ///< often empty
     SmuflGlyphSource source{};              ///< The source for this SMuFL glyph
-    std::optional<char32_t> resolvedCodepoint; ///< Resolved SMuFL codepoint or std::nullopt
 };
 
 /// @brief Look up a glyph name in the standard set, falling back to an optional glyph set if provided.
