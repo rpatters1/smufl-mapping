@@ -14,22 +14,21 @@ function(generate_smuflmap_headers)
     file(MAKE_DIRECTORY "${OUTPUT_DIR}")
 
     set(INPUTS
-        "${FONTMAP_SOURCES_DIR}/glyphnames.json|glyphnames_smufl|${OUTPUT_DIR}/glyphnames_smufl.h"
-        "${FONTMAP_SOURCES_DIR}/glyphnamesFinale.json|glyphnames_finale|${OUTPUT_DIR}/glyphnames_finale.h"
-        "${FONTMAP_SOURCES_DIR}/glyphnamesBravura.json|glyphnames_finale|${OUTPUT_DIR}/glyphnames_bravura.h"
+        "${FONTMAP_SOURCES_DIR}/glyphnames.json|${OUTPUT_DIR}/glyphnames_smufl.h"
+        "${FONTMAP_SOURCES_DIR}/glyphnamesFinale.json|${OUTPUT_DIR}/glyphnames_finale.h"
+        "${FONTMAP_SOURCES_DIR}/glyphnamesBravura.json|${OUTPUT_DIR}/glyphnames_bravura.h"
     )
 
     foreach(entry IN LISTS INPUTS)
         string(REPLACE "|" ";" entry_parts "${entry}")
 
         list(GET entry_parts 0 input_json)
-        list(GET entry_parts 1 var_name)
-        list(GET entry_parts 2 output_header)
+        list(GET entry_parts 1 output_header)
 
         add_custom_command(
             OUTPUT ${output_header}
             COMMAND ${CMAKE_COMMAND} -E echo "Generating ${output_header}"
-            COMMAND ${Python3_EXECUTABLE} ${PY_SCRIPT} ${input_json} ${var_name} ${output_header}
+            COMMAND ${Python3_EXECUTABLE} ${PY_SCRIPT} ${input_json} ${output_header}
             DEPENDS ${input_json} ${PY_SCRIPT}
             COMMENT "Generating ${output_header} from ${input_json}"
             VERBATIM

@@ -11,6 +11,12 @@ def parse_codepoint(uplus):
 def escape_cpp_string(text):
     return text.replace("\\", "\\\\").replace("\"", "\\\"")
 
+def derive_var_name(input_path: Path) -> str:
+    stem = input_path.stem  # e.g. "glyphnamesBravura", "glyphnamesFinale", "glyphnames"
+    if stem == "glyphnames":
+        return "glyphnamesSmufl"
+    return stem  # e.g. "glyphnamesFinale", already correct
+
 def generate_glyphnames_header(input_path: Path, var_name: str, output_path: Path):
     with open(input_path, "r", encoding="utf-8") as f:
         glyphs = json.load(f)
@@ -61,12 +67,12 @@ def generate_glyphnames_header(input_path: Path, var_name: str, output_path: Pat
 
 # Entry point
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: generate_glyphnames_map.py <glyphnames.json> <var_name> <output.h>")
+    if len(sys.argv) != 3:
+        print("Usage: generate_glyphnames_map.py <glyphnames.json> <output.h>")
         sys.exit(1)
 
     input_json = Path(sys.argv[1])
-    var_name = sys.argv[2]
-    output_header = Path(sys.argv[3])
+    var_name = derive_var_name(input_json)
+    output_header = Path(sys.argv[2])
 
     generate_glyphnames_header(input_json, var_name, output_header)

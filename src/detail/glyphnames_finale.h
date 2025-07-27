@@ -19,7 +19,7 @@
 namespace smufl_mapping {
 namespace detail {
 
-inline const std::unordered_map<std::string_view, SmuflGlyphInfo> glyphnames_finale = {
+inline const std::unordered_map<std::string_view, SmuflGlyphInfo> glyphnamesFinale = {
     { "4stringTabClefSerif", { 0xF40D, "4-string tab clef (serif)", SmuflGlyphSource::Finale } },
     { "4stringTabClefTall", { 0xF40C, "4-string tab clef (tall)", SmuflGlyphSource::Finale } },
     { "6stringTabClefSerif", { 0xF40B, "6-string tab clef (serif)", SmuflGlyphSource::Finale } },

@@ -19,7 +19,7 @@
 namespace smufl_mapping {
 namespace detail {
 
-inline const std::unordered_map<std::string_view, SmuflGlyphInfo> glyphnames_smufl = {
+inline const std::unordered_map<std::string_view, SmuflGlyphInfo> glyphnamesSmufl = {
     { "4stringTabClef", { 0xE06E, "4-string tab clef", SmuflGlyphSource::Smufl } },
     { "6stringTabClef", { 0xE06D, "6-string tab clef", SmuflGlyphSource::Smufl } },
     { "accSagittal11LargeDiesisDown", { 0xE30D, "11 large diesis down, 3° down [46 EDO]", SmuflGlyphSource::Smufl } },

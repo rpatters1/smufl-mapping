@@ -22,6 +22,7 @@
 #pragma once
 
 #include <string_view>
+#include <optional>
 
 namespace smufl_mapping {
 
@@ -43,5 +44,21 @@ struct SmuflGlyphInfo
     std::string_view description;   ///< The glyph description
     SmuflGlyphSource source{};      ///< The source for the glyphs
 };
+
+/// @brief Look up a glyph name in the standard set, falling back to an optional glyph set if provided.
+/// @param name The SMuFL glyph name to look up (e.g., "gClef", "braceLarge").
+/// @param optionalSource If specified, and the name is not found in the standard glyph set,
+///        search the optional glyph set for the given source (e.g., Bravura, Finale).
+/// @return Pointer to GlyphInfo if found; nullptr otherwise.
+const SmuflGlyphInfo* getGlyphInfo(std::string_view name,
+                                   std::optional<SmuflGlyphSource> optionalSource = std::nullopt);
+
+/// @brief Look up the SMuFL glyph name associated with a given codepoint.
+/// @param codepoint The Unicode codepoint (e.g., 0xE050).
+/// @param optionalSource If provided, and the codepoint is not found in the standard set,
+///        search the optional glyphs for the specified source.
+/// @return Pointer to glyph name (`std::string_view`) if found, or nullptr.
+const std::string_view* getGlyphName(char32_t codepoint,
+                                     std::optional<SmuflGlyphSource> optionalSource = std::nullopt);
 
 } // namespace smufl_mapping
