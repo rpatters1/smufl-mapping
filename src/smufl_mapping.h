@@ -42,7 +42,16 @@ struct SmuflGlyphInfo
 {
     char32_t codepoint{};           ///< The Unicode codepoint
     std::string_view description;   ///< The glyph description
-    SmuflGlyphSource source{};      ///< The source for the glyphs
+    SmuflGlyphSource source{};      ///< The source for the glyph
+};
+
+/// @struct LegacyGlyphInfo
+/// @brief Maps a SMuFL glyph to a legacy codepoint.
+struct LegacyGlyphInfo {
+    std::string_view name{};                ///< e.g., "tremolo1"
+    std::optional<char32_t> codepoint{};    ///< The SMuFL codepoint, if known (nullopt means unspecified)
+    std::string_view description{};         ///< often empty
+    SmuflGlyphSource source{};              ///< The source for this SMuFL glyph
 };
 
 /// @brief Look up a glyph name in the standard set, falling back to an optional glyph set if provided.
