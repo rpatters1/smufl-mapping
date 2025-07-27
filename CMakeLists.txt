@@ -16,10 +16,22 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 message(STATUS "Smufl_mapping C++ standard: ${CMAKE_CXX_STANDARD}")
 
+find_package(Python3 REQUIRED COMPONENTS Interpreter)
+
+# Generate auto headers
+include(cmake/GenerateSmuflMaps.cmake)
+generate_smuflmap_headers()
+add_custom_target(generate_smuflmaps DEPENDS ${SMUFL_MAPPING_GENERATED_HEADERS})
+
 # Library target
 add_library(smufl_mapping STATIC
     src/smufl_mapping.cpp
     src/smufl_mapping.h
+    ${SMUFL_MAPPING_GENERATED_HEADERS}
+)
+
+add_dependencies(smufl_mapping
+    generate_smuflmaps
 )
 
 # Public headers are in src/
