@@ -16,7 +16,7 @@
 namespace smufl_mapping::detail::legacy {
 
 constexpr std::pair<char32_t, LegacyGlyphInfo> jazztextExtendedLegacyGlyphs[] = {
-    {  94, { "enclosureParenOverExtensionLong", 0xF726, "", SmuflGlyphSource::Smufl } },
+    {  94, { "enclosureParenOverExtensionLong", 0xF726, "", SmuflGlyphSource::Finale } },
     { 128, { "Adieresis", 0xC4, "", SmuflGlyphSource::Smufl } },
     { 130, { "Ccedilla", 0xC7, "", SmuflGlyphSource::Smufl } },
     { 131, { "Eacute", 0xC9, "", SmuflGlyphSource::Smufl } },

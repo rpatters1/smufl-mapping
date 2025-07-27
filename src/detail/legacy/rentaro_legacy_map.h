@@ -26,7 +26,7 @@ constexpr std::pair<char32_t, LegacyGlyphInfo> rentaroLegacyGlyphs[] = {
     {  41, { "noteheadParenthesisRight", 0xE0F6, "", SmuflGlyphSource::Smufl } },
     {  63, { "restQuarter", 0xE4E5, "", SmuflGlyphSource::Smufl } },
     { 128, { "repeatLeft", 0xE040, "", SmuflGlyphSource::Smufl } },
-    { 133, { "repeatRightLeftThick", 0xF45C, "", SmuflGlyphSource::Smufl } },
+    { 133, { "repeatRightLeftThick", 0xF45C, "", SmuflGlyphSource::Finale } },
     { 138, { "barlineSingle", 0xE030, "", SmuflGlyphSource::Smufl } },
     { 145, { "barlineFinal", 0xE032, "", SmuflGlyphSource::Smufl } },
     { 149, { "barlineDouble", 0xE031, "", SmuflGlyphSource::Smufl } },

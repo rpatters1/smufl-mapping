@@ -61,11 +61,6 @@ def process_legacy_file(path: Path, name_to_codepoint: dict) -> tuple[str, Path]
             print(f"Invalid legacyCodepoint '{legacy_codepoint_str}' for '{glyphname}' in {path.name}")
             continue
 
-        if 0xF400 <= legacy_codepoint <= 0xF8FF:
-            source_enum = "SmuflGlyphSource::Finale"
-        else:
-            source_enum = "SmuflGlyphSource::Smufl"
-
         # Resolve FFFD
         if raw_codepoint == "U+FFFD":
             resolved = name_to_codepoint.get(glyphname)
@@ -76,16 +71,24 @@ def process_legacy_file(path: Path, name_to_codepoint: dict) -> tuple[str, Path]
                 print(f"Could not resolve 0xFFFD for {glyphname}; setting to 0")
                 codepoint = 0
         else:
+            if not raw_codepoint:
+                print(f"Missing codepoint for '{glyphname}' in {path.name}; skipping")
+                continue
             try:
-                codepoint = parse_codepoint(raw_codepoint) if raw_codepoint else legacy_codepoint
+                codepoint = parse_codepoint(raw_codepoint)
             except Exception:
-                print(f"Invalid codepoint '{raw_codepoint}' in {path.name}, skipping entry")
+                print(f"Invalid codepoint '{raw_codepoint}' for '{glyphname}' in {path.name}; skipping")
                 continue
 
         # Filter optional-range entries not in glyphnamesFinale
         if 0xF400 <= codepoint <= 0xF8FF and glyphname not in name_to_codepoint:
             print(f"Omitting optional-range glyph '{glyphname}' (not found in glyphnamesFinale)")
             continue
+
+        if 0xF400 <= codepoint <= 0xF8FF:
+            source_enum = "SmuflGlyphSource::Finale"
+        else:
+            source_enum = "SmuflGlyphSource::Smufl"
 
         entries.append((legacy_codepoint, glyphname, codepoint, description, source_enum))
 
@@ -110,7 +113,7 @@ def process_legacy_file(path: Path, name_to_codepoint: dict) -> tuple[str, Path]
         for legacy_cp, gname, cp, desc, source in entries:
             desc_escaped = desc.replace('"', '\\"')
             out.write(f'    {{ {legacy_cp:3}, '
-                    f'{{ "{gname}", 0x{cp:X}, "{desc_escaped}", {source_enum} }} }},\n')
+                    f'{{ "{gname}", 0x{cp:X}, "{desc_escaped}", {source} }} }},\n')
         out.write('};\n\n')
         out.write('} // namespace smufl_mapping::detail::legacy\n')
 
