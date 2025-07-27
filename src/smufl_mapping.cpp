@@ -80,17 +80,28 @@ const SmuflGlyphInfo* getGlyphInfo(std::string_view name,
 }
 
 #ifndef DOXYGEN_SHOULD_IGNORE_THIS
-template <const std::pair<std::string_view, SmuflGlyphInfo>* Table, std::size_t N>
-static const std::unordered_map<char32_t, std::string_view>& getReverseMap()
+template <std::size_t N>
+static constexpr const std::string_view* findGlyphNameByCodepoint(
+    char32_t codepoint,
+    const std::pair<char32_t, std::string_view> (&table)[N])
 {
-    static const std::unordered_map<char32_t, std::string_view> reverseMap = [] {
-        std::unordered_map<char32_t, std::string_view> result;
-        for (std::size_t i = 0; i < N; ++i) {
-            result[Table[i].second.codepoint] = Table[i].first;
+    std::size_t low = 0;
+    std::size_t high = N;
+
+    while (low < high) {
+        std::size_t mid = low + (high - low) / 2;
+        const auto& pair = table[mid];
+
+        if (pair.first < codepoint) {
+            low = mid + 1;
+        } else if (pair.first > codepoint) {
+            high = mid;
+        } else {
+            return &pair.second;
         }
-        return result;
-    }();
-    return reverseMap;
+    }
+
+    return nullptr;
 }
 #endif // DOXYGEN_SHOULD_IGNORE_THIS
 
@@ -98,33 +109,19 @@ const std::string_view* getGlyphName(char32_t codepoint,
                                      std::optional<SmuflGlyphSource> optionalSource)
 {
     // Step 1: Try standard glyph set
-    {
-        const auto& reverse = getReverseMap<detail::glyphnamesSmufl, std::size(detail::glyphnamesSmufl)>();
-        auto it = reverse.find(codepoint);
-        if (it != reverse.end()) {
-            return &it->second;
-        }
+    if (const auto* name = findGlyphNameByCodepoint(codepoint, detail::reverseGlyphnamesSmufl)) {
+        return name;
     }
 
     // Step 2: If optional source is provided, search only that set
     if (optionalSource) {
         switch (*optionalSource) {
-            case SmuflGlyphSource::Bravura: {
-                const auto& reverse = getReverseMap<detail::glyphnamesBravura, std::size(detail::glyphnamesBravura)>();
-                auto it = reverse.find(codepoint);
-                if (it != reverse.end()) {
-                    return &it->second;
-                }
-                break;
-            }
-            case SmuflGlyphSource::Finale: {
-                const auto& reverse = getReverseMap<detail::glyphnamesFinale, std::size(detail::glyphnamesFinale)>();
-                auto it = reverse.find(codepoint);
-                if (it != reverse.end()) {
-                    return &it->second;
-                }
-                break;
-            }
+            case SmuflGlyphSource::Bravura:
+                return findGlyphNameByCodepoint(codepoint, detail::reverseGlyphnamesBravura);
+
+            case SmuflGlyphSource::Finale:
+                return findGlyphNameByCodepoint(codepoint, detail::reverseGlyphnamesFinale);
+
             default:
                 break;
         }
