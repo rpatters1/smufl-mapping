@@ -45,6 +45,15 @@ struct SmuflGlyphInfo
     SmuflGlyphSource source{};      ///< The source for the glyphs
 };
 
+/// @struct LegacyGlyphInfo
+/// @brief Maps a SMuFL glyph to a legacy codepoint.
+struct LegacyGlyphInfo {
+    char32_t codepoint{};           ///< The SMuFL codepoint
+    char32_t legacyCodepoint{};     ///< e.g., 124
+    std::string_view description{}; ///< optional, often empty
+    std::optional<char32_t> resolvedCodepoint; ///< Resolved SMuFL codepoint or std::nullopt
+};
+
 /// @brief Look up a glyph name in the standard set, falling back to an optional glyph set if provided.
 /// @param name The SMuFL glyph name to look up (e.g., "gClef", "braceLarge").
 /// @param optionalSource If specified, and the name is not found in the standard glyph set,
