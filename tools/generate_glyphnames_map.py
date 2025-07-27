@@ -12,10 +12,10 @@ def escape_cpp_string(text):
     return text.replace("\\", "\\\\").replace("\"", "\\\"")
 
 def derive_var_name(input_path: Path) -> str:
-    stem = input_path.stem  # e.g. "glyphnamesBravura", "glyphnamesFinale", "glyphnames"
+    stem = input_path.stem
     if stem == "glyphnames":
         return "glyphnamesSmufl"
-    return stem  # e.g. "glyphnamesFinale", already correct
+    return stem
 
 def generate_glyphnames_header(input_path: Path, var_name: str, output_path: Path):
     with open(input_path, "r", encoding="utf-8") as f:
@@ -39,6 +39,11 @@ def generate_glyphnames_header(input_path: Path, var_name: str, output_path: Pat
 
     entries.sort()
 
+    reverse_entries = [(cp, name) for (name, cp, _) in entries]
+    reverse_entries.sort()
+
+    reverse_var_name = "reverse" + var_name[0].upper() + var_name[1:]
+
     with open(output_path, "w", encoding="utf-8") as out:
         out.write(f"// This file is generated from source_json/{input_path.name}. DO NOT EDIT.\n")
         out.write("//\n")
@@ -52,16 +57,25 @@ def generate_glyphnames_header(input_path: Path, var_name: str, output_path: Pat
         out.write("//\n")
         out.write("// To regenerate this file, run tools/generate_glyphnames_map.py\n")
         out.write("#pragma once\n\n")
-        out.write("#include <unordered_map>\n#include <string_view>\n\n")
+        out.write("#include <string_view>\n#include <utility>\n\n")
         out.write('#include "smufl_mapping.h"\n\n')
         out.write("namespace smufl_mapping {\n")
         out.write("namespace detail {\n\n")
-        out.write(f"inline const std::unordered_map<std::string_view, SmuflGlyphInfo> {var_name} = {{\n")
 
+        # Forward map
+        out.write("// Sorted array for binary search lookup by glyph name\n")
+        out.write(f"inline constexpr std::pair<std::string_view, SmuflGlyphInfo> {var_name}[] = {{\n")
         for name, cp, desc in entries:
             out.write(f'    {{ "{name}", {{ 0x{cp:X}, "{desc}", {source_enum} }} }},\n')
-
         out.write("};\n\n")
+
+        # Reverse map
+        out.write("// Sorted array for binary search lookup by codepoint\n")
+        out.write(f"inline constexpr std::pair<char32_t, std::string_view> {reverse_var_name}[] = {{\n")
+        for cp, name in reverse_entries:
+            out.write(f'    {{ 0x{cp:X}, "{name}" }},\n')
+        out.write("};\n\n")
+
         out.write("} // namespace detail\n")
         out.write("} // namespace smufl_mapping\n")
 

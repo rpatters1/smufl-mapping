@@ -19,6 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+#include <unordered_map>
 
 #include "smufl_mapping.h"
 
@@ -28,17 +29,37 @@
 
 namespace smufl_mapping {
 
+#ifndef DOXYGEN_SHOULD_IGNORE_THIS
+template <typename Key, typename Pair, std::size_t N>
+static constexpr const typename Pair::second_type* binarySearchByKey(
+    const Key& key,
+    const Pair (&table)[N]) noexcept
+{
+    std::size_t low = 0;
+    std::size_t high = N;
+
+    while (low < high) {
+        std::size_t mid = low + (high - low) / 2;
+        const auto& pair = table[mid];
+
+        if (pair.first < key) {
+            low = mid + 1;
+        } else if (key < pair.first) {
+            high = mid;
+        } else {
+            return &pair.second;
+        }
+    }
+
+    return nullptr;
+}
+#endif // DOXYGEN_SHOULD_IGNORE_THIS
+
 const SmuflGlyphInfo* getGlyphInfo(std::string_view name,
                                    std::optional<SmuflGlyphSource> optionalSource)
 {
-    // Local lambda to search a map
-    auto findIn = [&](const auto& map) -> const SmuflGlyphInfo* {
-        auto it = map.find(name);
-        return it != map.end() ? &it->second : nullptr;
-    };
-
     // Step 1: Search standard set (glyphnamesSmufl)
-    if (const SmuflGlyphInfo* info = findIn(detail::glyphnamesSmufl)) {
+    if (const SmuflGlyphInfo* info = binarySearchByKey(name, detail::glyphnamesSmufl)) {
         return info;
     }
 
@@ -46,9 +67,9 @@ const SmuflGlyphInfo* getGlyphInfo(std::string_view name,
     if (optionalSource) {
         switch (*optionalSource) {
             case SmuflGlyphSource::Bravura:
-                return findIn(detail::glyphnamesBravura);
+                return binarySearchByKey(name, detail::glyphnamesBravura);
             case SmuflGlyphSource::Finale:
-                return findIn(detail::glyphnamesFinale);
+                return binarySearchByKey(name, detail::glyphnamesFinale);
             default:
                 return nullptr;
         }
@@ -58,52 +79,23 @@ const SmuflGlyphInfo* getGlyphInfo(std::string_view name,
     return nullptr;
 }
 
-#ifndef DOXYGEN_SHOULD_IGNORE_THIS
-template <const std::unordered_map<std::string_view, SmuflGlyphInfo>& Map>
-static const std::unordered_map<char32_t, std::string_view>& getReverseMap()
-{
-    static std::unordered_map<char32_t, std::string_view> reverseMap = [] {
-        std::unordered_map<char32_t, std::string_view> result;
-        for (const auto& [name, info] : Map) {
-            result[info.codepoint] = name;
-        }
-        return result;
-    }();
-    return reverseMap;
-}
-#endif // DOXYGEN_SHOULD_IGNORE_THIS
-
 const std::string_view* getGlyphName(char32_t codepoint,
                                      std::optional<SmuflGlyphSource> optionalSource)
 {
     // Step 1: Try standard glyph set
-    {
-        const auto& reverse = getReverseMap<detail::glyphnamesSmufl>();
-        auto it = reverse.find(codepoint);
-        if (it != reverse.end()) {
-            return &it->second;
-        }
+    if (const auto* name = binarySearchByKey(codepoint, detail::reverseGlyphnamesSmufl)) {
+        return name;
     }
 
     // Step 2: If optional source is provided, search only that set
     if (optionalSource) {
         switch (*optionalSource) {
-            case SmuflGlyphSource::Bravura: {
-                const auto& reverse = getReverseMap<detail::glyphnamesBravura>();
-                auto it = reverse.find(codepoint);
-                if (it != reverse.end()) {
-                    return &it->second;
-                }
-                break;
-            }
-            case SmuflGlyphSource::Finale: {
-                const auto& reverse = getReverseMap<detail::glyphnamesFinale>();
-                auto it = reverse.find(codepoint);
-                if (it != reverse.end()) {
-                    return &it->second;
-                }
-                break;
-            }
+            case SmuflGlyphSource::Bravura:
+                return binarySearchByKey(codepoint, detail::reverseGlyphnamesBravura);
+
+            case SmuflGlyphSource::Finale:
+                return binarySearchByKey(codepoint, detail::reverseGlyphnamesFinale);
+
             default:
                 break;
         }
