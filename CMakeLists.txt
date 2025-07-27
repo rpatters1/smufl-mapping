@@ -52,7 +52,11 @@ target_compile_options(smufl_mapping PRIVATE
 option(smufl_mapping_BUILD_TESTING "Build smufl_mapping unit tests" ON)
 
 include(CTest)  # sets BUILD_TESTING
-
 if(smufl_mapping_BUILD_TESTING)
+    message(STATUS "Testing enabled for smufl_mapping_BUILD_TESTING.")
+    enable_testing()
     add_subdirectory(tests)
+else()
+    message(STATUS "Testing not enabled for smufl_mapping_BUILD_TESTING.")
 endif()
+

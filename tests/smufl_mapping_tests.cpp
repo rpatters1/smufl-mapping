@@ -20,8 +20,79 @@
  * THE SOFTWARE.
  */
 
- #include <gtest/gtest.h>
+#include "gtest/gtest.h"
+#include "smufl_mapping.h"
 
-TEST(SmuflMappingTest, BasicSanityCheck) {
-    EXPECT_EQ(1 + 1, 2);
+using namespace smufl_mapping;
+
+TEST(SmuflMappingTest, GetGlyphInfo_KnownName)
+{
+    {
+        const SmuflGlyphInfo* info = getGlyphInfo("tremolo1");
+        ASSERT_NE(info, nullptr);
+        EXPECT_EQ(info->source, SmuflGlyphSource::Smufl);
+        EXPECT_EQ(info->codepoint, 0xE220);
+        EXPECT_EQ(info->description, "Combining tremolo 1");
+    }
+    {
+        const SmuflGlyphInfo* info = getGlyphInfo("textEnclosureSegmentArrow");
+        EXPECT_EQ(info, nullptr);
+        info = getGlyphInfo("textEnclosureSegmentArrow", SmuflGlyphSource::Bravura);
+        EXPECT_EQ(info, nullptr);
+        info = getGlyphInfo("textEnclosureSegmentArrow", SmuflGlyphSource::Finale);
+        ASSERT_NE(info, nullptr);
+        EXPECT_EQ(info->source, SmuflGlyphSource::Finale);
+        EXPECT_EQ(info->codepoint, 0xF813);
+        EXPECT_EQ(info->description, "Text enclosure segment arrow");
+    }
+    {
+        const SmuflGlyphInfo* info = getGlyphInfo("timeSigSlashLarge");
+        EXPECT_EQ(info, nullptr);
+        info = getGlyphInfo("timeSigSlashLarge", SmuflGlyphSource::Finale);
+        EXPECT_EQ(info, nullptr);
+        info = getGlyphInfo("timeSigSlashLarge", SmuflGlyphSource::Bravura);
+        ASSERT_NE(info, nullptr);
+        EXPECT_EQ(info->source, SmuflGlyphSource::Bravura);
+        EXPECT_EQ(info->codepoint, 0xF503);
+        EXPECT_EQ(info->description, "Time signature slash separator (outside staff)");
+    }
+}
+
+TEST(SmuflMappingTest, GetGlyphInfo_UnknownName)
+{
+    const SmuflGlyphInfo* info = getGlyphInfo("4-string tab clef (serif)");
+    EXPECT_EQ(info, nullptr);
+}
+
+TEST(SmuflMappingTest, GetGlyphName_KnownCodepoint)
+{
+    {
+        auto name = getGlyphName(0xE220);
+        ASSERT_TRUE(name);
+        EXPECT_EQ(*name, "tremolo1");
+    }
+    {
+        auto name = getGlyphName(0xF813);
+        EXPECT_EQ(name, nullptr);
+        name = getGlyphName(0xF813, SmuflGlyphSource::Bravura);
+        EXPECT_EQ(name, nullptr);
+        name = getGlyphName(0xF813, SmuflGlyphSource::Finale);
+        ASSERT_TRUE(name);
+        EXPECT_EQ(*name, "textEnclosureSegmentArrow");
+    }
+    {
+        auto name = getGlyphName(0xF503);
+        EXPECT_EQ(name, nullptr);
+        name = getGlyphName(0xF503, SmuflGlyphSource::Finale);
+        EXPECT_EQ(name, nullptr);
+        name = getGlyphName(0xF503, SmuflGlyphSource::Bravura);
+        ASSERT_TRUE(name);
+        EXPECT_EQ(*name, "timeSigSlashLarge");
+    }
+}
+
+TEST(SmuflMappingTest, GetGlyphName_UnknownCodepoint)
+{
+    auto name = getGlyphName(0xFFFF);
+    EXPECT_FALSE(name);
 }
