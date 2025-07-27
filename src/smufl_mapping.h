@@ -31,8 +31,8 @@ enum class SmuflGlyphSource
 {
     Smufl,      ///< standard glyphs (the default: keep it first)
     Finale,     ///< optional glyphs defined by MakeMusic for Finale SMuFL fonts
-    //Bravura,    ///< optional glyphs in Bravura (not yet implemented)
-    Unknown     ///< optional glyphs from unknown source
+    Bravura,    ///< optional glyphs in Bravura
+    Other       ///< optional glyphs from other source
 };
 
 /// @struct SmuflGlyphInfo

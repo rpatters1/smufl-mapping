@@ -20,5 +20,9 @@
  * THE SOFTWARE.
  */
 
- #include "smufl_mapping.h"
- 
+#include "smufl_mapping.h"
+
+#include "detail/glyphnames_smufl.h"
+#include "detail/glyphnames_finale.h"
+#include "detail/glyphnames_bravura.h"
+

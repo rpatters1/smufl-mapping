@@ -7,15 +7,16 @@ get_filename_component(_gen_script_dir "${CMAKE_CURRENT_LIST_DIR}" ABSOLUTE)
 set(SMUFL_MAPPING_BASE_DIR "${_gen_script_dir}/../src")
 
 function(generate_smuflmap_headers)
-    set(FONTMAP_SOURCES_DIR "${SMUFL_MAPPING_BASE_DIR}/sources")
+    set(FONTMAP_SOURCES_DIR "${SMUFL_MAPPING_BASE_DIR}/../source_json")
     set(OUTPUT_DIR "${SMUFL_MAPPING_BASE_DIR}/detail")
-    set(PY_SCRIPT "${SMUFL_MAPPING_BASE_DIR}/tools/generate_glyphnames_map.py")
+    set(PY_SCRIPT "${SMUFL_MAPPING_BASE_DIR}/../tools/generate_glyphnames_map.py")
 
     file(MAKE_DIRECTORY "${OUTPUT_DIR}")
 
     set(INPUTS
         "${FONTMAP_SOURCES_DIR}/glyphnames.json|glyphnames_smufl|${OUTPUT_DIR}/glyphnames_smufl.h"
         "${FONTMAP_SOURCES_DIR}/glyphnamesFinale.json|glyphnames_finale|${OUTPUT_DIR}/glyphnames_finale.h"
+        "${FONTMAP_SOURCES_DIR}/glyphnamesBravura.json|glyphnames_finale|${OUTPUT_DIR}/glyphnames_bravura.h"
     )
 
     foreach(entry IN LISTS INPUTS)
