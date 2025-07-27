@@ -11,15 +11,16 @@
 // To regenerate this file, run tools/generate_glyphnames_map.py
 #pragma once
 
-#include <unordered_map>
 #include <string_view>
+#include <utility>
 
 #include "smufl_mapping.h"
 
 namespace smufl_mapping {
 namespace detail {
 
-inline const std::unordered_map<std::string_view, SmuflGlyphInfo> glyphnamesSmufl = {
+// Sorted array for binary search lookup by glyph name
+inline constexpr std::pair<std::string_view, SmuflGlyphInfo> glyphnamesSmufl[] = {
     { "4stringTabClef", { 0xE06E, "4-string tab clef", SmuflGlyphSource::Smufl } },
     { "6stringTabClef", { 0xE06D, "6-string tab clef", SmuflGlyphSource::Smufl } },
     { "accSagittal11LargeDiesisDown", { 0xE30D, "11 large diesis down, 3° down [46 EDO]", SmuflGlyphSource::Smufl } },

@@ -12,10 +12,10 @@ def escape_cpp_string(text):
     return text.replace("\\", "\\\\").replace("\"", "\\\"")
 
 def derive_var_name(input_path: Path) -> str:
-    stem = input_path.stem  # e.g. "glyphnamesBravura", "glyphnamesFinale", "glyphnames"
+    stem = input_path.stem
     if stem == "glyphnames":
         return "glyphnamesSmufl"
-    return stem  # e.g. "glyphnamesFinale", already correct
+    return stem
 
 def generate_glyphnames_header(input_path: Path, var_name: str, output_path: Path):
     with open(input_path, "r", encoding="utf-8") as f:
@@ -52,11 +52,12 @@ def generate_glyphnames_header(input_path: Path, var_name: str, output_path: Pat
         out.write("//\n")
         out.write("// To regenerate this file, run tools/generate_glyphnames_map.py\n")
         out.write("#pragma once\n\n")
-        out.write("#include <unordered_map>\n#include <string_view>\n\n")
+        out.write("#include <string_view>\n#include <utility>\n\n")
         out.write('#include "smufl_mapping.h"\n\n')
         out.write("namespace smufl_mapping {\n")
         out.write("namespace detail {\n\n")
-        out.write(f"inline const std::unordered_map<std::string_view, SmuflGlyphInfo> {var_name} = {{\n")
+        out.write("// Sorted array for binary search lookup by glyph name\n")
+        out.write(f"inline constexpr std::pair<std::string_view, SmuflGlyphInfo> {var_name}[] = {{\n")
 
         for name, cp, desc in entries:
             out.write(f'    {{ "{name}", {{ 0x{cp:X}, "{desc}", {source_enum} }} }},\n')
