@@ -30,10 +30,10 @@
 namespace smufl_mapping {
 
 #ifndef DOXYGEN_SHOULD_IGNORE_THIS
-template <std::size_t N>
-static constexpr const SmuflGlyphInfo* findGlyphInfoByName(
-    std::string_view name,
-    const std::pair<std::string_view, SmuflGlyphInfo> (&table)[N]) noexcept
+template <typename Key, typename Pair, std::size_t N>
+static constexpr const typename Pair::second_type* binarySearchByKey(
+    const Key& key,
+    const Pair (&table)[N]) noexcept
 {
     std::size_t low = 0;
     std::size_t high = N;
@@ -42,9 +42,9 @@ static constexpr const SmuflGlyphInfo* findGlyphInfoByName(
         std::size_t mid = low + (high - low) / 2;
         const auto& pair = table[mid];
 
-        if (pair.first < name) {
+        if (pair.first < key) {
             low = mid + 1;
-        } else if (pair.first > name) {
+        } else if (key < pair.first) {
             high = mid;
         } else {
             return &pair.second;
@@ -59,7 +59,7 @@ const SmuflGlyphInfo* getGlyphInfo(std::string_view name,
                                    std::optional<SmuflGlyphSource> optionalSource)
 {
     // Step 1: Search standard set (glyphnamesSmufl)
-    if (const SmuflGlyphInfo* info = findGlyphInfoByName(name, detail::glyphnamesSmufl)) {
+    if (const SmuflGlyphInfo* info = binarySearchByKey(name, detail::glyphnamesSmufl)) {
         return info;
     }
 
@@ -67,9 +67,9 @@ const SmuflGlyphInfo* getGlyphInfo(std::string_view name,
     if (optionalSource) {
         switch (*optionalSource) {
             case SmuflGlyphSource::Bravura:
-                return findGlyphInfoByName(name, detail::glyphnamesBravura);
+                return binarySearchByKey(name, detail::glyphnamesBravura);
             case SmuflGlyphSource::Finale:
-                return findGlyphInfoByName(name, detail::glyphnamesFinale);
+                return binarySearchByKey(name, detail::glyphnamesFinale);
             default:
                 return nullptr;
         }
@@ -79,37 +79,11 @@ const SmuflGlyphInfo* getGlyphInfo(std::string_view name,
     return nullptr;
 }
 
-#ifndef DOXYGEN_SHOULD_IGNORE_THIS
-template <std::size_t N>
-static constexpr const std::string_view* findGlyphNameByCodepoint(
-    char32_t codepoint,
-    const std::pair<char32_t, std::string_view> (&table)[N])
-{
-    std::size_t low = 0;
-    std::size_t high = N;
-
-    while (low < high) {
-        std::size_t mid = low + (high - low) / 2;
-        const auto& pair = table[mid];
-
-        if (pair.first < codepoint) {
-            low = mid + 1;
-        } else if (pair.first > codepoint) {
-            high = mid;
-        } else {
-            return &pair.second;
-        }
-    }
-
-    return nullptr;
-}
-#endif // DOXYGEN_SHOULD_IGNORE_THIS
-
 const std::string_view* getGlyphName(char32_t codepoint,
                                      std::optional<SmuflGlyphSource> optionalSource)
 {
     // Step 1: Try standard glyph set
-    if (const auto* name = findGlyphNameByCodepoint(codepoint, detail::reverseGlyphnamesSmufl)) {
+    if (const auto* name = binarySearchByKey(codepoint, detail::reverseGlyphnamesSmufl)) {
         return name;
     }
 
@@ -117,10 +91,10 @@ const std::string_view* getGlyphName(char32_t codepoint,
     if (optionalSource) {
         switch (*optionalSource) {
             case SmuflGlyphSource::Bravura:
-                return findGlyphNameByCodepoint(codepoint, detail::reverseGlyphnamesBravura);
+                return binarySearchByKey(codepoint, detail::reverseGlyphnamesBravura);
 
             case SmuflGlyphSource::Finale:
-                return findGlyphNameByCodepoint(codepoint, detail::reverseGlyphnamesFinale);
+                return binarySearchByKey(codepoint, detail::reverseGlyphnamesFinale);
 
             default:
                 break;
