@@ -43,6 +43,7 @@
 #include "detail/legacy/maestro_wide_legacy_map.h"
 #include "detail/legacy/maestrotimes_legacy_map.h"
 #include "detail/legacy/petrucci_legacy_map.h"
+#include "detail/legacy/pmusic_legacy_map.h"
 #include "detail/legacy/rentaro_legacy_map.h"
 #include "detail/legacy/tamburo_legacy_map.h"
 
@@ -84,6 +85,7 @@ constexpr std::pair<std::string_view, LegacyFontMapping> legacyFontMappings[] = 
     { "maestro wide", {legacy::maestroWideLegacyGlyphs, std::size(legacy::maestroWideLegacyGlyphs)} },
     { "maestrotimes", {legacy::maestrotimesLegacyGlyphs, std::size(legacy::maestrotimesLegacyGlyphs)} },
     { "petrucci", {legacy::petrucciLegacyGlyphs, std::size(legacy::petrucciLegacyGlyphs)} },
+    { "pmusic", {legacy::pmusicLegacyGlyphs, std::size(legacy::pmusicLegacyGlyphs)} },
     { "rentaro", {legacy::rentaroLegacyGlyphs, std::size(legacy::rentaroLegacyGlyphs)} },
     { "tamburo", {legacy::tamburoLegacyGlyphs, std::size(legacy::tamburoLegacyGlyphs)} },
 };

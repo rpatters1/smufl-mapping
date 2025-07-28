@@ -1,0 +1,762 @@
+{
+	"tremolo1": {
+		"codepoint": "U+E220",
+		"legacyCodepoint": "33",
+		"description": ""
+	},
+	"caesura": {
+		"codepoint": "U+E4D1",
+		"legacyCodepoint": "34",
+		"description": ""
+	},
+	"accidentalSharp": {
+		"codepoint": "U+E262",
+		"legacyCodepoint": "35",
+		"description": ""
+	},
+	"accidentalThreeQuarterTonesSharpArrowUp": {
+		"codepoint": "U+E274",
+		"legacyCodepoint": "36",
+		"description": ""
+	},
+	"segno": {
+		"codepoint": "U+E047",
+		"legacyCodepoint": "37",
+		"description": ""
+	},
+	"gClef": {
+		"codepoint": "U+E050",
+		"legacyCodepoint": "38",
+		"description": ""
+	},
+	"articStaccatissimoWedgeBelow": {
+		"codepoint": "U+E4A9",
+		"legacyCodepoint": "39",
+		"description": ""
+	},
+	"noteheadParenthesisLeft": {
+		"codepoint": "U+E0F5",
+		"legacyCodepoint": "40",
+		"description": ""
+	},
+	"noteheadParenthesisRight": {
+		"codepoint": "U+E0F6",
+		"legacyCodepoint": "41",
+		"description": ""
+	},
+	"keyboardPedalUp": {
+		"codepoint": "U+E655",
+		"legacyCodepoint": "42",
+		"description": ""
+	},
+	"timeSigPlusSmall": {
+		"codepoint": "U+E872",
+		"legacyCodepoint": "43",
+		"description": ""
+	},
+	"breathMarkComma": {
+		"codepoint": "U+E4CE",
+		"legacyCodepoint": "44",
+		"description": ""
+	},
+	"articTenutoAbove": {
+		"codepoint": "U+E4A4",
+		"legacyCodepoint": "45",
+		"description": ""
+	},
+	"repeatDot": {
+		"codepoint": "U+E044",
+		"legacyCodepoint": "46",
+		"description": ""
+	},
+	"timeSig0": {
+		"codepoint": "U+E080",
+		"legacyCodepoint": "48",
+		"description": ""
+	},
+	"timeSig1": {
+		"codepoint": "U+E081",
+		"legacyCodepoint": "49",
+		"description": ""
+	},
+	"timeSig2": {
+		"codepoint": "U+E082",
+		"legacyCodepoint": "50",
+		"description": ""
+	},
+	"timeSig3": {
+		"codepoint": "U+E083",
+		"legacyCodepoint": "51",
+		"description": ""
+	},
+	"timeSig4": {
+		"codepoint": "U+E084",
+		"legacyCodepoint": "52",
+		"description": ""
+	},
+	"timeSig5": {
+		"codepoint": "U+E085",
+		"legacyCodepoint": "53",
+		"description": ""
+	},
+	"timeSig6": {
+		"codepoint": "U+E086",
+		"legacyCodepoint": "54",
+		"description": ""
+	},
+	"timeSig7": {
+		"codepoint": "U+E087",
+		"legacyCodepoint": "55",
+		"description": ""
+	},
+	"timeSig8": {
+		"codepoint": "U+E088",
+		"legacyCodepoint": "56",
+		"description": ""
+	},
+	"timeSig9": {
+		"codepoint": "U+E089",
+		"legacyCodepoint": "57",
+		"description": ""
+	},
+	"graceNoteAppoggiaturaStemDown": {
+		"codepoint": "U+E563",
+		"legacyCodepoint": "58",
+		"description": ""
+	},
+	"graceNoteAppoggiaturaStemUp": {
+		"codepoint": "U+E562",
+		"legacyCodepoint": "59",
+		"description": ""
+	},
+	"articTenutoStaccatoBelow": {
+		"codepoint": "U+E4B3",
+		"legacyCodepoint": "60",
+		"description": ""
+	},
+	"staff5Lines": {
+		"codepoint": "U+E014",
+		"legacyCodepoint": "61",
+		"description": ""
+	},
+	"articAccentAbove": {
+		"codepoint": "U+E4A0",
+		"legacyCodepoint": "62",
+		"description": ""
+	},
+	"fClef": {
+		"codepoint": "U+E062",
+		"legacyCodepoint": "63",
+		"description": ""
+	},
+	"accidentalFlatParens": {
+		"codepoint": "U+F5D5",
+		"legacyCodepoint": "65",
+		"description": "",
+		"smuflFontName": "Finale Maestro"
+	},
+	"cClef": {
+		"codepoint": "U+E05C",
+		"legacyCodepoint": "66",
+		"description": ""
+	},
+	"timeSigCutCommon": {
+		"codepoint": "U+E08B",
+		"legacyCodepoint": "67",
+		"description": ""
+	},
+	"note8thDown": {
+		"codepoint": "U+E1D8",
+		"legacyCodepoint": "69",
+		"description": ""
+	},
+	"dynamicMF": {
+		"codepoint": "U+E52D",
+		"legacyCodepoint": "70",
+		"description": ""
+	},
+	"articStressAbove": {
+		"codepoint": "U+E4B6",
+		"legacyCodepoint": "71",
+		"description": ""
+	},
+	"noteHalfDown": {
+		"codepoint": "U+E1D4",
+		"legacyCodepoint": "72",
+		"description": ""
+	},
+	"flag8thDown": {
+		"codepoint": "U+E241",
+		"legacyCodepoint": "74",
+		"description": ""
+	},
+	"cClefFrench20C": {
+		"codepoint": "U+F4BF",
+		"legacyCodepoint": "75",
+		"description": "",
+		"smuflFontName": "Bravura"
+	},
+	"flag8thDownStraight": {
+		"codepoint": "U+F411",
+		"legacyCodepoint": "76",
+		"description": "",
+		"smuflFontName": "Finale Maestro"
+	},
+	"ornamentMordent": {
+		"codepoint": "U+E56D",
+		"legacyCodepoint": "77",
+		"description": ""
+	},
+	"accidentalNaturalParens": {
+		"codepoint": "U+F5D6",
+		"legacyCodepoint": "78",
+		"description": "",
+		"smuflFontName": "Finale Maestro"
+	},
+	"noteheadDiamondHalfWide": {
+		"codepoint": "U+E0DA",
+		"legacyCodepoint": "79",
+		"description": ""
+	},
+	"dynamicMP": {
+		"codepoint": "U+E52C",
+		"legacyCodepoint": "80",
+		"description": ""
+	},
+	"note32ndDown": {
+		"codepoint": "U+E1DC",
+		"legacyCodepoint": "82",
+		"description": ""
+	},
+	"dynamicSforzando1": {
+		"codepoint": "U+E536",
+		"legacyCodepoint": "83",
+		"description": ""
+	},
+	"ornamentTurn": {
+		"codepoint": "U+E567",
+		"legacyCodepoint": "84",
+		"description": ""
+	},
+	"fermataAbove": {
+		"codepoint": "U+E4C0",
+		"legacyCodepoint": "85",
+		"description": ""
+	},
+	"gClef8vb": {
+		"codepoint": "U+E052",
+		"legacyCodepoint": "86",
+		"description": ""
+	},
+	"noteheadDoubleWhole": {
+		"codepoint": "U+E0A0",
+		"legacyCodepoint": "87",
+		"description": ""
+	},
+	"note16thDown": {
+		"codepoint": "U+E1DA",
+		"legacyCodepoint": "88",
+		"description": ""
+	},
+	"flag8thDownAlt": {
+		"codepoint": "U+F704",
+		"legacyCodepoint": "89",
+		"description": "",
+		"smuflFontName": "Finale Maestro"
+	},
+	"dynamicForzando": {
+		"codepoint": "U+E535",
+		"legacyCodepoint": "90",
+		"description": ""
+	},
+	"barlineHeavy": {
+		"codepoint": "U+E034",
+		"legacyCodepoint": "91",
+		"description": ""
+	},
+	"barlineSingle": {
+		"codepoint": "U+E030",
+		"legacyCodepoint": "92",
+		"description": ""
+	},
+	"articMarcatoAbove": {
+		"codepoint": "U+E4AC",
+		"legacyCodepoint": "94",
+		"description": ""
+	},
+	"legerLine": {
+		"codepoint": "U+E022",
+		"legacyCodepoint": "95",
+		"description": ""
+	},
+	"accidentalSharpParens": {
+		"codepoint": "U+F5D7",
+		"legacyCodepoint": "97",
+		"description": "",
+		"smuflFontName": "Finale Maestro"
+	},
+	"accidentalFlat": {
+		"codepoint": "U+E260",
+		"legacyCodepoint": "98",
+		"description": ""
+	},
+	"timeSigCommon": {
+		"codepoint": "U+E08A",
+		"legacyCodepoint": "99",
+		"description": ""
+	},
+	"note8thUp": {
+		"codepoint": "U+E1D7",
+		"legacyCodepoint": "101",
+		"description": ""
+	},
+	"dynamicForte": {
+		"codepoint": "U+E522",
+		"legacyCodepoint": "102",
+		"description": ""
+	},
+	"arpeggioVerticalSegment": {
+		"codepoint": "U+F700",
+		"legacyCodepoint": "103",
+		"description": "",
+		"smuflFontName": "Finale Maestro"
+	},
+	"noteHalfUp": {
+		"codepoint": "U+E1D3",
+		"legacyCodepoint": "104",
+		"description": ""
+	},
+	"flag8thUp": {
+		"codepoint": "U+E240",
+		"legacyCodepoint": "106",
+		"description": ""
+	},
+	"flag16thUp": {
+		"codepoint": "U+E242",
+		"legacyCodepoint": "107",
+		"description": ""
+	},
+	"flag8thUpStraight": {
+		"codepoint": "U+F40F",
+		"legacyCodepoint": "108",
+		"description": "",
+		"smuflFontName": "Finale Maestro"
+	},
+	"ornamentShortTrill": {
+		"codepoint": "U+E56C",
+		"legacyCodepoint": "109",
+		"description": ""
+	},
+	"accidentalNatural": {
+		"codepoint": "U+E261",
+		"legacyCodepoint": "110",
+		"description": ""
+	},
+	"dynamicPiano": {
+		"codepoint": "U+E520",
+		"legacyCodepoint": "112",
+		"description": ""
+	},
+	"dynamicRinforzando": {
+		"codepoint": "U+E523",
+		"legacyCodepoint": "114",
+		"description": ""
+	},
+	"dynamicSforzando": {
+		"codepoint": "U+E524",
+		"legacyCodepoint": "115",
+		"description": ""
+	},
+	"fClefArrowDown": {
+		"codepoint": "U+E068",
+		"legacyCodepoint": "116",
+		"description": ""
+	},
+	"fermataBelow": {
+		"codepoint": "U+E4C1",
+		"legacyCodepoint": "117",
+		"description": ""
+	},
+	"articMarcatoBelow": {
+		"codepoint": "U+E4AD",
+		"legacyCodepoint": "118",
+		"description": ""
+	},
+	"noteheadWhole": {
+		"codepoint": "U+E0A2",
+		"legacyCodepoint": "119",
+		"description": ""
+	},
+	"note16thUp": {
+		"codepoint": "U+E1D9",
+		"legacyCodepoint": "120",
+		"description": ""
+	},
+	"flag8thUpAlt2": {
+		"codepoint": "U+F701",
+		"legacyCodepoint": "121",
+		"description": "",
+		"smuflFontName": "Finale Maestro"
+	},
+	"dynamicZ": {
+		"codepoint": "U+E525",
+		"legacyCodepoint": "122",
+		"description": ""
+	},
+	"repeatRight": {
+		"codepoint": "U+E041",
+		"legacyCodepoint": "125",
+		"description": ""
+	},
+	"wiggleGlissando": {
+		"codepoint": "U+EAAF",
+		"legacyCodepoint": "126",
+		"description": ""
+	},
+	"accidentalDoubleSharpParens": {
+		"codepoint": "U+F5D8",
+		"legacyCodepoint": "129",
+		"description": ""
+	},
+	"dynamicSforzandoPiano": {
+		"codepoint": "U+E537",
+		"legacyCodepoint": "130",
+		"description": ""
+	},
+	"accidentalDoubleFlatParens": {
+		"codepoint": "U+F5D9",
+		"legacyCodepoint": "140",
+		"description": "",
+		"smuflFontName": "Finale Maestro"
+	},
+	"dynamicSforzatoFF": {
+		"codepoint": "U+E53B",
+		"legacyCodepoint": "141",
+		"description": ""
+	},
+	"gClefArrowDown": {
+		"codepoint": "U+E05B",
+		"legacyCodepoint": "160",
+		"description": ""
+	},
+	"keyboardPedalPed": {
+		"codepoint": "U+E650",
+		"legacyCodepoint": "161",
+		"description": ""
+	},
+	"tuplet4": {
+		"codepoint": "U+E884",
+		"legacyCodepoint": "162",
+		"description": ""
+	},
+	"tuplet3": {
+		"codepoint": "U+E883",
+		"legacyCodepoint": "163",
+		"description": ""
+	},
+	"tuplet6": {
+		"codepoint": "U+E886",
+		"legacyCodepoint": "164",
+		"description": ""
+	},
+	"tuplet8": {
+		"codepoint": "U+E888",
+		"legacyCodepoint": "165",
+		"description": ""
+	},
+	"tuplet7": {
+		"codepoint": "U+E887",
+		"legacyCodepoint": "166",
+		"description": ""
+	},
+	"dynamicSforzato": {
+		"codepoint": "U+E539",
+		"legacyCodepoint": "167",
+		"description": ""
+	},
+	"rest32nd": {
+		"codepoint": "U+E4E8",
+		"legacyCodepoint": "168",
+		"description": ""
+	},
+	"tuplet2": {
+		"codepoint": "U+E882",
+		"legacyCodepoint": "170",
+		"description": ""
+	},
+	"articMarcatoStaccatoAbove": {
+		"codepoint": "U+E4AE",
+		"legacyCodepoint": "172",
+		"description": ""
+	},
+	"articStaccatissimoWedgeAbove": {
+		"codepoint": "U+E4A8",
+		"legacyCodepoint": "174",
+		"description": ""
+	},
+	"tuplet5": {
+		"codepoint": "U+E885",
+		"legacyCodepoint": "176",
+		"description": ""
+	},
+	"csymMajorSeventh": {
+		"codepoint": "U+E873",
+		"legacyCodepoint": "177",
+		"description": ""
+	},
+	"stringsUpBow": {
+		"codepoint": "U+E612",
+		"legacyCodepoint": "178",
+		"description": ""
+	},
+	"stringsDownBow": {
+		"codepoint": "U+E610",
+		"legacyCodepoint": "179",
+		"description": ""
+	},
+	"ornamentTremblement": {
+		"codepoint": "U+E56E",
+		"legacyCodepoint": "181",
+		"description": ""
+	},
+	"restWhole": {
+		"codepoint": "U+E4E3",
+		"legacyCodepoint": "183",
+		"description": ""
+	},
+	"dynamicPPP": {
+		"codepoint": "U+E52A",
+		"legacyCodepoint": "184",
+		"description": ""
+	},
+	"dynamicPP": {
+		"codepoint": "U+E52B",
+		"legacyCodepoint": "185",
+		"description": ""
+	},
+	"accidentalDoubleFlat": {
+		"codepoint": "U+E264",
+		"legacyCodepoint": "186",
+		"description": ""
+	},
+	"tuplet9": {
+		"codepoint": "U+E889",
+		"legacyCodepoint": "187",
+		"description": ""
+	},
+	"tuplet0": {
+		"codepoint": "U+E880",
+		"legacyCodepoint": "188",
+		"description": ""
+	},
+	"tremolo3": {
+		"codepoint": "U+E222",
+		"legacyCodepoint": "190",
+		"description": ""
+	},
+	"noteheadXBlack": {
+		"codepoint": "U+E0A9",
+		"legacyCodepoint": "192",
+		"description": ""
+	},
+	"tuplet1": {
+		"codepoint": "U+E881",
+		"legacyCodepoint": "193",
+		"description": ""
+	},
+	"ottavaAlta": {
+		"codepoint": "U+E511",
+		"legacyCodepoint": "195",
+		"description": ""
+	},
+	"dynamicFF": {
+		"codepoint": "U+E52F",
+		"legacyCodepoint": "196",
+		"description": ""
+	},
+	"rest16th": {
+		"codepoint": "U+E4E7",
+		"legacyCodepoint": "197",
+		"description": ""
+	},
+	"barlineTick": {
+		"codepoint": "U+E039",
+		"legacyCodepoint": "199",
+		"description": ""
+	},
+	"graceNoteAcciaccaturaStemUp": {
+		"codepoint": "U+E560",
+		"legacyCodepoint": "201",
+		"description": ""
+	},
+	"restQuarter": {
+		"codepoint": "U+E4E5",
+		"legacyCodepoint": "206",
+		"description": ""
+	},
+	"noteheadBlack": {
+		"codepoint": "U+E0A4",
+		"legacyCodepoint": "207",
+		"description": ""
+	},
+	"noteheadSquareBlack": {
+		"codepoint": "U+E0B9",
+		"legacyCodepoint": "208",
+		"description": ""
+	},
+	"noteheadTriangleUpBlack": {
+		"codepoint": "U+E0BE",
+		"legacyCodepoint": "209",
+		"description": ""
+	},
+	"barlineReverseFinal": {
+		"codepoint": "U+E033",
+		"legacyCodepoint": "210",
+		"description": ""
+	},
+	"barlineFinal": {
+		"codepoint": "U+E032",
+		"legacyCodepoint": "211",
+		"description": ""
+	},
+	"repeat1Bar": {
+		"codepoint": "U+E500",
+		"legacyCodepoint": "212",
+		"description": ""
+	},
+	"repeatBarSlash": {
+		"codepoint": "U+E504",
+		"legacyCodepoint": "213",
+		"description": ""
+	},
+	"unpitchedPercussionClef2": {
+		"codepoint": "U+E06A",
+		"legacyCodepoint": "214",
+		"description": ""
+	},
+	"ottavaBassaVb": {
+		"codepoint": "U+E51C",
+		"legacyCodepoint": "215",
+		"description": ""
+	},
+	"ornamentTrill": {
+		"codepoint": "U+E566",
+		"legacyCodepoint": "217",
+		"description": ""
+	},
+	"accidentalDoubleSharp": {
+		"codepoint": "U+E263",
+		"legacyCodepoint": "220",
+		"description": ""
+	},
+	"noteheadDoubleWholeSquare": {
+		"codepoint": "U+E0A1",
+		"legacyCodepoint": "221",
+		"description": ""
+	},
+	"coda": {
+		"codepoint": "U+E048",
+		"legacyCodepoint": "222",
+		"description": ""
+	},
+	"articAccentStaccatoBelow": {
+		"codepoint": "U+E4B1",
+		"legacyCodepoint": "223",
+		"description": ""
+	},
+	"noteheadTriangleDownBlack": {
+		"codepoint": "U+E0C7",
+		"legacyCodepoint": "224",
+		"description": ""
+	},
+	"noteheadDiamondWhite": {
+		"codepoint": "U+E0DD",
+		"legacyCodepoint": "225",
+		"description": ""
+	},
+	"noteheadDiamondBlack": {
+		"codepoint": "U+E0DB",
+		"legacyCodepoint": "226",
+		"description": ""
+	},
+	"restDoubleWhole": {
+		"codepoint": "U+E4E2",
+		"legacyCodepoint": "227",
+		"description": ""
+	},
+	"rest8th": {
+		"codepoint": "U+E4E6",
+		"legacyCodepoint": "228",
+		"description": ""
+	},
+	"rest128th": {
+		"codepoint": "U+E4EA",
+		"legacyCodepoint": "229",
+		"description": ""
+	},
+	"articMarcatoStaccatoBelow": {
+		"codepoint": "U+E4AF",
+		"legacyCodepoint": "232",
+		"description": ""
+	},
+	"dynamicFortePiano": {
+		"codepoint": "U+E534",
+		"legacyCodepoint": "234",
+		"description": ""
+	},
+	"dynamicFFF": {
+		"codepoint": "U+E530",
+		"legacyCodepoint": "236",
+		"description": ""
+	},
+	"restHalf": {
+		"codepoint": "U+E4E4",
+		"legacyCodepoint": "238",
+		"description": ""
+	},
+	"flagInternalDown": {
+		"codepoint": "U+E251",
+		"legacyCodepoint": "240",
+		"description": ""
+	},
+	"noteheadSlashVerticalEnds": {
+		"codepoint": "U+E100",
+		"legacyCodepoint": "243",
+		"description": ""
+	},
+	"rest64th": {
+		"codepoint": "U+E4E9",
+		"legacyCodepoint": "244",
+		"description": ""
+	},
+	"accidentalQuarterToneFlatArrowUp": {
+		"codepoint": "U+E270",
+		"legacyCodepoint": "245",
+		"description": ""
+	},
+	"accidentalNaturalOneArrowUp": {
+		"codepoint": "U+E2C7",
+		"legacyCodepoint": "246",
+		"description": ""
+	},
+	"articTenutoStaccatoAbove": {
+		"codepoint": "U+E4B2",
+		"legacyCodepoint": "248",
+		"description": ""
+	},
+	"articAccentStaccatoAbove": {
+		"codepoint": "U+E4B0",
+		"legacyCodepoint": "249",
+		"description": ""
+	},
+	"noteheadHalf": {
+		"codepoint": "U+E0A3",
+		"legacyCodepoint": "250",
+		"description": ""
+	},
+	"flagInternalUp": {
+		"codepoint": "U+E250",
+		"legacyCodepoint": "251",
+		"description": ""
+	}
+}
