@@ -14,6 +14,7 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 add_executable(smufl_mapping_tests
+    legacy_mapping_tests.cpp
     smufl_mapping_tests.cpp
 )
 

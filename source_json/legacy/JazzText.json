@@ -600,13 +600,13 @@
 		"legacyCodepoint": "244",
 		"description": ""
 	},
-	"codaAlt": {
+	"codaJapanese": {
 		"nameIsMakeMusic": true,
 		"codepoint": "U+F405",
 		"legacyCodepoint": "245",
 		"description": ""
 	},
-	"segnoAlT": {
+	"segnoJapanese": {
 		"nameIsMakeMusic": true,
 		"codepoint": "U+F404",
 		"legacyCodepoint": "246",

@@ -20,23 +20,27 @@
  * THE SOFTWARE.
  */
 #include <unordered_map>
+#include <algorithm>
+#include <string>
 
 #include "smufl_mapping.h"
 
 #include "detail/glyphnames_smufl.h"
 #include "detail/glyphnames_finale.h"
 #include "detail/glyphnames_bravura.h"
+#include "detail/glyphnames_legacy.h"
 
 namespace smufl_mapping {
 
 #ifndef DOXYGEN_SHOULD_IGNORE_THIS
-template <typename Key, typename Pair, std::size_t N>
+template <typename Key, typename Pair>
 static constexpr const typename Pair::second_type* binarySearchByKey(
     const Key& key,
-    const Pair (&table)[N]) noexcept
+    const Pair* table,
+    std::size_t size) noexcept
 {
     std::size_t low = 0;
-    std::size_t high = N;
+    std::size_t high = size;
 
     while (low < high) {
         std::size_t mid = low + (high - low) / 2;
@@ -52,6 +56,14 @@ static constexpr const typename Pair::second_type* binarySearchByKey(
     }
 
     return nullptr;
+}
+
+template <typename Key, typename Pair, std::size_t N>
+static constexpr const typename Pair::second_type* binarySearchByKey(
+    const Key& key,
+    const Pair (&table)[N]) noexcept
+{
+    return binarySearchByKey<Key, Pair>(key, table, N);
 }
 #endif // DOXYGEN_SHOULD_IGNORE_THIS
 
@@ -103,6 +115,26 @@ const std::string_view* getGlyphName(char32_t codepoint,
 
     // Step 3: Not found
     return nullptr;
+}
+
+// Lowercase normalization for case-insensitive font name lookup
+static std::string toLower(std::string_view s)
+{
+    std::string out(s);
+    std::transform(out.begin(), out.end(), out.begin(),
+                   [](unsigned char c) { return std::tolower(c); });
+    return out;
+}
+
+const LegacyGlyphInfo* getLegacyGlyphInfo(std::string_view fontName, char32_t codepoint)
+{
+    const detail::LegacyFontMapping* entry = binarySearchByKey(std::string_view(toLower(fontName)), detail::legacyFontMappings);
+
+    if (!entry) {
+        return nullptr;
+    }
+
+    return binarySearchByKey(codepoint, entry->table, entry->size);
 }
 
 } // namespace smufl_mapping

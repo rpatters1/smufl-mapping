@@ -1287,9 +1287,9 @@
     "codepoint": "U+F829",
     "description": "Enclosure rehersal i"
   },
-  "enclosureRehersalJenclosureRehersalK": {
+  "enclosureRehersalJ": {
     "codepoint": "U+F82A",
-    "description": "Enclosure rehersal jenclosure rehersal k"
+    "description": "Enclosure rehersal j"
   },
   "enclosureRehersalK": {
     "codepoint": "U+F82B",
@@ -1334,6 +1334,10 @@
   "enclosureRehersalU": {
     "codepoint": "U+F835",
     "description": "Enclosure rehersal u"
+  },
+  "enclosureRehersalV": {
+    "codepoint": "U+F836",
+    "description": "Enclosure rehersal v"
   },
   "enclosureRehersalW": {
     "codepoint": "U+F837",
