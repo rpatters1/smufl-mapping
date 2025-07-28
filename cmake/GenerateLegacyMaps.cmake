@@ -4,15 +4,12 @@
 
 get_filename_component(_gen_script_dir "${CMAKE_CURRENT_LIST_DIR}" ABSOLUTE)
 set(SMUFL_MAPPING_ROOT "${_gen_script_dir}/..")
-message(STATUS "Directory: ${SMUFL_MAPPING_ROOT}")
 
 function(generate_legacy_fontmap_headers)
     set(SOURCE_DIR "${SMUFL_MAPPING_ROOT}/source_json/legacy")
     set(FINALE_FILE "${SMUFL_MAPPING_ROOT}/source_json/glyphnamesFinale.json")
     set(PY_SCRIPT "${SMUFL_MAPPING_ROOT}/tools/generate_legacy_glyphnames_map.py")
     set(OUTPUT_DIR "${SMUFL_MAPPING_ROOT}/src/detail/legacy")
-
-    message(STATUS "Finale File Directory: ${FINALE_FILE}")
 
     file(GLOB LEGACY_JSON_FILES "${SOURCE_DIR}/*.json")
 

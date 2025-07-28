@@ -118,6 +118,8 @@ constexpr std::pair<char32_t, LegacyGlyphInfo> jazztextLegacyGlyphs[] = {
     { 242, { "enclosureClosed", 0xF74B, "", SmuflGlyphSource::Finale } },
     { 243, { "coda", 0xE048, "", SmuflGlyphSource::Smufl } },
     { 244, { "segno", 0xE047, "", SmuflGlyphSource::Smufl } },
+    { 245, { "codaJapanese", 0xF405, "", SmuflGlyphSource::Finale } },
+    { 246, { "segnoJapanese", 0xF404, "", SmuflGlyphSource::Finale } },
 };
 
 } // namespace smufl_mapping::detail::legacy

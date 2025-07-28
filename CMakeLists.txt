@@ -26,7 +26,6 @@ include(cmake/GenerateLegacyMaps.cmake)
 generate_legacy_fontmap_headers()
 add_custom_target(generate_legacy_maps DEPENDS ${GENERATED_LEGACY_HEADERS})
 
-
 # Library target
 add_library(smufl_mapping STATIC
     src/smufl_mapping.cpp
