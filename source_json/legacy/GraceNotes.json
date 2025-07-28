@@ -1,7 +1,33 @@
 {
+	"gClef": {
+		"codepoint": "U+E050",
+		"legacyCodepoint": "38",
+		"description": ""
+	},
+	"fClef": {
+		"codepoint": "U+E062",
+		"legacyCodepoint": "63",
+		"description": ""
+	},
 	"accidentalQuarterToneSharp4": {
 		"codepoint": "U+E47E",
 		"legacyCodepoint": "64",
+		"description": ""
+	},
+	"cClef": {
+		"codepoint": "U+E05C",
+		"legacyCodepoint": "66",
+		"description": ""
+	},
+	"cClefFrench20C": {
+		"codepoint": "U+F4BF",
+		"legacyCodepoint": "75",
+		"description": "",
+		"smuflFontName": "Bravura"
+	},
+	"gClef8vb": {
+		"codepoint": "U+E052",
+		"legacyCodepoint": "86",
 		"description": ""
 	},
 	"tremolo1": {

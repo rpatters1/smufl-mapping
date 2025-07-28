@@ -16,7 +16,12 @@
 namespace smufl_mapping::detail::legacy {
 
 constexpr std::pair<char32_t, LegacyGlyphInfo> gracenotesLegacyGlyphs[] = {
+    {  38, { "gClef", 0xE050, "", SmuflGlyphSource::Smufl } },
+    {  63, { "fClef", 0xE062, "", SmuflGlyphSource::Smufl } },
     {  64, { "accidentalQuarterToneSharp4", 0xE47E, "", SmuflGlyphSource::Smufl } },
+    {  66, { "cClef", 0xE05C, "", SmuflGlyphSource::Smufl } },
+    {  75, { "cClefFrench20C", 0xF4BF, "", SmuflGlyphSource::Bravura } },
+    {  86, { "gClef8vb", 0xE052, "", SmuflGlyphSource::Smufl } },
     { 124, { "tremolo1", 0xE220, "", SmuflGlyphSource::Smufl } },
     { 199, { "tremolo2", 0xE221, "", SmuflGlyphSource::Smufl } },
     { 200, { "tremolo3", 0xE222, "", SmuflGlyphSource::Smufl } },
