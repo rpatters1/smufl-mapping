@@ -23,7 +23,7 @@ def load_finale_glyphnames():
     for name, props in data.items():
         if "codepoint" in props:
             try:
-                name_to_codepoint[name] = parse_codepoint(props["codepoint"])
+                name_to_codepoint[name.strip()] = parse_codepoint(props["codepoint"])
             except Exception as e:
                 print(f"Warning: Failed to parse codepoint for {name}: {e}")
     return name_to_codepoint
@@ -66,7 +66,7 @@ def process_legacy_file(path: Path, name_to_codepoint: dict) -> tuple[str, Path]
             resolved = name_to_codepoint.get(glyphname)
             if resolved:
                 codepoint = resolved
-                print(f"Resolved 0xFFFD for {glyphname} → U+{resolved:04X}")
+                # print(f"Resolved 0xFFFD for {glyphname} → U+{resolved:04X}")
             else:
                 print(f"Could not resolve 0xFFFD for {glyphname}; setting to 0")
                 codepoint = 0
@@ -145,14 +145,13 @@ def emit_master_header(entries: List[Tuple[str, str]]):
         out.write('\nnamespace smufl_mapping::detail {\n\n')
 
         out.write('struct LegacyFontMapping {\n')
-        out.write('    std::string_view fontName;\n')
-        out.write('    const std::pair<char32_t, LegacyGlyphInfo>* entries;\n')
-        out.write('    std::size_t count;\n')
+        out.write('    const std::pair<char32_t, LegacyGlyphInfo>* table;\n')
+        out.write('    std::size_t size;\n')
         out.write('};\n\n')
 
-        out.write('constexpr LegacyFontMapping legacyFontMappings[] = {\n')
+        out.write('constexpr std::pair<std::string_view, LegacyFontMapping> legacyFontMappings[] = {\n')
         for fontname, varname in entries:
-            out.write(f'    {{ "{fontname}", legacy::{varname}, std::size(legacy::{varname}) }},\n')
+            out.write(f'    {{ "{fontname.lower()}", {{legacy::{varname}, std::size(legacy::{varname})}} }},\n')
         out.write('};\n\n')
 
         out.write('} // namespace smufl_mapping::detail\n')

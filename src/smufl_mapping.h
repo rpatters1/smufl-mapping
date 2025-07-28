@@ -70,4 +70,13 @@ const SmuflGlyphInfo* getGlyphInfo(std::string_view name,
 const std::string_view* getGlyphName(char32_t codepoint,
                                      std::optional<SmuflGlyphSource> optionalSource = std::nullopt);
 
+namespace smufl_mapping {
+
+/// @brief Lookup legacy glyph info by font name and codepoint.
+/// @param fontName The name of the legacy font (e.g., "maestro", "petrucci"). This is a case-insensitive search.
+/// @param codepoint The legacy font codepoint to search for. (Commonly in the 0x00..0xFF range, but may be larger).
+/// @return A pointer to the LegacyGlyphInfo, or nullptr if not found.
+const LegacyGlyphInfo* getLegacyGlyphInfo(std::string_view fontName, char32_t codepoint);
+
+} // namespace smufl_mapping
 } // namespace smufl_mapping

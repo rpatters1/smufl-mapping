@@ -85,7 +85,7 @@ constexpr std::pair<char32_t, LegacyGlyphInfo> maestroWideLegacyGlyphs[] = {
     {  99, { "timeSigCommon", 0xE08A, "", SmuflGlyphSource::Smufl } },
     { 101, { "note8thUp", 0xE1D7, "", SmuflGlyphSource::Smufl } },
     { 102, { "dynamicForte", 0xE522, "", SmuflGlyphSource::Smufl } },
-    { 103, { "arpeggioVerticalSegment", 0x0, "", SmuflGlyphSource::Smufl } },
+    { 103, { "arpeggioVerticalSegment", 0xF700, "", SmuflGlyphSource::Finale } },
     { 104, { "noteHalfUp", 0xE1D3, "", SmuflGlyphSource::Smufl } },
     { 105, { "accidentalFlatSmall", 0xF713, "", SmuflGlyphSource::Finale } },
     { 107, { "augmentationDot", 0xE1E7, "", SmuflGlyphSource::Smufl } },

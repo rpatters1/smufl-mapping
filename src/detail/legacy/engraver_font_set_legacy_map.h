@@ -79,7 +79,7 @@ constexpr std::pair<char32_t, LegacyGlyphInfo> engraverFontSetLegacyGlyphs[] = {
     {  98, { "accidentalFlat", 0xE260, "", SmuflGlyphSource::Smufl } },
     {  99, { "timeSigCommon", 0xE08A, "", SmuflGlyphSource::Smufl } },
     { 102, { "dynamicForte", 0xE522, "", SmuflGlyphSource::Smufl } },
-    { 103, { "arpeggioVerticalSegment", 0x0, "", SmuflGlyphSource::Smufl } },
+    { 103, { "arpeggioVerticalSegment", 0xF700, "", SmuflGlyphSource::Finale } },
     { 104, { "noteheadWholeWithX", 0xE0B5, "", SmuflGlyphSource::Smufl } },
     { 105, { "articLaissezVibrerAbove", 0xE4BA, "", SmuflGlyphSource::Smufl } },
     { 106, { "flag8thUp", 0xE240, "", SmuflGlyphSource::Smufl } },

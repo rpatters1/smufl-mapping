@@ -49,44 +49,43 @@
 namespace smufl_mapping::detail {
 
 struct LegacyFontMapping {
-    std::string_view fontName;
-    const std::pair<char32_t, LegacyGlyphInfo>* entries;
-    std::size_t count;
+    const std::pair<char32_t, LegacyGlyphInfo>* table;
+    std::size_t size;
 };
 
-constexpr LegacyFontMapping legacyFontMappings[] = {
-    { "Broadway Copyist", legacy::broadwayCopyistLegacyGlyphs, std::size(legacy::broadwayCopyistLegacyGlyphs) },
-    { "Broadway Copyist Perc", legacy::broadwayCopyistPercLegacyGlyphs, std::size(legacy::broadwayCopyistPercLegacyGlyphs) },
-    { "Broadway Copyist Text", legacy::broadwayCopyistTextLegacyGlyphs, std::size(legacy::broadwayCopyistTextLegacyGlyphs) },
-    { "Broadway Copyist Text Ext", legacy::broadwayCopyistTextExtLegacyGlyphs, std::size(legacy::broadwayCopyistTextExtLegacyGlyphs) },
-    { "Chaconne", legacy::chaconneLegacyGlyphs, std::size(legacy::chaconneLegacyGlyphs) },
-    { "Engraver Font Extras", legacy::engraverFontExtrasLegacyGlyphs, std::size(legacy::engraverFontExtrasLegacyGlyphs) },
-    { "Engraver Font Set", legacy::engraverFontSetLegacyGlyphs, std::size(legacy::engraverFontSetLegacyGlyphs) },
-    { "Engraver Text H", legacy::engraverTextHLegacyGlyphs, std::size(legacy::engraverTextHLegacyGlyphs) },
-    { "Engraver Text NCS", legacy::engraverTextNcsLegacyGlyphs, std::size(legacy::engraverTextNcsLegacyGlyphs) },
-    { "Engraver Text T", legacy::engraverTextTLegacyGlyphs, std::size(legacy::engraverTextTLegacyGlyphs) },
-    { "Engraver Time", legacy::engraverTimeLegacyGlyphs, std::size(legacy::engraverTimeLegacyGlyphs) },
-    { "Finale AlphaNotes", legacy::finaleAlphanotesLegacyGlyphs, std::size(legacy::finaleAlphanotesLegacyGlyphs) },
-    { "Finale Copyist Text", legacy::finaleCopyistTextLegacyGlyphs, std::size(legacy::finaleCopyistTextLegacyGlyphs) },
-    { "Finale Copyist Text Ext", legacy::finaleCopyistTextExtLegacyGlyphs, std::size(legacy::finaleCopyistTextExtLegacyGlyphs) },
-    { "Finale Mallets", legacy::finaleMalletsLegacyGlyphs, std::size(legacy::finaleMalletsLegacyGlyphs) },
-    { "Finale Numerics", legacy::finaleNumericsLegacyGlyphs, std::size(legacy::finaleNumericsLegacyGlyphs) },
-    { "Finale Percussion", legacy::finalePercussionLegacyGlyphs, std::size(legacy::finalePercussionLegacyGlyphs) },
-    { "GraceNotes", legacy::gracenotesLegacyGlyphs, std::size(legacy::gracenotesLegacyGlyphs) },
-    { "Jazz", legacy::jazzLegacyGlyphs, std::size(legacy::jazzLegacyGlyphs) },
-    { "JazzCord", legacy::jazzcordLegacyGlyphs, std::size(legacy::jazzcordLegacyGlyphs) },
-    { "JazzPerc", legacy::jazzpercLegacyGlyphs, std::size(legacy::jazzpercLegacyGlyphs) },
-    { "JazzText", legacy::jazztextLegacyGlyphs, std::size(legacy::jazztextLegacyGlyphs) },
-    { "JazzText Extended", legacy::jazztextExtendedLegacyGlyphs, std::size(legacy::jazztextExtendedLegacyGlyphs) },
-    { "Kousaku", legacy::kousakuLegacyGlyphs, std::size(legacy::kousakuLegacyGlyphs) },
-    { "Kousaku Percussion", legacy::kousakuPercussionLegacyGlyphs, std::size(legacy::kousakuPercussionLegacyGlyphs) },
-    { "Maestro", legacy::maestroLegacyGlyphs, std::size(legacy::maestroLegacyGlyphs) },
-    { "Maestro Percussion", legacy::maestroPercussionLegacyGlyphs, std::size(legacy::maestroPercussionLegacyGlyphs) },
-    { "Maestro Wide", legacy::maestroWideLegacyGlyphs, std::size(legacy::maestroWideLegacyGlyphs) },
-    { "MaestroTimes", legacy::maestrotimesLegacyGlyphs, std::size(legacy::maestrotimesLegacyGlyphs) },
-    { "Petrucci", legacy::petrucciLegacyGlyphs, std::size(legacy::petrucciLegacyGlyphs) },
-    { "Rentaro", legacy::rentaroLegacyGlyphs, std::size(legacy::rentaroLegacyGlyphs) },
-    { "Tamburo", legacy::tamburoLegacyGlyphs, std::size(legacy::tamburoLegacyGlyphs) },
+constexpr std::pair<std::string_view, LegacyFontMapping> legacyFontMappings[] = {
+    { "broadway copyist", {legacy::broadwayCopyistLegacyGlyphs, std::size(legacy::broadwayCopyistLegacyGlyphs)} },
+    { "broadway copyist perc", {legacy::broadwayCopyistPercLegacyGlyphs, std::size(legacy::broadwayCopyistPercLegacyGlyphs)} },
+    { "broadway copyist text", {legacy::broadwayCopyistTextLegacyGlyphs, std::size(legacy::broadwayCopyistTextLegacyGlyphs)} },
+    { "broadway copyist text ext", {legacy::broadwayCopyistTextExtLegacyGlyphs, std::size(legacy::broadwayCopyistTextExtLegacyGlyphs)} },
+    { "chaconne", {legacy::chaconneLegacyGlyphs, std::size(legacy::chaconneLegacyGlyphs)} },
+    { "engraver font extras", {legacy::engraverFontExtrasLegacyGlyphs, std::size(legacy::engraverFontExtrasLegacyGlyphs)} },
+    { "engraver font set", {legacy::engraverFontSetLegacyGlyphs, std::size(legacy::engraverFontSetLegacyGlyphs)} },
+    { "engraver text h", {legacy::engraverTextHLegacyGlyphs, std::size(legacy::engraverTextHLegacyGlyphs)} },
+    { "engraver text ncs", {legacy::engraverTextNcsLegacyGlyphs, std::size(legacy::engraverTextNcsLegacyGlyphs)} },
+    { "engraver text t", {legacy::engraverTextTLegacyGlyphs, std::size(legacy::engraverTextTLegacyGlyphs)} },
+    { "engraver time", {legacy::engraverTimeLegacyGlyphs, std::size(legacy::engraverTimeLegacyGlyphs)} },
+    { "finale alphanotes", {legacy::finaleAlphanotesLegacyGlyphs, std::size(legacy::finaleAlphanotesLegacyGlyphs)} },
+    { "finale copyist text", {legacy::finaleCopyistTextLegacyGlyphs, std::size(legacy::finaleCopyistTextLegacyGlyphs)} },
+    { "finale copyist text ext", {legacy::finaleCopyistTextExtLegacyGlyphs, std::size(legacy::finaleCopyistTextExtLegacyGlyphs)} },
+    { "finale mallets", {legacy::finaleMalletsLegacyGlyphs, std::size(legacy::finaleMalletsLegacyGlyphs)} },
+    { "finale numerics", {legacy::finaleNumericsLegacyGlyphs, std::size(legacy::finaleNumericsLegacyGlyphs)} },
+    { "finale percussion", {legacy::finalePercussionLegacyGlyphs, std::size(legacy::finalePercussionLegacyGlyphs)} },
+    { "gracenotes", {legacy::gracenotesLegacyGlyphs, std::size(legacy::gracenotesLegacyGlyphs)} },
+    { "jazz", {legacy::jazzLegacyGlyphs, std::size(legacy::jazzLegacyGlyphs)} },
+    { "jazzcord", {legacy::jazzcordLegacyGlyphs, std::size(legacy::jazzcordLegacyGlyphs)} },
+    { "jazzperc", {legacy::jazzpercLegacyGlyphs, std::size(legacy::jazzpercLegacyGlyphs)} },
+    { "jazztext", {legacy::jazztextLegacyGlyphs, std::size(legacy::jazztextLegacyGlyphs)} },
+    { "jazztext extended", {legacy::jazztextExtendedLegacyGlyphs, std::size(legacy::jazztextExtendedLegacyGlyphs)} },
+    { "kousaku", {legacy::kousakuLegacyGlyphs, std::size(legacy::kousakuLegacyGlyphs)} },
+    { "kousaku percussion", {legacy::kousakuPercussionLegacyGlyphs, std::size(legacy::kousakuPercussionLegacyGlyphs)} },
+    { "maestro", {legacy::maestroLegacyGlyphs, std::size(legacy::maestroLegacyGlyphs)} },
+    { "maestro percussion", {legacy::maestroPercussionLegacyGlyphs, std::size(legacy::maestroPercussionLegacyGlyphs)} },
+    { "maestro wide", {legacy::maestroWideLegacyGlyphs, std::size(legacy::maestroWideLegacyGlyphs)} },
+    { "maestrotimes", {legacy::maestrotimesLegacyGlyphs, std::size(legacy::maestrotimesLegacyGlyphs)} },
+    { "petrucci", {legacy::petrucciLegacyGlyphs, std::size(legacy::petrucciLegacyGlyphs)} },
+    { "rentaro", {legacy::rentaroLegacyGlyphs, std::size(legacy::rentaroLegacyGlyphs)} },
+    { "tamburo", {legacy::tamburoLegacyGlyphs, std::size(legacy::tamburoLegacyGlyphs)} },
 };
 
 } // namespace smufl_mapping::detail
