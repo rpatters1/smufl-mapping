@@ -20,18 +20,26 @@
  * THE SOFTWARE.
  */
 
-#include "smufl_mapping.h"
 #include <gtest/gtest.h>
+#include "smufl_mapping.h"
 
 using namespace smufl_mapping;
 
 TEST(LegacyGlyphInfoTests, KnownGlyphLookup)
 {
-    auto* info = getLegacyGlyphInfo("maestor", 207);
-    ASSERT_NE(info, nullptr);
-    EXPECT_EQ(info->name, "noteheadBlack");
-    EXPECT_EQ(info->codepoint, 0xE0A4);
-    EXPECT_EQ(info->source, SmuflGlyphSource::Smufl);
+    {
+        auto* info = getLegacyGlyphInfo("maestro", 207);
+        ASSERT_NE(info, nullptr);
+        EXPECT_EQ(info->name, "noteheadBlack");
+        EXPECT_EQ(info->codepoint, 0xE0A4);
+        EXPECT_EQ(info->source, SmuflGlyphSource::Smufl);
+    }
+    {
+        auto* info = getLegacyGlyphInfo("Jazz", 103);
+        EXPECT_EQ(info->name, "arpeggioVerticalSegment");
+        EXPECT_EQ(info->codepoint, 0xF700);
+        EXPECT_EQ(info->source, SmuflGlyphSource::Finale);
+    }
 }
 
 TEST(LegacyGlyphInfoTests, CaseInsensitiveFontName)
@@ -56,10 +64,3 @@ TEST(LegacyGlyphInfoTests, UnknownCodepoint)
     EXPECT_EQ(info, nullptr);
 }
 
-TEST(LegacyGlyphInfoTests, EntryWithNulloptCodepointIsSkipped)
-{
-    auto* info = getLegacyGlyphInfo("maestro", 103);
-    EXPECT_EQ(info->name, "arpeggioVerticalSegment");
-    EXPECT_EQ(info->codepoint, 0xF5D5);
-    EXPECT_EQ(info->source, SmuflGlyphSource::Smufl);
-}

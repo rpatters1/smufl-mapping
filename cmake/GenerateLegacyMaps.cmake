@@ -16,7 +16,9 @@ function(generate_legacy_fontmap_headers)
     # Derive the expected output headers
     set(OUTPUT_HEADERS "")
     foreach(json_file IN LISTS LEGACY_JSON_FILES)
-        get_filename_component(stem "${json_file}" NAME_WE)
+        get_filename_component(stem_raw "${json_file}" NAME_WE)
+        string(REPLACE " " "_" stem "${stem_raw}")
+        string(TOLOWER "${stem}" stem)
         list(APPEND OUTPUT_HEADERS "${OUTPUT_DIR}/${stem}_legacy_map.h")
     endforeach()
 
@@ -26,7 +28,7 @@ function(generate_legacy_fontmap_headers)
 
     add_custom_command(
         OUTPUT ${OUTPUT_HEADERS}
-        COMMAND ${Python3_EXECUTABLE} "${PY_SCRIPT}"
+        COMMAND ${Python3_EXECUTABLE} "${PY_SCRIPT}" ${LEGACY_JSON_FILES}
         DEPENDS ${LEGACY_JSON_FILES} "${FINALE_FILE}" "${PY_SCRIPT}"
         COMMENT "Generating legacy SMuFL fontmap headers"
         VERBATIM
