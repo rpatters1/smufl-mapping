@@ -55,7 +55,7 @@ def process_legacy_file(path: Path, finale_map: dict, bravura_map: dict) -> tupl
             continue
         raw_codepoint = value.get("codepoint")
         description = value.get("description", "")
-        smufl_font = value.get("smuflFontName", "").lower() # this is RGP proprietary in Lua mapping script: hopefully we can get something like it approved by SMuFL committee
+        smufl_font = value.get("smuflFontName", "finale").lower() # this is RGP proprietary in Lua mapping script: hopefully we can get something like it approved by SMuFL committee
 
         try:
             legacy_codepoint = int(legacy_codepoint_str, 0)
