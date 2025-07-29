@@ -35,7 +35,7 @@ def generate_glyphnames_header(input_path: Path, var_name: str, output_path: Pat
     for name, data in glyphs.items():
         codepoint = parse_codepoint(data.get("codepoint", "U+FFFD"))
         description = escape_cpp_string(data.get("description", ""))
-        entries.append((name, codepoint, description))
+        entries.append((name.strip(), codepoint, description))
 
     entries.sort()
 

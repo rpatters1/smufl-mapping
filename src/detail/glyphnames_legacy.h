@@ -42,7 +42,9 @@
 #include "detail/legacy/maestro_percussion_legacy_map.h"
 #include "detail/legacy/maestro_wide_legacy_map.h"
 #include "detail/legacy/maestrotimes_legacy_map.h"
+#include "detail/legacy/patmm_legacy_map.h"
 #include "detail/legacy/petrucci_legacy_map.h"
+#include "detail/legacy/pmusic_legacy_map.h"
 #include "detail/legacy/rentaro_legacy_map.h"
 #include "detail/legacy/tamburo_legacy_map.h"
 
@@ -83,7 +85,9 @@ constexpr std::pair<std::string_view, LegacyFontMapping> legacyFontMappings[] = 
     { "maestro percussion", {legacy::maestroPercussionLegacyGlyphs, std::size(legacy::maestroPercussionLegacyGlyphs)} },
     { "maestro wide", {legacy::maestroWideLegacyGlyphs, std::size(legacy::maestroWideLegacyGlyphs)} },
     { "maestrotimes", {legacy::maestrotimesLegacyGlyphs, std::size(legacy::maestrotimesLegacyGlyphs)} },
+    { "patmm", {legacy::patmmLegacyGlyphs, std::size(legacy::patmmLegacyGlyphs)} },
     { "petrucci", {legacy::petrucciLegacyGlyphs, std::size(legacy::petrucciLegacyGlyphs)} },
+    { "pmusic", {legacy::pmusicLegacyGlyphs, std::size(legacy::pmusicLegacyGlyphs)} },
     { "rentaro", {legacy::rentaroLegacyGlyphs, std::size(legacy::rentaroLegacyGlyphs)} },
     { "tamburo", {legacy::tamburoLegacyGlyphs, std::size(legacy::tamburoLegacyGlyphs)} },
 };

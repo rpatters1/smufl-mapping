@@ -8,6 +8,7 @@ from datetime import datetime
 BASE_DIR = Path(__file__).resolve().parent.parent  # root of repo
 SOURCE_DIR = BASE_DIR / "source_json" / "legacy"
 FINALE_FILE = BASE_DIR / "source_json" / "glyphnamesFinale.json"
+BRAVURA_FILE = BASE_DIR / "source_json" / "glyphnamesBravura.json"
 OUTPUT_DIR = BASE_DIR / "src" / "detail" / "legacy"
 MASTER_HEADER = BASE_DIR / "src" / "detail" / "glyphnames_legacy.h"
 
@@ -16,8 +17,8 @@ def parse_codepoint(uplus: str) -> int:
         raise ValueError(f"Invalid codepoint format: {uplus}")
     return int(uplus[2:], 16)
 
-def load_finale_glyphnames():
-    with FINALE_FILE.open("r", encoding="utf-8") as f:
+def load_glyphnames(path):
+    with path.open("r", encoding="utf-8") as f:
         data = json.load(f)
     name_to_codepoint = {}
     for name, props in data.items():
@@ -35,7 +36,7 @@ def sanitize_var_name(stem: str) -> str:
 def sanitize_file_name(stem: str) -> str:
     return stem.lower().replace("-", "_").replace(" ", "_")
 
-def process_legacy_file(path: Path, name_to_codepoint: dict) -> tuple[str, Path]:
+def process_legacy_file(path: Path, finale_map: dict, bravura_map: dict) -> tuple[str, Path]:
     with path.open("r", encoding="utf-8") as f:
         data = json.load(f)
 
@@ -48,12 +49,13 @@ def process_legacy_file(path: Path, name_to_codepoint: dict) -> tuple[str, Path]
     for glyphname, value in data.items():
         glyphname = glyphname.strip()
 
-        raw_codepoint = value.get("codepoint")
-        description = value.get("description", "")
         legacy_codepoint_str = value.get("legacyCodepoint")
         if not legacy_codepoint_str:
             print(f"Missing legacyCodepoint for '{glyphname}' in {path.name}")
             continue
+        raw_codepoint = value.get("codepoint")
+        description = value.get("description", "")
+        smufl_font = value.get("smuflFontName", "finale").lower() # this is RGP proprietary in Lua mapping script: hopefully we can get something like it approved by SMuFL committee
 
         try:
             legacy_codepoint = int(legacy_codepoint_str, 0)
@@ -63,7 +65,7 @@ def process_legacy_file(path: Path, name_to_codepoint: dict) -> tuple[str, Path]
 
         # Resolve FFFD
         if raw_codepoint == "U+FFFD":
-            resolved = name_to_codepoint.get(glyphname)
+            resolved = finale_map.get(glyphname)
             if resolved:
                 codepoint = resolved
                 # print(f"Resolved 0xFFFD for {glyphname} → U+{resolved:04X}")
@@ -81,12 +83,17 @@ def process_legacy_file(path: Path, name_to_codepoint: dict) -> tuple[str, Path]
                 continue
 
         # Filter optional-range entries not in glyphnamesFinale
-        if 0xF400 <= codepoint <= 0xF8FF and glyphname not in name_to_codepoint:
-            print(f"Omitting optional-range glyph '{glyphname}' (not found in glyphnamesFinale)")
-            continue
+        if 0xF400 <= codepoint <= 0xF8FF:
+            target_map = bravura_map if smufl_font == "bravura" else finale_map
+            if glyphname not in target_map:
+                print(f"Omitting optional-range glyph '{glyphname}' (not found in glyphnames{smufl_font.capitalize()})")
+                continue
 
         if 0xF400 <= codepoint <= 0xF8FF:
-            source_enum = "SmuflGlyphSource::Finale"
+            if smufl_font == "bravura":
+                source_enum = "SmuflGlyphSource::Bravura"
+            else:
+                source_enum = "SmuflGlyphSource::Finale"
         else:
             source_enum = "SmuflGlyphSource::Smufl"
 
@@ -158,12 +165,13 @@ def emit_master_header(entries: List[Tuple[str, str]]):
 
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    finale_map = load_finale_glyphnames()
+    finale_map = load_glyphnames(FINALE_FILE)
+    bravura_map = load_glyphnames(BRAVURA_FILE)
 
     all_entries = []
     for json_path in sorted(SOURCE_DIR.glob("*.json")):
         fontname = json_path.stem
-        varname, _ = process_legacy_file(json_path, finale_map)
+        varname, _ = process_legacy_file(json_path, finale_map, bravura_map)
         all_entries.append((fontname, varname))
 
     emit_master_header(all_entries)

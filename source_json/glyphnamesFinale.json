@@ -255,7 +255,7 @@
     "codepoint": "U+F770",
     "description": "Arpeggio arrow up short"
   },
-  "arpeggioVerticalSegment ": {
+  "arpeggioVerticalSegment": {
     "codepoint": "U+F700",
     "description": "Arpeggio vertical segment "
   },
@@ -1354,10 +1354,6 @@
   "enclosureRehersalZ": {
     "codepoint": "U+F83A",
     "description": "Enclosure rehersal z"
-  },
-  "enclosureRehersalenclosureRehersalA": {
-    "codepoint": "U+F836",
-    "description": "Enclosure rehersalenclosure rehersal a"
   },
   "enclosureUnderlineExtension": {
     "codepoint": "U+F730",
