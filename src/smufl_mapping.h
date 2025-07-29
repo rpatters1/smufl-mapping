@@ -47,10 +47,12 @@ struct SmuflGlyphInfo
 
 /// @struct LegacyGlyphInfo
 /// @brief Maps a SMuFL glyph to a legacy codepoint.
-struct LegacyGlyphInfo {
+struct LegacyGlyphInfo
+{
     std::string_view name{};                ///< e.g., "tremolo1"
     std::optional<char32_t> codepoint{};    ///< The SMuFL codepoint, if known (nullopt means unspecified)
-    std::string_view description{};         ///< often empty
+    std::string_view description{};         ///< Since this field is usually empty, you can use `getGlyphInfo(name, source)`
+                                            ///< to get the associated #SmuflGlyphInfo for this glyph. That contains the glyph description.
     SmuflGlyphSource source{};              ///< The source for this SMuFL glyph
 };
 

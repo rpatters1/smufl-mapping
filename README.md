@@ -1,6 +1,6 @@
 # smufl-mapping
 
-**smufl-mapping** is a lightweight C++ library that provides lookup tables for SMuFL glyph names, Unicode codepoints, and descriptions. It supports standard SMuFL metadata as well as metadata for legacy music fonts using the format developed by MakeMusic Finale’s legacy music fonts.
+**smufl-mapping** is a lightweight C++ library that provides lookup tables for SMuFL glyph names, Unicode codepoints, and descriptions. It supports standard SMuFL metadata as well as metadata for legacy music fonts using the format developed by MakeMusic for Finale’s legacy music fonts.
 
 This library is header-only except for a single translation unit and is designed for easy integration via CMake and FetchContent.
 
@@ -15,6 +15,8 @@ This library is header-only except for a single translation unit and is designed
 - Separated sources:
   - `glyphnames_smufl.h` for standard SMuFL metadata
   - `glyphnames_finale.h` for Finale-specific glyphs
+  - `glyphnames_bravura.h` for Bravura-specific glyphs
+  - legacy music font mappings
 - Encapsulated via internal namespaces.
 - Public lookup API via `smufl_mapping.h`
 - Requires **C++17 or higher**
@@ -30,9 +32,10 @@ This library is header-only except for a single translation unit and is designed
 include(FetchContent)
 
 FetchContent_Declare(
-  smufl_mapping
-  GIT_REPOSITORY https://github.com/rpatters1/smufl-mapping.git
-  GIT_TAG main  # or use a version tag, branch name, or commit number
+    smufl_mapping
+    GIT_REPOSITORY https://github.com/rpatters1/smufl-mapping.git
+    GIT_TAG main  # or use a version tag, branch name, or commit number
+    DOWNLOAD_EXTRACT_TIMESTAMP TRUE
 )
 
 FetchContent_MakeAvailable(smufl_mapping)
@@ -55,19 +58,14 @@ if (glyph) {
 
 ## Generated Files
 
-This project includes auto-generated headers derived from official SMuFL metadata:
+This project includes auto-generated headers derived from SMuFL metadata:
 
-- `glyphnames_smufl.h` — from `glyphnames.json`
-- `glyphnames_finale.h` — from `glyphnamesFinale.json`
+- `src/detail/glyphnames_smufl.h` — from `glyphnames.json` (official glyph defintions)
+- `src/detail/glyphnames_finale.h` — from `glyphnamesFinale.json` (optional-range glyphs shared by all Finale SMuFL fonts)
+- `src/detail/glyphnames_bravura.h` — from `glyphnamesBravura.json` (optional-range glyphs from Bravura font)
+- `src/detail/legacy/...` - legacy fontmappings from legacy mapping files in `source_json/legacy`
 
-To regenerate these headers:
-
-```sh
-python3 tools/generate_glyphnames_map.py sources/glyphnames.json glyphnames_smufl src/detail/glyphnames_smufl.h
-python3 tools/generate_glyphnames_map.py sources/glyphnamesFinale.json glyphnames_finale src/detail/glyphnames_finale.h
-```
-
-The CMake files do this automatically, however, so running the tools manually should not normally be necessary.
+The CMake files regenerate these files automatically as needed.
 
 ---
 
