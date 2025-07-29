@@ -54,6 +54,8 @@ if (glyph) {
 }
 ```
 
+See `src/smufl_mapping.h` for a complete list of functions.
+
 ---
 
 ## Generated Files
