@@ -48,6 +48,13 @@ constexpr std::pair<char32_t, LegacyGlyphInfo> maestrotimesLegacyGlyphs[] = {
     { 218, { "metricModulationArrowLeft", 0xEC63, "", SmuflGlyphSource::Smufl } },
     { 219, { "metNote32ndUp", 0xECAB, "", SmuflGlyphSource::Smufl } },
     { 248, { "dynamicPP", 0xE52B, "", SmuflGlyphSource::Smufl } },
+    { 305, { "metNoteDoubleWholeSquare", 0xECA1, "", SmuflGlyphSource::Smufl } },
+    { 338, { "metNoteQuarterUp", 0xECA5, "", SmuflGlyphSource::Smufl } },
+    { 710, { "metNoteDoubleWhole", 0xECA0, "", SmuflGlyphSource::Smufl } },
+    { 732, { "accidentalSharp", 0xE262, "", SmuflGlyphSource::Smufl } },
+    { 8730, { "accidentalDoubleFlat", 0xE264, "", SmuflGlyphSource::Smufl } },
+    { 61667, { "metNoteWhole", 0xECA2, "", SmuflGlyphSource::Smufl } },
+    { 61668, { "metNote8thUp", 0xECA7, "", SmuflGlyphSource::Smufl } },
 };
 
 } // namespace smufl_mapping::detail::legacy
