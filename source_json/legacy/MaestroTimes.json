@@ -70,16 +70,16 @@
 		"description": ""
 	},
 	"textBlackNoteFrac32ndLongBeam": {
-		"nameIsMakeMusic": true,
 		"codepoint": "U+F7D5",
 		"legacyCodepoint": "193",
-		"description": ""
+		"description": "",
+		"smuflFontName": "Finale Maestro Text"
 	},
 	"textBlackNoteFrac8thLongBeam": {
-		"nameIsMakeMusic": true,
 		"codepoint": "U+F7D3",
 		"legacyCodepoint": "194",
-		"description": ""
+		"description": "",
+		"smuflFontName": "Finale Maestro Text"
 	},
 	"rest16th": {
 		"codepoint": "U+E4E7",
@@ -92,10 +92,10 @@
 		"description": ""
 	},
 	"textTripletBracketFull": {
-		"nameIsMakeMusic": true,
 		"codepoint": "U+F7D2",
 		"legacyCodepoint": "199",
-		"description": ""
+		"description": "",
+		"smuflFontName": "Finale Maestro Text"
 	},
 	"elission": {
 		"codepoint": "U+035C",
@@ -103,16 +103,16 @@
 		"description": ""
 	},
 	"textBlackNoteFrac16thLongBeam": {
-		"nameIsMakeMusic": true,
 		"codepoint": "U+F7D4",
 		"legacyCodepoint": "202",
-		"description": ""
+		"description": "",
+		"smuflFontName": "Finale Maestro Text"
 	},
 	"textBlackNoteFracSingle16th": {
-		"nameIsMakeMusic": true,
 		"codepoint": "U+F7D6",
 		"legacyCodepoint": "203",
-		"description": ""
+		"description": "",
+		"smuflFontName": "Finale Maestro Text"
 	},
 	"metNote64thUp": {
 		"codepoint": "U+ECAD",
@@ -162,6 +162,41 @@
 	"dynamicPP": {
 		"codepoint": "U+E52B",
 		"legacyCodepoint": "248",
+		"description": ""
+	},
+	"metNoteDoubleWholeSquare": {
+		"codepoint": "U+ECA1",
+		"legacyCodepoint": "305",
+		"description": ""
+	},
+	"metNoteQuarterUp": {
+		"codepoint": "U+ECA5",
+		"legacyCodepoint": "338",
+		"description": ""
+	},
+	"metNoteDoubleWhole": {
+		"codepoint": "U+ECA0",
+		"legacyCodepoint": "710",
+		"description": ""
+	},
+	"accidentalSharp": {
+		"codepoint": "U+E262",
+		"legacyCodepoint": "732",
+		"description": ""
+	},
+	"accidentalDoubleFlat": {
+		"codepoint": "U+E264",
+		"legacyCodepoint": "8730",
+		"description": ""
+	},
+	"metNoteWhole": {
+		"codepoint": "U+ECA2",
+		"legacyCodepoint": "61667",
+		"description": ""
+	},
+	"metNote8thUp": {
+		"codepoint": "U+ECA7",
+		"legacyCodepoint": "61668",
 		"description": ""
 	}
 }
