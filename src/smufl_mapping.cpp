@@ -122,7 +122,7 @@ static std::string toLower(std::string_view s)
 {
     std::string out(s);
     std::transform(out.begin(), out.end(), out.begin(),
-                   [](unsigned char c) { return std::tolower(c); });
+                   [](unsigned char c) { return static_cast<unsigned char>(std::tolower(c)); });
     return out;
 }
 
