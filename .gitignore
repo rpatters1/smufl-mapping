@@ -5,6 +5,7 @@
 /lib/
 /obj/
 /Testing
+__pycache__
 
 # Ignore build tools and temporary files
 CMakeFiles/

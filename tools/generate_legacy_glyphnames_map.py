@@ -36,9 +36,26 @@ def sanitize_var_name(stem: str) -> str:
 def sanitize_file_name(stem: str) -> str:
     return stem.lower().replace("-", "_").replace(" ", "_")
 
-def process_legacy_file(path: Path, finale_map: dict, bravura_map: dict) -> tuple[str, Path]:
+def load_json_allow_duplicates(path: Path):
+    def _object_pairs_hook(pairs):
+        obj = {}
+        for key, value in pairs:
+            if key in obj:
+                existing = obj[key]
+                if isinstance(existing, list):
+                    existing.append(value)
+                else:
+                    obj[key] = [existing, value]
+            else:
+                obj[key] = value
+        return obj
+
     with path.open("r", encoding="utf-8") as f:
-        data = json.load(f)
+        return json.load(f, object_pairs_hook=_object_pairs_hook)
+
+
+def process_legacy_file(path: Path, finale_map: dict, bravura_map: dict) -> tuple[str, Path]:
+    data = load_json_allow_duplicates(path)
 
     fontname = path.stem
     varname = sanitize_var_name(fontname) + "LegacyGlyphs"
@@ -49,55 +66,62 @@ def process_legacy_file(path: Path, finale_map: dict, bravura_map: dict) -> tupl
     for glyphname, value in data.items():
         glyphname = glyphname.strip()
 
-        legacy_codepoint_str = value.get("legacyCodepoint")
-        if not legacy_codepoint_str:
-            print(f"Missing legacyCodepoint for '{glyphname}' in {path.name}")
-            continue
-        raw_codepoint = value.get("codepoint")
-        description = value.get("description", "")
-        smufl_font = value.get("smuflFontName", "finale").lower() # this is RGP proprietary in Lua mapping script: hopefully we can get something like it approved by SMuFL committee
+        values = value if isinstance(value, list) else [value]
 
-        try:
-            legacy_codepoint = int(legacy_codepoint_str, 0)
-        except ValueError:
-            print(f"Invalid legacyCodepoint '{legacy_codepoint_str}' for '{glyphname}' in {path.name}")
-            continue
-
-        # Resolve FFFD
-        if raw_codepoint == "U+FFFD":
-            resolved = finale_map.get(glyphname)
-            if resolved:
-                codepoint = resolved
-                # print(f"Resolved 0xFFFD for {glyphname} → U+{resolved:04X}")
-            else:
-                print(f"Could not resolve 0xFFFD for {glyphname}; setting to 0")
-                codepoint = 0
-        else:
-            if not raw_codepoint:
-                print(f"Missing codepoint for '{glyphname}' in {path.name}; skipping")
+        for glyph_data in values:
+            if not isinstance(glyph_data, dict):
+                print(f"Unexpected entry type for '{glyphname}' in {path.name}; skipping")
                 continue
+
+            legacy_codepoint_str = glyph_data.get("legacyCodepoint")
+            if not legacy_codepoint_str:
+                print(f"Missing legacyCodepoint for '{glyphname}' in {path.name}")
+                continue
+            raw_codepoint = glyph_data.get("codepoint")
+            description = glyph_data.get("description", "")
+            smufl_font = glyph_data.get("smuflFontName", "finale").lower() # this is RGP proprietary in Lua mapping script: hopefully we can get something like it approved by SMuFL committee
+
             try:
-                codepoint = parse_codepoint(raw_codepoint)
-            except Exception:
-                print(f"Invalid codepoint '{raw_codepoint}' for '{glyphname}' in {path.name}; skipping")
+                legacy_codepoint = int(legacy_codepoint_str, 0)
+            except ValueError:
+                print(f"Invalid legacyCodepoint '{legacy_codepoint_str}' for '{glyphname}' in {path.name}")
                 continue
 
-        # Filter optional-range entries not in glyphnamesFinale
-        if 0xF400 <= codepoint <= 0xF8FF:
-            target_map = bravura_map if smufl_font == "bravura" else finale_map
-            if glyphname not in target_map:
-                print(f"Omitting optional-range glyph '{glyphname}' (not found in glyphnames{smufl_font.capitalize()})")
-                continue
-
-        if 0xF400 <= codepoint <= 0xF8FF:
-            if smufl_font == "bravura":
-                source_enum = "SmuflGlyphSource::Bravura"
+            # Resolve FFFD
+            if raw_codepoint == "U+FFFD":
+                resolved = finale_map.get(glyphname)
+                if resolved:
+                    codepoint = resolved
+                    # print(f"Resolved 0xFFFD for {glyphname} → U+{resolved:04X}")
+                else:
+                    print(f"Could not resolve 0xFFFD for {glyphname}; setting to 0")
+                    codepoint = 0
             else:
-                source_enum = "SmuflGlyphSource::Finale"
-        else:
-            source_enum = "SmuflGlyphSource::Smufl"
+                if not raw_codepoint:
+                    print(f"Missing codepoint for '{glyphname}' in {path.name}; skipping")
+                    continue
+                try:
+                    codepoint = parse_codepoint(raw_codepoint)
+                except Exception:
+                    print(f"Invalid codepoint '{raw_codepoint}' for '{glyphname}' in {path.name}; skipping")
+                    continue
 
-        entries.append((legacy_codepoint, glyphname, codepoint, description, source_enum))
+            # Filter optional-range entries not in glyphnamesFinale
+            if 0xF400 <= codepoint <= 0xF8FF:
+                target_map = bravura_map if smufl_font == "bravura" else finale_map
+                if glyphname not in target_map:
+                    print(f"Omitting optional-range glyph '{glyphname}' (not found in glyphnames{smufl_font.capitalize()})")
+                    continue
+
+            if 0xF400 <= codepoint <= 0xF8FF:
+                if smufl_font == "bravura":
+                    source_enum = "SmuflGlyphSource::Bravura"
+                else:
+                    source_enum = "SmuflGlyphSource::Finale"
+            else:
+                source_enum = "SmuflGlyphSource::Smufl"
+
+            entries.append((legacy_codepoint, glyphname, codepoint, description, source_enum))
 
     # Emit C++ header
     entries.sort(key=lambda entry: entry[0])
