@@ -18,6 +18,7 @@
 #include "detail/legacy/broadway_copyist_text_legacy_map.h"
 #include "detail/legacy/broadway_copyist_text_ext_legacy_map.h"
 #include "detail/legacy/chaconne_legacy_map.h"
+#include "detail/legacy/crescendo_legacy_map.h"
 #include "detail/legacy/engraver_font_extras_legacy_map.h"
 #include "detail/legacy/engraver_font_set_legacy_map.h"
 #include "detail/legacy/engraver_text_h_legacy_map.h"
@@ -61,6 +62,7 @@ constexpr std::pair<std::string_view, LegacyFontMapping> legacyFontMappings[] = 
     { "broadway copyist text", {legacy::broadwayCopyistTextLegacyGlyphs, std::size(legacy::broadwayCopyistTextLegacyGlyphs)} },
     { "broadway copyist text ext", {legacy::broadwayCopyistTextExtLegacyGlyphs, std::size(legacy::broadwayCopyistTextExtLegacyGlyphs)} },
     { "chaconne", {legacy::chaconneLegacyGlyphs, std::size(legacy::chaconneLegacyGlyphs)} },
+    { "crescendo", {legacy::crescendoLegacyGlyphs, std::size(legacy::crescendoLegacyGlyphs)} },
     { "engraver font extras", {legacy::engraverFontExtrasLegacyGlyphs, std::size(legacy::engraverFontExtrasLegacyGlyphs)} },
     { "engraver font set", {legacy::engraverFontSetLegacyGlyphs, std::size(legacy::engraverFontSetLegacyGlyphs)} },
     { "engraver text h", {legacy::engraverTextHLegacyGlyphs, std::size(legacy::engraverTextHLegacyGlyphs)} },

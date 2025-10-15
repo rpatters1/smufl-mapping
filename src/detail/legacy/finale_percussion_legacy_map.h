@@ -17,6 +17,7 @@ namespace smufl_mapping::detail::legacy {
 
 constexpr std::pair<char32_t, LegacyGlyphInfo> finalePercussionLegacyGlyphs[] = {
     {  33, { "handbellsGyro", 0xE81D, "", SmuflGlyphSource::Smufl } },
+    {  35, { "handbellsDamp3", 0xE81E, "", SmuflGlyphSource::Smufl } },
     {  36, { "handbellsSwing", 0xE81A, "", SmuflGlyphSource::Smufl } },
     {  37, { "handbellsTableSingleBell", 0xE820, "", SmuflGlyphSource::Smufl } },
     {  38, { "handbellsTablePairBells", 0xE821, "", SmuflGlyphSource::Smufl } },
