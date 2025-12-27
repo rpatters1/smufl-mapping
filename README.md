@@ -1,8 +1,6 @@
 # smufl-mapping
 
-**smufl-mapping** is a lightweight C++ library that provides lookup tables for SMuFL glyph names, Unicode codepoints, and descriptions. It supports standard SMuFL metadata as well as metadata for legacy music fonts using the format developed by MakeMusic for Finale’s legacy music fonts.
-
-This library is header-only except for a single translation unit and is designed for easy integration via CMake and FetchContent.
+**smufl-mapping** is a lightweight C++ library that provides lookup tables for SMuFL glyph names, Unicode codepoints, and descriptive metadata. It covers both the standard SMuFL specification and legacy music fonts, using a metadata format originally developed by MakeMusic for Finale’s legacy fonts.
 
 ---
 
@@ -21,6 +19,21 @@ This library is header-only except for a single translation unit and is designed
 - Public lookup API via `smufl_mapping.h`
 - Requires **C++17 or higher**
 - MIT licensed — free for commercial and open-source use
+
+---
+
+## Legacy font mappings
+
+The files in `source_json/legacy` describe mappings from legacy music-font
+codepoints (as used by Finale and similar systems) to SMuFL glyphs and Unicode
+codepoints.
+
+The format supports multiple mappings per glyph, preserves duplicate keys from
+the original MakeMusic data, and includes validation against SMuFL reference
+metadata.
+
+For a full description of the legacy mapping format, see:
+[`docs/legacy-mapping-format.md`](docs/legacy-mapping-format.md)
 
 ---
 
@@ -62,12 +75,12 @@ See `src/smufl_mapping.h` for a complete list of functions.
 
 This project includes auto-generated headers derived from SMuFL metadata:
 
-- `src/detail/glyphnames_smufl.h` — from `glyphnames.json` (official glyph defintions)
-- `src/detail/glyphnames_finale.h` — from `glyphnamesFinale.json` (optional-range glyphs shared by all Finale SMuFL fonts)
-- `src/detail/glyphnames_bravura.h` — from `glyphnamesBravura.json` (optional-range glyphs from Bravura font)
-- `src/detail/legacy/...` - legacy fontmappings from legacy mapping files in `source_json/legacy`
+- `src/detail/glyphnames_smufl.h` — from `glyphnames.json` (official glyph definitions)
+- `src/detail/glyphnames_finale.h` — from `glyphnamesFinale.json` (list of optional-range glyphs shared by all MakeMusic SMuFL fonts)
+- `src/detail/glyphnames_bravura.h` — from `glyphnamesBravura.json` (optional-range glyphs extracted from Bravura font)
+- `src/detail/legacy/...` — legacy font mappings from legacy mapping files in `source_json/legacy`
 
-The CMake files regenerate these files automatically as needed.
+Python scripts in `tools/` regenerate these files automatically as needed.
 
 ---
 
@@ -80,4 +93,4 @@ MIT License — see [LICENSE](LICENSE) for details.
 ## Credits
 
 - SMuFL data from [https://w3c.github.io/smufl](https://w3c.github.io/smufl)
-- Finale glyph metadata © MakeMusic, used under fair use for interoperability
+- Finale glyph metadata © MakeMusic, used under fair use for interoperability.
