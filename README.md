@@ -33,7 +33,7 @@ the original MakeMusic data, and includes validation against SMuFL reference
 metadata.
 
 For a full description of the legacy mapping format, see:
-[`docs/legacy-mapping-format.md`](docs/legacy-mapping-format.md)
+[`docs/legacy_mapping_format.md`](docs/legacy-mapping-format.md)
 
 ---
 
