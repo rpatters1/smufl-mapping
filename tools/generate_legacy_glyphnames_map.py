@@ -36,6 +36,10 @@ def sanitize_var_name(stem: str) -> str:
 def sanitize_file_name(stem: str) -> str:
     return stem.lower().replace("-", "_").replace(" ", "_")
 
+def normalize_font_key(name: str) -> str:
+    """Lowercase the font name and strip all whitespace so lookups are platform-agnostic."""
+    return ''.join(name.lower().split())
+
 def load_json_allow_duplicates(path: Path):
     def _object_pairs_hook(pairs):
         obj = {}
@@ -153,7 +157,11 @@ def process_legacy_file(path: Path, finale_map: dict, bravura_map: dict) -> tupl
 from typing import List, Tuple
 def emit_master_header(entries: List[Tuple[str, str]]):
     # entries: list of (fontname, varname) tuples
-    entries.sort(key=lambda item: item[0])
+    normalized_entries = [
+        (fontname, varname, normalize_font_key(fontname))
+        for fontname, varname in entries
+    ]
+    normalized_entries.sort(key=lambda item: item[2])
     outpath = MASTER_HEADER
     with outpath.open("w", encoding="utf-8") as out:
         out.write("// This file is auto-generated. Do not edit manually.\n")
@@ -170,7 +178,7 @@ def emit_master_header(entries: List[Tuple[str, str]]):
         out.write('#pragma once\n\n')
         out.write('#include "smufl_mapping.h"\n\n')
 
-        for fontname, _ in entries:
+        for fontname, _, _ in normalized_entries:
             out.write(f'#include "detail/legacy/{sanitize_file_name(fontname)}_legacy_map.h"\n')
 
         out.write('\nnamespace smufl_mapping::detail {\n\n')
@@ -181,8 +189,8 @@ def emit_master_header(entries: List[Tuple[str, str]]):
         out.write('};\n\n')
 
         out.write('constexpr std::pair<std::string_view, LegacyFontMapping> legacyFontMappings[] = {\n')
-        for fontname, varname in entries:
-            out.write(f'    {{ "{fontname.lower()}", {{legacy::{varname}, std::size(legacy::{varname})}} }},\n')
+        for fontname, varname, normalized_key in normalized_entries:
+            out.write(f'    {{ "{normalized_key}", {{legacy::{varname}, std::size(legacy::{varname})}} }},\n')
         out.write('};\n\n')
 
         out.write('} // namespace smufl_mapping::detail\n')

@@ -51,6 +51,19 @@ TEST(LegacyGlyphInfoTests, CaseInsensitiveFontName)
     EXPECT_EQ(info->source, SmuflGlyphSource::Finale);
 }
 
+TEST(LegacyGlyphInfoTests, IgnoresSpacesInFontName)
+{
+    auto* compact = getLegacyGlyphInfo("FinaleCopyistText", 123);
+    ASSERT_NE(compact, nullptr);
+    EXPECT_EQ(compact->name, "enclosureBracketLeft");
+    EXPECT_EQ(compact->codepoint, 0xF720);
+
+    auto* spaced = getLegacyGlyphInfo("Finale Copyist Text", 123);
+    ASSERT_NE(spaced, nullptr);
+    EXPECT_EQ(spaced->name, "enclosureBracketLeft");
+    EXPECT_EQ(spaced->codepoint, 0xF720);
+}
+
 TEST(LegacyGlyphInfoTests, UnknownFont)
 {
     auto* info = getLegacyGlyphInfo("unknownfont", 0xF000);
@@ -63,4 +76,3 @@ TEST(LegacyGlyphInfoTests, UnknownCodepoint)
     auto* info = getLegacyGlyphInfo("maestro", 0xFFFF);
     EXPECT_EQ(info, nullptr);
 }
-

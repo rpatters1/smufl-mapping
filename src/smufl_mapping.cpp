@@ -22,6 +22,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include <string>
+#include <cctype>
 
 #include "smufl_mapping.h"
 
@@ -117,18 +118,27 @@ const std::string_view* getGlyphName(char32_t codepoint,
     return nullptr;
 }
 
-// Lowercase normalization for case-insensitive font name lookup
-static std::string toLower(std::string_view s)
+// Lowercase normalization for case-insensitive font name lookup.
+// Also removes whitespace so font keys match regardless of platform naming differences.
+static std::string normalizeFontKey(std::string_view s)
 {
-    std::string out(s);
-    std::transform(out.begin(), out.end(), out.begin(),
-                   [](unsigned char c) { return static_cast<unsigned char>(std::tolower(c)); });
+    std::string out;
+    out.reserve(s.size());
+    for (unsigned char c : s) {
+        const bool isAsciiWhitespace = (c <= 0x7F) && std::isspace(c);
+        if (isAsciiWhitespace) {
+            continue;
+        }
+        out.push_back(static_cast<char>(std::tolower(c))); // normalize case
+    }
     return out;
 }
 
 const LegacyGlyphInfo* getLegacyGlyphInfo(std::string_view fontName, char32_t codepoint)
 {
-    const detail::LegacyFontMapping* entry = binarySearchByKey(std::string_view(toLower(fontName)), detail::legacyFontMappings);
+    const auto normalizedFontName = normalizeFontKey(fontName);
+    const std::string_view key(normalizedFontName);
+    const detail::LegacyFontMapping* entry = binarySearchByKey(key, detail::legacyFontMappings);
 
     if (!entry) {
         return nullptr;
@@ -138,4 +148,3 @@ const LegacyGlyphInfo* getLegacyGlyphInfo(std::string_view fontName, char32_t co
 }
 
 } // namespace smufl_mapping
-
