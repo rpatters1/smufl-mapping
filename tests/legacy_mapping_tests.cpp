@@ -76,3 +76,41 @@ TEST(LegacyGlyphInfoTests, UnknownCodepoint)
     auto* info = getLegacyGlyphInfo("maestro", 0xFFFF);
     EXPECT_EQ(info, nullptr);
 }
+
+TEST(LegacyGlyphInfoTests, CollisionPrefersFirstCanonicalEntry)
+{
+    auto* info = getLegacyGlyphInfo("maestro", 45);
+    ASSERT_NE(info, nullptr);
+    EXPECT_EQ(info->name, "articTenutoAbove");
+    EXPECT_EQ(info->codepoint, 0xE4A4);
+}
+
+TEST(LegacyGlyphInfoTests, CollisionSkipsAlternateEntry)
+{
+    auto* info = getLegacyGlyphInfo("Broadway Copyist", 246);
+    ASSERT_NE(info, nullptr);
+    EXPECT_EQ(info->name, "csymAugmented");
+    EXPECT_EQ(info->codepoint, 0xE872);
+}
+
+TEST(LegacyGlyphInfoTests, GetAllReturnsCanonicalThenAlternate)
+{
+    auto infos = getAllLegacyGlyphInfo("Broadway Copyist", 246);
+    ASSERT_EQ(infos.size(), 3u);
+    EXPECT_EQ(infos[0]->name, "csymAugmented");
+    EXPECT_FALSE(infos[0]->alternate);
+    EXPECT_EQ(infos[1]->name, "timeSigPlus");
+    EXPECT_FALSE(infos[1]->alternate);
+    EXPECT_TRUE(infos[2]->alternate);
+    EXPECT_EQ(infos[2]->name, "brassMuteClosed");
+}
+
+TEST(LegacyGlyphInfoTests, GetAllReturnsAllCanonicalEntries)
+{
+    auto infos = getAllLegacyGlyphInfo("maestro", 45);
+    ASSERT_EQ(infos.size(), 2u);
+    EXPECT_EQ(infos[0]->name, "articTenutoAbove");
+    EXPECT_EQ(infos[1]->name, "articTenutoBelow");
+    EXPECT_FALSE(infos[0]->alternate);
+    EXPECT_FALSE(infos[1]->alternate);
+}

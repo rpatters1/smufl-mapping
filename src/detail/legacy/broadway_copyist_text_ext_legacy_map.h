@@ -16,11 +16,11 @@
 namespace smufl_mapping::detail::legacy {
 
 constexpr std::pair<char32_t, LegacyGlyphInfo> broadwayCopyistTextExtLegacyGlyphs[] = {
-    {  94, { "enclosureClosed", 0xF74A, "", SmuflGlyphSource::Finale } },
-    { 123, { "csymParensLeftTall", 0xE875, "", SmuflGlyphSource::Smufl } },
-    { 124, { "csymHalfDiminished", 0xE871, "", SmuflGlyphSource::Smufl } },
-    { 125, { "csymParensRightTall", 0xE876, "", SmuflGlyphSource::Smufl } },
-    { 247, { "colon", 0x3A, "", SmuflGlyphSource::Smufl } },
+    {  94, { "enclosureClosed", 0xF74A, "", SmuflGlyphSource::Finale, false } },
+    { 123, { "csymParensLeftTall", 0xE875, "", SmuflGlyphSource::Smufl, false } },
+    { 124, { "csymHalfDiminished", 0xE871, "", SmuflGlyphSource::Smufl, false } },
+    { 125, { "csymParensRightTall", 0xE876, "", SmuflGlyphSource::Smufl, false } },
+    { 247, { "colon", 0x3A, "", SmuflGlyphSource::Smufl, false } },
 };
 
 } // namespace smufl_mapping::detail::legacy

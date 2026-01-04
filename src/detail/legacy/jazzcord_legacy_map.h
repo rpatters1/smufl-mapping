@@ -16,16 +16,16 @@
 namespace smufl_mapping::detail::legacy {
 
 constexpr std::pair<char32_t, LegacyGlyphInfo> jazzcordLegacyGlyphs[] = {
-    {  33, { "accidentalFlat", 0xE260, "", SmuflGlyphSource::Smufl } },
-    {  34, { "accidentalNatural", 0xE261, "", SmuflGlyphSource::Smufl } },
-    {  35, { "accidentalSharp", 0xE262, "", SmuflGlyphSource::Smufl } },
-    {  43, { "csymAugmented", 0xE872, "", SmuflGlyphSource::Smufl } },
-    {  45, { "csymMinor", 0xE874, "", SmuflGlyphSource::Smufl } },
-    {  60, { "csymParensLeftTall", 0xE875, "", SmuflGlyphSource::Smufl } },
-    {  62, { "csymParensRightTall", 0xE876, "", SmuflGlyphSource::Smufl } },
-    {  64, { "csymMajorSeventh", 0xE873, "", SmuflGlyphSource::Smufl } },
-    { 181, { "csymDiminished", 0xE870, "", SmuflGlyphSource::Smufl } },
-    { 187, { "csymHalfDiminished", 0xE871, "", SmuflGlyphSource::Smufl } },
+    {  33, { "accidentalFlat", 0xE260, "", SmuflGlyphSource::Smufl, false } },
+    {  34, { "accidentalNatural", 0xE261, "", SmuflGlyphSource::Smufl, false } },
+    {  35, { "accidentalSharp", 0xE262, "", SmuflGlyphSource::Smufl, false } },
+    {  43, { "csymAugmented", 0xE872, "", SmuflGlyphSource::Smufl, false } },
+    {  45, { "csymMinor", 0xE874, "", SmuflGlyphSource::Smufl, false } },
+    {  60, { "csymParensLeftTall", 0xE875, "", SmuflGlyphSource::Smufl, false } },
+    {  62, { "csymParensRightTall", 0xE876, "", SmuflGlyphSource::Smufl, false } },
+    {  64, { "csymMajorSeventh", 0xE873, "", SmuflGlyphSource::Smufl, false } },
+    { 181, { "csymDiminished", 0xE870, "", SmuflGlyphSource::Smufl, false } },
+    { 187, { "csymHalfDiminished", 0xE871, "", SmuflGlyphSource::Smufl, false } },
 };
 
 } // namespace smufl_mapping::detail::legacy

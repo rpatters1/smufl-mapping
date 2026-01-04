@@ -16,22 +16,22 @@
 namespace smufl_mapping::detail::legacy {
 
 constexpr std::pair<char32_t, LegacyGlyphInfo> rentaroLegacyGlyphs[] = {
-    {  34, { "metNote32ndUp", 0xECAB, "", SmuflGlyphSource::Smufl } },
-    {  35, { "metNote16thUp", 0xECA9, "", SmuflGlyphSource::Smufl } },
-    {  36, { "metNote8thUp", 0xECA7, "", SmuflGlyphSource::Smufl } },
-    {  37, { "metNoteQuarterUp", 0xECA5, "", SmuflGlyphSource::Smufl } },
-    {  38, { "metNoteHalfUp", 0xECA3, "", SmuflGlyphSource::Smufl } },
-    {  39, { "metNoteWhole", 0xECA2, "", SmuflGlyphSource::Smufl } },
-    {  40, { "noteheadParenthesisLeft", 0xE0F5, "", SmuflGlyphSource::Smufl } },
-    {  41, { "noteheadParenthesisRight", 0xE0F6, "", SmuflGlyphSource::Smufl } },
-    {  63, { "restQuarter", 0xE4E5, "", SmuflGlyphSource::Smufl } },
-    { 128, { "repeatLeft", 0xE040, "", SmuflGlyphSource::Smufl } },
-    { 133, { "repeatRightLeftThick", 0xF45C, "", SmuflGlyphSource::Finale } },
-    { 138, { "barlineSingle", 0xE030, "", SmuflGlyphSource::Smufl } },
-    { 145, { "barlineFinal", 0xE032, "", SmuflGlyphSource::Smufl } },
-    { 149, { "barlineDouble", 0xE031, "", SmuflGlyphSource::Smufl } },
-    { 154, { "barlineDashed", 0xE036, "", SmuflGlyphSource::Smufl } },
-    { 232, { "repeatRight", 0xE041, "", SmuflGlyphSource::Smufl } },
+    {  34, { "metNote32ndUp", 0xECAB, "", SmuflGlyphSource::Smufl, false } },
+    {  35, { "metNote16thUp", 0xECA9, "", SmuflGlyphSource::Smufl, false } },
+    {  36, { "metNote8thUp", 0xECA7, "", SmuflGlyphSource::Smufl, false } },
+    {  37, { "metNoteQuarterUp", 0xECA5, "", SmuflGlyphSource::Smufl, false } },
+    {  38, { "metNoteHalfUp", 0xECA3, "", SmuflGlyphSource::Smufl, false } },
+    {  39, { "metNoteWhole", 0xECA2, "", SmuflGlyphSource::Smufl, false } },
+    {  40, { "noteheadParenthesisLeft", 0xE0F5, "", SmuflGlyphSource::Smufl, false } },
+    {  41, { "noteheadParenthesisRight", 0xE0F6, "", SmuflGlyphSource::Smufl, false } },
+    {  63, { "restQuarter", 0xE4E5, "", SmuflGlyphSource::Smufl, false } },
+    { 128, { "repeatLeft", 0xE040, "", SmuflGlyphSource::Smufl, false } },
+    { 133, { "repeatRightLeftThick", 0xF45C, "", SmuflGlyphSource::Finale, true } },
+    { 138, { "barlineSingle", 0xE030, "", SmuflGlyphSource::Smufl, false } },
+    { 145, { "barlineFinal", 0xE032, "", SmuflGlyphSource::Smufl, false } },
+    { 149, { "barlineDouble", 0xE031, "", SmuflGlyphSource::Smufl, false } },
+    { 154, { "barlineDashed", 0xE036, "", SmuflGlyphSource::Smufl, false } },
+    { 232, { "repeatRight", 0xE041, "", SmuflGlyphSource::Smufl, false } },
 };
 
 } // namespace smufl_mapping::detail::legacy

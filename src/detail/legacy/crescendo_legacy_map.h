@@ -16,11 +16,11 @@
 namespace smufl_mapping::detail::legacy {
 
 constexpr std::pair<char32_t, LegacyGlyphInfo> crescendoLegacyGlyphs[] = {
-    {  82, { "harpPedalRaised", 0xE680, "", SmuflGlyphSource::Smufl } },
-    { 114, { "harpPedalCentered", 0xE681, "", SmuflGlyphSource::Smufl } },
-    { 168, { "harpPedalLowered", 0xE682, "", SmuflGlyphSource::Smufl } },
-    { 229, { "harpPedalDivider", 0xE683, "", SmuflGlyphSource::Smufl } },
-    { 243, { "pluckedSnapPizzicatoAbove", 0xE631, "", SmuflGlyphSource::Smufl } },
+    {  82, { "harpPedalRaised", 0xE680, "", SmuflGlyphSource::Smufl, false } },
+    { 114, { "harpPedalCentered", 0xE681, "", SmuflGlyphSource::Smufl, false } },
+    { 168, { "harpPedalLowered", 0xE682, "", SmuflGlyphSource::Smufl, false } },
+    { 229, { "harpPedalDivider", 0xE683, "", SmuflGlyphSource::Smufl, false } },
+    { 243, { "pluckedSnapPizzicatoAbove", 0xE631, "", SmuflGlyphSource::Smufl, false } },
 };
 
 } // namespace smufl_mapping::detail::legacy

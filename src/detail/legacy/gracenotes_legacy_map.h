@@ -16,17 +16,17 @@
 namespace smufl_mapping::detail::legacy {
 
 constexpr std::pair<char32_t, LegacyGlyphInfo> gracenotesLegacyGlyphs[] = {
-    {  38, { "gClef", 0xE050, "", SmuflGlyphSource::Smufl } },
-    {  63, { "fClef", 0xE062, "", SmuflGlyphSource::Smufl } },
-    {  64, { "accidentalQuarterToneSharp4", 0xE47E, "", SmuflGlyphSource::Smufl } },
-    {  66, { "cClef", 0xE05C, "", SmuflGlyphSource::Smufl } },
-    {  75, { "cClefFrench20C", 0xF4BF, "", SmuflGlyphSource::Bravura } },
-    {  86, { "gClef8vb", 0xE052, "", SmuflGlyphSource::Smufl } },
-    { 124, { "tremolo1", 0xE220, "", SmuflGlyphSource::Smufl } },
-    { 199, { "tremolo2", 0xE221, "", SmuflGlyphSource::Smufl } },
-    { 200, { "tremolo3", 0xE222, "", SmuflGlyphSource::Smufl } },
-    { 230, { "tremolo4", 0xE223, "", SmuflGlyphSource::Smufl } },
-    { 245, { "accidentalQuarterToneFlat4", 0xE47F, "", SmuflGlyphSource::Smufl } },
+    {  38, { "gClef", 0xE050, "", SmuflGlyphSource::Smufl, false } },
+    {  63, { "fClef", 0xE062, "", SmuflGlyphSource::Smufl, false } },
+    {  64, { "accidentalQuarterToneSharp4", 0xE47E, "", SmuflGlyphSource::Smufl, false } },
+    {  66, { "cClef", 0xE05C, "", SmuflGlyphSource::Smufl, false } },
+    {  75, { "cClefFrench20C", 0xF4BF, "", SmuflGlyphSource::Bravura, false } },
+    {  86, { "gClef8vb", 0xE052, "", SmuflGlyphSource::Smufl, false } },
+    { 124, { "tremolo1", 0xE220, "", SmuflGlyphSource::Smufl, false } },
+    { 199, { "tremolo2", 0xE221, "", SmuflGlyphSource::Smufl, false } },
+    { 200, { "tremolo3", 0xE222, "", SmuflGlyphSource::Smufl, false } },
+    { 230, { "tremolo4", 0xE223, "", SmuflGlyphSource::Smufl, false } },
+    { 245, { "accidentalQuarterToneFlat4", 0xE47F, "", SmuflGlyphSource::Smufl, false } },
 };
 
 } // namespace smufl_mapping::detail::legacy

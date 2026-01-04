@@ -16,7 +16,7 @@
 namespace smufl_mapping::detail::legacy {
 
 constexpr std::pair<char32_t, LegacyGlyphInfo> finaleCopyistTextExtLegacyGlyphs[] = {
-    {  94, { "enclosureClosed", 0xF74A, "", SmuflGlyphSource::Finale } },
+    {  94, { "enclosureClosed", 0xF74A, "", SmuflGlyphSource::Finale, false } },
 };
 
 } // namespace smufl_mapping::detail::legacy

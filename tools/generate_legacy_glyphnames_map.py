@@ -75,6 +75,7 @@ def process_legacy_file(path: Path, finale_map: dict, bravura_map: dict) -> tupl
             raw_codepoint = glyph_data.get("codepoint")
             description = glyph_data.get("description", "")
             smufl_font = glyph_data.get("smuflFontName", "finale").lower() # this is RGP proprietary in Lua mapping script: hopefully we can get something like it approved by SMuFL committee
+            is_alternate = bool(glyph_data.get("alternate", False))
 
             # Resolve FFFD
             if raw_codepoint == "U+FFFD":
@@ -119,7 +120,7 @@ def process_legacy_file(path: Path, finale_map: dict, bravura_map: dict) -> tupl
                 except ValueError:
                     print(f"Invalid legacyCodepoint '{legacy_codepoint_str}' for '{glyphname}' in {path.name}")
                     continue
-                entries.append((legacy_codepoint, glyphname, codepoint, description, source_enum))
+                entries.append((legacy_codepoint, glyphname, codepoint, description, source_enum, is_alternate))
 
     # Emit C++ header
     entries.sort(key=lambda entry: entry[0])
@@ -139,10 +140,11 @@ def process_legacy_file(path: Path, finale_map: dict, bravura_map: dict) -> tupl
         out.write('#include "smufl_mapping.h"\n\n')
         out.write('namespace smufl_mapping::detail::legacy {\n\n')
         out.write(f'constexpr std::pair<char32_t, LegacyGlyphInfo> {varname}[] = {{\n')
-        for legacy_cp, gname, cp, desc, source in entries:
+        for legacy_cp, gname, cp, desc, source, is_alternate in entries:
             desc_escaped = desc.replace('"', '\\"')
+            alt_literal = "true" if is_alternate else "false"
             out.write(f'    {{ {legacy_cp:3}, '
-                    f'{{ "{gname}", 0x{cp:X}, "{desc_escaped}", {source} }} }},\n')
+                    f'{{ "{gname}", 0x{cp:X}, "{desc_escaped}", {source}, {alt_literal} }} }},\n')
         out.write('};\n\n')
         out.write('} // namespace smufl_mapping::detail::legacy\n')
 
