@@ -28,9 +28,9 @@ The files in `source_json/legacy` describe mappings from legacy music-font
 codepoints (as used by Finale and similar systems) to SMuFL glyphs and Unicode
 codepoints.
 
-The format supports multiple mappings per glyph, preserves duplicate keys from
-the original MakeMusic data, and includes validation against SMuFL reference
-metadata.
+The format stores each glyph as an array of mapping objects (so multiple
+legacy codepoints per glyph remain valid JSON) and is validated against SMuFL
+reference metadata as well as [`docs/legacy_mapping.schema.json`](docs/legacy_mapping.schema.json).
 
 For a full description of the legacy mapping format, see:
 [`docs/legacy_mapping_format.md`](docs/legacy_mapping_format.md)
