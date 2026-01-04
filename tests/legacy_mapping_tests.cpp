@@ -85,6 +85,20 @@ TEST(LegacyGlyphInfoTests, CollisionPrefersFirstCanonicalEntry)
     EXPECT_EQ(info->codepoint, 0xE4A4);
 }
 
+TEST(LegacyGlyphInfoTests, CanonicalPreferenceWithMixedEntries)
+{
+    auto* info = getLegacyGlyphInfo("maestro", 43);
+    ASSERT_NE(info, nullptr);
+    EXPECT_EQ(info->name, "brassMuteClosed");
+    EXPECT_FALSE(info->alternate);
+
+    auto infos = getAllLegacyGlyphInfo("maestro", 43);
+    ASSERT_EQ(infos.size(), 3u);
+    EXPECT_FALSE(infos[0]->alternate);
+    EXPECT_TRUE(infos[1]->alternate);
+    EXPECT_TRUE(infos[2]->alternate);
+}
+
 TEST(LegacyGlyphInfoTests, CollisionSkipsAlternateEntry)
 {
     auto* info = getLegacyGlyphInfo("Broadway Copyist", 246);
@@ -113,4 +127,35 @@ TEST(LegacyGlyphInfoTests, GetAllReturnsAllCanonicalEntries)
     EXPECT_EQ(infos[1]->name, "articTenutoBelow");
     EXPECT_FALSE(infos[0]->alternate);
     EXPECT_FALSE(infos[1]->alternate);
+}
+
+TEST(LegacyGlyphInfoTests, GetAllHandlesUnknownFontOrCodepoint)
+{
+    auto emptyFont = getAllLegacyGlyphInfo("unknown-font", 0x1234);
+    EXPECT_TRUE(emptyFont.empty());
+
+    auto emptyCodepoint = getAllLegacyGlyphInfo("maestro", 0xFFFF);
+    EXPECT_TRUE(emptyCodepoint.empty());
+}
+
+TEST(LegacyGlyphInfoTests, GetAllFontNormalizationMatchesCanonicalLookup)
+{
+    auto normalized = getAllLegacyGlyphInfo("FinaleCopyistText", 123);
+    auto spaced = getAllLegacyGlyphInfo("Finale Copyist Text", 123);
+    ASSERT_EQ(normalized.size(), spaced.size());
+    for (std::size_t i = 0; i < normalized.size(); ++i) {
+        EXPECT_EQ(normalized[i], spaced[i]);
+    }
+}
+
+TEST(LegacyGlyphInfoTests, GetLegacyInfoFallsBackToAlternateWhenNoCanonical)
+{
+    // Legacy slot 65 in Broadway Copyist Percussion only has an alternate entry.
+    auto* info = getLegacyGlyphInfo("Broadway Copyist Perc", 65);
+    ASSERT_NE(info, nullptr);
+    EXPECT_TRUE(info->alternate);
+
+    auto infos = getAllLegacyGlyphInfo("Broadway Copyist Perc", 65);
+    ASSERT_EQ(infos.size(), 1u);
+    EXPECT_TRUE(infos[0]->alternate);
 }

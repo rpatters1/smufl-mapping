@@ -64,6 +64,25 @@ TEST(SmuflMappingTest, GetGlyphInfo_UnknownName)
     EXPECT_EQ(info, nullptr);
 }
 
+TEST(SmuflMappingTest, GetGlyphInfoOptionalSourceScenarios)
+{
+    // Finale-only glyph should not be returned without specifying Finale.
+    const SmuflGlyphInfo* info = getGlyphInfo("textEnclosureSegmentArrow");
+    EXPECT_EQ(info, nullptr);
+    info = getGlyphInfo("textEnclosureSegmentArrow", SmuflGlyphSource::Finale);
+    ASSERT_NE(info, nullptr);
+
+    // Bravura-only glyph should surface only when requesting Bravura.
+    info = getGlyphInfo("timeSigSlashLarge");
+    EXPECT_EQ(info, nullptr);
+    info = getGlyphInfo("timeSigSlashLarge", SmuflGlyphSource::Bravura);
+    ASSERT_NE(info, nullptr);
+
+    // Asking for the wrong optional source yields nullptr.
+    info = getGlyphInfo("timeSigSlashLarge", SmuflGlyphSource::Finale);
+    EXPECT_EQ(info, nullptr);
+}
+
 TEST(SmuflMappingTest, GetGlyphName_KnownCodepoint)
 {
     {
@@ -95,4 +114,25 @@ TEST(SmuflMappingTest, GetGlyphName_UnknownCodepoint)
 {
     auto name = getGlyphName(0xFFFF);
     EXPECT_FALSE(name);
+}
+
+TEST(SmuflMappingTest, GetGlyphNameOptionalSourceScenarios)
+{
+    // Finale-only codepoint requires the Finale source.
+    auto name = getGlyphName(0xF813);
+    EXPECT_EQ(name, nullptr);
+    name = getGlyphName(0xF813, SmuflGlyphSource::Finale);
+    ASSERT_TRUE(name);
+    EXPECT_EQ(*name, "textEnclosureSegmentArrow");
+
+    // Bravura-only codepoint requires the Bravura source.
+    name = getGlyphName(0xF503);
+    EXPECT_EQ(name, nullptr);
+    name = getGlyphName(0xF503, SmuflGlyphSource::Bravura);
+    ASSERT_TRUE(name);
+    EXPECT_EQ(*name, "timeSigSlashLarge");
+
+    // Wrong optional source should still be nullptr.
+    name = getGlyphName(0xF503, SmuflGlyphSource::Finale);
+    EXPECT_EQ(name, nullptr);
 }

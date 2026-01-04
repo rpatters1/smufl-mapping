@@ -9,6 +9,7 @@ function(generate_legacy_fontmap_headers)
     set(SOURCE_DIR "${SMUFL_MAPPING_ROOT}/source_json/legacy")
     set(FINALE_FILE "${SMUFL_MAPPING_ROOT}/source_json/glyphnamesFinale.json")
     set(VALIDATOR_SCRIPT "${SMUFL_MAPPING_ROOT}/tools/validate_legacy_mappings.py")
+    set(DUPLICATE_SCRIPT "${SMUFL_MAPPING_ROOT}/tools/check_duplicate_codepoints.py")
     set(PY_SCRIPT "${SMUFL_MAPPING_ROOT}/tools/generate_legacy_glyphnames_map.py")
     set(OUTPUT_DIR "${SMUFL_MAPPING_ROOT}/src/detail/legacy")
 
@@ -18,8 +19,15 @@ function(generate_legacy_fontmap_headers)
     add_custom_command(
         OUTPUT "${LEGACY_VALIDATION_STAMP}"
         COMMAND ${Python3_EXECUTABLE} "${VALIDATOR_SCRIPT}" --legacy-dir "${SOURCE_DIR}"
+        COMMAND ${Python3_EXECUTABLE} "${DUPLICATE_SCRIPT}" --std "${SMUFL_MAPPING_ROOT}/source_json/glyphnames.json" --finale "${SMUFL_MAPPING_ROOT}/source_json/glyphnamesFinale.json" --bravura "${SMUFL_MAPPING_ROOT}/source_json/glyphnamesBravura.json"
         COMMAND ${CMAKE_COMMAND} -E touch "${LEGACY_VALIDATION_STAMP}"
-        DEPENDS ${LEGACY_JSON_FILES} "${VALIDATOR_SCRIPT}"
+        DEPENDS
+            ${LEGACY_JSON_FILES}
+            "${VALIDATOR_SCRIPT}"
+            "${DUPLICATE_SCRIPT}"
+            "${SMUFL_MAPPING_ROOT}/source_json/glyphnames.json"
+            "${SMUFL_MAPPING_ROOT}/source_json/glyphnamesFinale.json"
+            "${SMUFL_MAPPING_ROOT}/source_json/glyphnamesBravura.json"
         COMMENT "Validating legacy mapping JSON"
         VERBATIM
     )
