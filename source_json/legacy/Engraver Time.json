@@ -1,52 +1,102 @@
 {
-	"timeSig0Large": {
-		"codepoint": "U+FFFD",
-		"legacyCodepoint": "48",
-		"description": ""
-	},
-	"timeSig1Large": {
-		"codepoint": "U+FFFD",
-		"legacyCodepoint": "49",
-		"description": ""
-	},
-	"timeSig2Large": {
-		"codepoint": "U+FFFD",
-		"legacyCodepoint": "50",
-		"description": ""
-	},
-	"timeSig3Large": {
-		"codepoint": "U+FFFD",
-		"legacyCodepoint": "51",
-		"description": ""
-	},
-	"timeSig4Large": {
-		"codepoint": "U+FFFD",
-		"legacyCodepoint": "52",
-		"description": ""
-	},
-	"timeSig5Large": {
-		"codepoint": "U+FFFD",
-		"legacyCodepoint": "53",
-		"description": ""
-	},
-	"timeSig6Large": {
-		"codepoint": "U+FFFD",
-		"legacyCodepoint": "54",
-		"description": ""
-	},
-	"timeSig7Large": {
-		"codepoint": "U+FFFD",
-		"legacyCodepoint": "55",
-		"description": ""
-	},
-	"timeSig8Large": {
-		"codepoint": "U+FFFD",
-		"legacyCodepoint": "56",
-		"description": ""
-	},
-	"timeSig9Large": {
-		"codepoint": "U+FFFD",
-		"legacyCodepoint": "57",
-		"description": ""
-	}
+    "timeSig0Large": [
+        {
+            "legacyCodepoints": [
+                "48"
+            ],
+            "codepoint": "U+FFFD",
+            "description": "",
+            "alternate": true
+        }
+    ],
+    "timeSig1Large": [
+        {
+            "legacyCodepoints": [
+                "49"
+            ],
+            "codepoint": "U+FFFD",
+            "description": "",
+            "alternate": true
+        }
+    ],
+    "timeSig2Large": [
+        {
+            "legacyCodepoints": [
+                "50"
+            ],
+            "codepoint": "U+FFFD",
+            "description": "",
+            "alternate": true
+        }
+    ],
+    "timeSig3Large": [
+        {
+            "legacyCodepoints": [
+                "51"
+            ],
+            "codepoint": "U+FFFD",
+            "description": "",
+            "alternate": true
+        }
+    ],
+    "timeSig4Large": [
+        {
+            "legacyCodepoints": [
+                "52"
+            ],
+            "codepoint": "U+FFFD",
+            "description": "",
+            "alternate": true
+        }
+    ],
+    "timeSig5Large": [
+        {
+            "legacyCodepoints": [
+                "53"
+            ],
+            "codepoint": "U+FFFD",
+            "description": "",
+            "alternate": true
+        }
+    ],
+    "timeSig6Large": [
+        {
+            "legacyCodepoints": [
+                "54"
+            ],
+            "codepoint": "U+FFFD",
+            "description": "",
+            "alternate": true
+        }
+    ],
+    "timeSig7Large": [
+        {
+            "legacyCodepoints": [
+                "55"
+            ],
+            "codepoint": "U+FFFD",
+            "description": "",
+            "alternate": true
+        }
+    ],
+    "timeSig8Large": [
+        {
+            "legacyCodepoints": [
+                "56"
+            ],
+            "codepoint": "U+FFFD",
+            "description": "",
+            "alternate": true
+        }
+    ],
+    "timeSig9Large": [
+        {
+            "legacyCodepoints": [
+                "57"
+            ],
+            "codepoint": "U+FFFD",
+            "description": "",
+            "alternate": true
+        }
+    ]
 }
