@@ -75,3 +75,13 @@ Each processed entry is tagged with a source indicating where the Unicode codepo
     ]
 }
 ```
+
+### Known inconsistencies
+
+The legacy metadata reflects Finale’s final release verbatim, which means some
+slots conflict with the canonical SMuFL definitions. One notable case is
+`brassMuteClosed`: several fonts map legacy codepoint `246` to the *glissando*
+glyph `U+E585` (Finale labeled the slot as an alternate “+” symbol). That is
+almost certainly wrong, but until there is a real-world need to rewrite those
+files the project preserves the historical data and relies on lookup routines
+to prefer the canonical slot `43` instead.
