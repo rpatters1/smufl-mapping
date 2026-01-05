@@ -53,11 +53,11 @@ jobs:
       - name: Build
         run: cmake --build build --parallel 2
 
-      # Step 6: Run tests
-      - name: Run tests
-        run: |
-          if [ "${{ matrix.os }}" = "windows-latest" ]; then
-            ctest --test-dir build --output-on-failure -C Release
-          else
-            ctest --test-dir build --output-on-failure
-          fi
+      # Step 6: Run tests (separate handling for Windows multi-config)
+      - name: Run tests (Windows)
+        if: matrix.os == 'windows-latest'
+        run: ctest --test-dir build --output-on-failure -C Release
+
+      - name: Run tests (Unix & macOS)
+        if: matrix.os != 'windows-latest'
+        run: ctest --test-dir build --output-on-failure
