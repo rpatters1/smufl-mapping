@@ -55,4 +55,9 @@ jobs:
 
       # Step 6: Run tests
       - name: Run tests
-        run: ctest --test-dir build --output-on-failure
+        run: |
+          if [ "${{ matrix.os }}" = "windows-latest" ]; then
+            ctest --test-dir build --output-on-failure -C Release
+          else
+            ctest --test-dir build --output-on-failure
+          fi
