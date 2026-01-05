@@ -134,17 +134,96 @@ static std::string normalizeFontKey(std::string_view s)
     return out;
 }
 
-const LegacyGlyphInfo* getLegacyGlyphInfo(std::string_view fontName, char32_t codepoint)
+namespace {
+
+const detail::LegacyFontMapping* findLegacyFont(std::string_view fontName)
 {
     const auto normalizedFontName = normalizeFontKey(fontName);
     const std::string_view key(normalizedFontName);
-    const detail::LegacyFontMapping* entry = binarySearchByKey(key, detail::legacyFontMappings);
+    return binarySearchByKey(key, detail::legacyFontMappings);
+}
 
-    if (!entry) {
+const std::pair<char32_t, LegacyGlyphInfo>* findLegacyRange(
+    const detail::LegacyFontMapping& mapping,
+    char32_t codepoint,
+    const std::pair<char32_t, LegacyGlyphInfo>** range_end)
+{
+    const auto* begin = mapping.table;
+    const auto* end = begin + mapping.size;
+    const auto* iter = std::lower_bound(
+        begin,
+        end,
+        codepoint,
+        [](const auto& lhs, char32_t rhs) { return lhs.first < rhs; });
+    if (iter == end || iter->first != codepoint) {
+        return nullptr;
+    }
+    const auto* upper = iter;
+    while (upper != end && upper->first == codepoint) {
+        ++upper;
+    }
+    if (range_end) {
+        *range_end = upper;
+    }
+    return iter;
+}
+
+} // namespace
+
+const LegacyGlyphInfo* getLegacyGlyphInfo(std::string_view fontName, char32_t codepoint)
+{
+    const auto* mapping = findLegacyFont(fontName);
+    if (!mapping) {
         return nullptr;
     }
 
-    return binarySearchByKey(codepoint, entry->table, entry->size);
+    const std::pair<char32_t, LegacyGlyphInfo>* range_end = nullptr;
+    const auto* first_match = findLegacyRange(*mapping, codepoint, &range_end);
+    if (!first_match) {
+        return nullptr;
+    }
+
+    if (!first_match->second.alternate) {
+        return &first_match->second;
+    }
+
+    for (auto* it = first_match + 1; it != range_end; ++it) {
+        if (!it->second.alternate) {
+            return &it->second;
+        }
+    }
+
+    return &first_match->second;
+}
+
+std::vector<const LegacyGlyphInfo*> getAllLegacyGlyphInfo(std::string_view fontName,
+                                                          char32_t codepoint)
+{
+    std::vector<const LegacyGlyphInfo*> results;
+
+    const auto* mapping = findLegacyFont(fontName);
+    if (!mapping) {
+        return results;
+    }
+
+    const std::pair<char32_t, LegacyGlyphInfo>* range_end = nullptr;
+    const auto* first = findLegacyRange(*mapping, codepoint, &range_end);
+    if (!first) {
+        return results;
+    }
+
+    for (auto* it = first; it != range_end; ++it) {
+        if (!it->second.alternate) {
+            results.push_back(&it->second);
+        }
+    }
+    for (auto* it = first; it != range_end; ++it) {
+        if (it->second.alternate) {
+            results.push_back(&it->second);
+        }
+    }
+
+    return results;
 }
 
 } // namespace smufl_mapping

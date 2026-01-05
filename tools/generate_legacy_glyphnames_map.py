@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-import json
 import sys
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
+
+from json_utils import load_json_strict
 
 BASE_DIR = Path(__file__).resolve().parent.parent  # root of repo
 SOURCE_DIR = BASE_DIR / "source_json" / "legacy"
@@ -19,7 +20,7 @@ def parse_codepoint(uplus: str) -> int:
 
 def load_glyphnames(path):
     with path.open("r", encoding="utf-8") as f:
-        data = json.load(f)
+        data = load_json_strict(f, location=str(path))
     name_to_codepoint = {}
     for name, props in data.items():
         if "codepoint" in props:
@@ -40,26 +41,9 @@ def normalize_font_key(name: str) -> str:
     """Lowercase the font name and strip all whitespace so lookups are platform-agnostic."""
     return ''.join(name.lower().split())
 
-def load_json_allow_duplicates(path: Path):
-    def _object_pairs_hook(pairs):
-        obj = {}
-        for key, value in pairs:
-            if key in obj:
-                existing = obj[key]
-                if isinstance(existing, list):
-                    existing.append(value)
-                else:
-                    obj[key] = [existing, value]
-            else:
-                obj[key] = value
-        return obj
-
-    with path.open("r", encoding="utf-8") as f:
-        return json.load(f, object_pairs_hook=_object_pairs_hook)
-
-
 def process_legacy_file(path: Path, finale_map: dict, bravura_map: dict) -> tuple[str, Path]:
-    data = load_json_allow_duplicates(path)
+    with path.open("r", encoding="utf-8") as f:
+        data = load_json_strict(f, location=str(path))
 
     fontname = path.stem
     varname = sanitize_var_name(fontname) + "LegacyGlyphs"
@@ -70,26 +54,28 @@ def process_legacy_file(path: Path, finale_map: dict, bravura_map: dict) -> tupl
     for glyphname, value in data.items():
         glyphname = glyphname.strip()
 
-        values = value if isinstance(value, list) else [value]
+        raw_entries = value if isinstance(value, list) else [value]
 
-        for glyph_data in values:
+        for glyph_data in raw_entries:
             if not isinstance(glyph_data, dict):
                 print(f"Unexpected entry type for '{glyphname}' in {path.name}; skipping")
                 continue
 
-            legacy_codepoint_str = glyph_data.get("legacyCodepoint")
-            if not legacy_codepoint_str:
-                print(f"Missing legacyCodepoint for '{glyphname}' in {path.name}")
-                continue
+            legacy_values = glyph_data.get("legacyCodepoints")
+            if legacy_values is None:
+                legacy_value = glyph_data.get("legacyCodepoint")
+                if legacy_value is None:
+                    print(f"Missing legacyCodepoints for '{glyphname}' in {path.name}")
+                    continue
+                legacy_values = [legacy_value]
+
+            if not isinstance(legacy_values, list):
+                legacy_values = [legacy_values]
+
             raw_codepoint = glyph_data.get("codepoint")
             description = glyph_data.get("description", "")
             smufl_font = glyph_data.get("smuflFontName", "finale").lower() # this is RGP proprietary in Lua mapping script: hopefully we can get something like it approved by SMuFL committee
-
-            try:
-                legacy_codepoint = int(legacy_codepoint_str, 0)
-            except ValueError:
-                print(f"Invalid legacyCodepoint '{legacy_codepoint_str}' for '{glyphname}' in {path.name}")
-                continue
+            is_alternate = bool(glyph_data.get("alternate", False))
 
             # Resolve FFFD
             if raw_codepoint == "U+FFFD":
@@ -125,7 +111,16 @@ def process_legacy_file(path: Path, finale_map: dict, bravura_map: dict) -> tupl
             else:
                 source_enum = "SmuflGlyphSource::Smufl"
 
-            entries.append((legacy_codepoint, glyphname, codepoint, description, source_enum))
+            for legacy_codepoint_str in legacy_values:
+                if legacy_codepoint_str is None:
+                    print(f"Missing legacyCodepoint entry for '{glyphname}' in {path.name}")
+                    continue
+                try:
+                    legacy_codepoint = int(legacy_codepoint_str, 0)
+                except ValueError:
+                    print(f"Invalid legacyCodepoint '{legacy_codepoint_str}' for '{glyphname}' in {path.name}")
+                    continue
+                entries.append((legacy_codepoint, glyphname, codepoint, description, source_enum, is_alternate))
 
     # Emit C++ header
     entries.sort(key=lambda entry: entry[0])
@@ -145,10 +140,11 @@ def process_legacy_file(path: Path, finale_map: dict, bravura_map: dict) -> tupl
         out.write('#include "smufl_mapping.h"\n\n')
         out.write('namespace smufl_mapping::detail::legacy {\n\n')
         out.write(f'constexpr std::pair<char32_t, LegacyGlyphInfo> {varname}[] = {{\n')
-        for legacy_cp, gname, cp, desc, source in entries:
+        for legacy_cp, gname, cp, desc, source, is_alternate in entries:
             desc_escaped = desc.replace('"', '\\"')
+            alt_literal = "true" if is_alternate else "false"
             out.write(f'    {{ {legacy_cp:3}, '
-                    f'{{ "{gname}", 0x{cp:X}, "{desc_escaped}", {source} }} }},\n')
+                    f'{{ "{gname}", 0x{cp:X}, "{desc_escaped}", {source}, {alt_literal} }} }},\n')
         out.write('};\n\n')
         out.write('} // namespace smufl_mapping::detail::legacy\n')
 

@@ -1,58 +1,102 @@
 {
-	"gClef": {
-		"codepoint": "U+E050",
-		"legacyCodepoint": "38",
-		"description": ""
-	},
-	"fClef": {
-		"codepoint": "U+E062",
-		"legacyCodepoint": "63",
-		"description": ""
-	},
-	"accidentalQuarterToneSharp4": {
-		"codepoint": "U+E47E",
-		"legacyCodepoint": "64",
-		"description": ""
-	},
-	"cClef": {
-		"codepoint": "U+E05C",
-		"legacyCodepoint": "66",
-		"description": ""
-	},
-	"cClefFrench20C": {
-		"codepoint": "U+F4BF",
-		"legacyCodepoint": "75",
-		"description": "",
-		"smuflFontName": "Bravura"
-	},
-	"gClef8vb": {
-		"codepoint": "U+E052",
-		"legacyCodepoint": "86",
-		"description": ""
-	},
-	"tremolo1": {
-		"codepoint": "U+E220",
-		"legacyCodepoint": "124",
-		"description": ""
-	},
-	"tremolo2": {
-		"codepoint": "U+E221",
-		"legacyCodepoint": "199",
-		"description": ""
-	},
-	"tremolo3": {
-		"codepoint": "U+E222",
-		"legacyCodepoint": "200",
-		"description": ""
-	},
-	"tremolo4": {
-		"codepoint": "U+E223",
-		"legacyCodepoint": "230",
-		"description": ""
-	},
-	"accidentalQuarterToneFlat4": {
-		"codepoint": "U+E47F",
-		"legacyCodepoint": "245",
-		"description": ""
-	}
+    "gClef": [
+        {
+            "legacyCodepoints": [
+                "38"
+            ],
+            "codepoint": "U+E050",
+            "description": ""
+        }
+    ],
+    "fClef": [
+        {
+            "legacyCodepoints": [
+                "63"
+            ],
+            "codepoint": "U+E062",
+            "description": ""
+        }
+    ],
+    "accidentalQuarterToneSharp4": [
+        {
+            "legacyCodepoints": [
+                "64"
+            ],
+            "codepoint": "U+E47E",
+            "description": ""
+        }
+    ],
+    "cClef": [
+        {
+            "legacyCodepoints": [
+                "66"
+            ],
+            "codepoint": "U+E05C",
+            "description": ""
+        }
+    ],
+    "cClefFrench20C": [
+        {
+            "legacyCodepoints": [
+                "75"
+            ],
+            "codepoint": "U+F4BF",
+            "description": "",
+            "smuflFontName": "Bravura"
+        }
+    ],
+    "gClef8vb": [
+        {
+            "legacyCodepoints": [
+                "86"
+            ],
+            "codepoint": "U+E052",
+            "description": ""
+        }
+    ],
+    "tremolo1": [
+        {
+            "legacyCodepoints": [
+                "124"
+            ],
+            "codepoint": "U+E220",
+            "description": ""
+        }
+    ],
+    "tremolo2": [
+        {
+            "legacyCodepoints": [
+                "199"
+            ],
+            "codepoint": "U+E221",
+            "description": ""
+        }
+    ],
+    "tremolo3": [
+        {
+            "legacyCodepoints": [
+                "200"
+            ],
+            "codepoint": "U+E222",
+            "description": ""
+        }
+    ],
+    "tremolo4": [
+        {
+            "legacyCodepoints": [
+                "230"
+            ],
+            "codepoint": "U+E223",
+            "description": ""
+        }
+    ],
+    "accidentalQuarterToneFlat4": [
+        {
+            "legacyCodepoints": [
+                "245"
+            ],
+            "codepoint": "U+E47F",
+            "description": ""
+        }
+    ]
 }

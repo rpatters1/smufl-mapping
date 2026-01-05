@@ -2,35 +2,34 @@
 
 Each file in `source_json/legacy` defines a mapping from **legacy music-font codepoints** (as used by Finale and other pre-SMuFL systems) to **SMuFL glyphs** and Unicode codepoints. The file is a JSON object whose keys are SMuFL glyph names and whose values describe how that glyph appears in the legacy font being mapped.
 
-Note: Some of the legacy mapping files contain duplicate keys, reflecting errors in the original MakeMusic data. As a result, they are not strictly valid JSON but are parsed with a custom loader that preserves all entries.
+The authoritative schema lives in [`docs/legacy_mapping.schema.json`](legacy_mapping.schema.json). The summary below mirrors that schema.
 
 ### Top-level structure
 
 - The file is a JSON object.
 - **Keys** are SMuFL glyph names (strings). Leading and trailing whitespace is ignored.
-- **Values** may be either:
-  - a single object, or
-  - a list of objects, allowing multiple legacy mappings for the same glyph name.
+- **Values** are arrays of entry objects. Even if only one mapping exists, it must be wrapped in an array. This keeps the files valid JSON while preserving multiple legacy mappings per glyph. Each entry in that array may itself list multiple legacy codepoints, which means you can express “1 glyph ↔ N legacy slots” in two ways:
+  1. One entry with a multiple `legacyCodepoints` elements.
+  2. Multiple entry objects that differ only by the legacy element(s).
 
-This design allows the format to represent duplicate glyph names without losing information.
+   Both approaches expand to the same generated output.
 
 ### Entry object fields
 
 Each entry object may contain the following fields:
 
-| Field name         | Type     | Required | Description |
-|--------------------|----------|----------|-------------|
-| `nameIsMakeMusic`  | boolean  | no       | Sometimes used by MakeMusic to denote optional glyphs from Finale. It is currently unreferenced by the Python scripts.|
-| `legacyCodepoint`  | string   | yes      | The codepoint used by the legacy font. Parsed as an integer using C-style notation (e.g. `"121"` or `"0x2041"`). |
-| `codepoint`        | string   | yes*     | The Unicode codepoint of the corresponding SMuFL glyph, written as `"U+XXXX"`. Special handling applies for `"U+FFFD"` (see below). |
-| `description`      | string   | no       | A human-readable description of the glyph. Defaults to the empty string if omitted. |
-| `smuflFontName`    | string   | no       | Indicates the name of the SMuFL font that supplied an optional glyph. |
+| Field name         | Type            | Required | Description |
+|--------------------|-----------------|----------|-------------|
+| `legacyCodepoints` | array of string | yes      | One or more legacy font codepoints (decimal or C-style hex). Values must be unique within the array. |
+| `codepoint`        | string          | yes*     | The Unicode codepoint of the corresponding SMuFL glyph, written as `"U+XXXX"`. Special handling applies for `"U+FFFD"` (see below). |
+| `description`      | string          | no       | A human-readable description of the glyph. Defaults to the empty string if omitted. |
+| `nameIsMakeMusic`  | boolean         | no       | Kept for historical accuracy; surfaced but unused by the generator. |
+| `smuflFontName`    | string          | no       | Name of the SMuFL font that supplied an optional glyph (e.g., `"Finale Broadway"`, `"Bravura"`). Any value other than `"Bravura"` is treated as Finale metadata. |
+| `xOffset`,`yOffset`| integer string  | no       | Positional adjustments translated directly into the generated tables. |
+| `alternate`        | boolean         | no       | Set to `true` when the entry intentionally differs from the canonical SMuFL mapping. Absent (or `false`) entries are considered canonical and are preferred during lookups. |
+| `notes`            | string          | no       | Free-form annotations for future maintainers. |
 
 \* `codepoint` is required unless it is explicitly set to `"U+FFFD"` and can be resolved from reference data.
-
-### Duplicate glyph names
-
-If a glyph name maps to multiple legacy codepoints, its key value appears multiple times in the dictionary. While this is invalid JSON, the Python scripts nevertheless process all entries independently, preserving the full set of mappings.
 
 ### Handling of `U+FFFD`
 
@@ -62,17 +61,31 @@ Each processed entry is tagged with a source indicating where the Unicode codepo
 
 ```json
 {
-	"enclosureClosed": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F74A",
-		"legacyCodepoint": "94",
-		"description": "",
-        "smuflFontName": "Finale Broadway"
-	},
-	"gClef": {
-		"codepoint": "U+E050",
-		"legacyCodepoint": "38",
-		"description": ""
-	}
+    "enclosureClosed": [
+        {
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F74A",
+            "legacyCodepoints": ["94"],
+            "description": "",
+            "smuflFontName": "Finale Broadway"
+        }
+    ],
+    "gClef": [
+        {
+            "codepoint": "U+E050",
+            "legacyCodepoints": ["38"],
+            "description": ""
+        }
+    ]
 }
 ```
+
+### Known inconsistencies
+
+The legacy metadata reflects Finale’s final release verbatim, which means some
+slots conflict with the canonical SMuFL definitions. One notable case is
+`brassMuteClosed`: several fonts map legacy codepoint `246` to the *glissando*
+glyph `U+E585` (Finale labeled the slot as an alternate “+” symbol). That is
+almost certainly wrong, but until there is a real-world need to rewrite those
+files the project preserves the historical data and relies on lookup routines
+to prefer the canonical slot `43` instead.

@@ -1,8 +1,12 @@
 {
-	"enclosureClosed": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F74A",
-		"legacyCodepoint": "94",
-		"description": ""
-	}
+    "enclosureClosed": [
+        {
+            "legacyCodepoints": [
+                "94"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F74A",
+            "description": ""
+        }
+    ]
 }

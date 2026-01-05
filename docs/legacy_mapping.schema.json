@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/smufl-mapping/legacy-mapping.schema.json",
+  "title": "Legacy Font Mapping",
+  "description": "Schema for the JSON files inside source_json/legacy/*.json.",
+  "type": "object",
+  "propertyNames": {
+    "type": "string",
+    "minLength": 1
+  },
+  "additionalProperties": {
+    "type": "array",
+    "minItems": 1,
+    "items": {
+      "$ref": "#/$defs/mappingEntry"
+    }
+  },
+  "$defs": {
+    "codepointString": {
+      "type": "string",
+      "pattern": "^U\\+[0-9A-Fa-f]{4,6}$"
+    },
+    "legacyCodepointString": {
+      "type": "string",
+      "pattern": "^(0x[0-9A-Fa-f]+|[0-9]+)$"
+    },
+    "offsetString": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "mappingEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "legacyCodepoints",
+        "codepoint"
+      ],
+      "properties": {
+        "legacyCodepoints": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/legacyCodepointString"
+          },
+          "uniqueItems": true,
+          "description": "Legacy font codepoints (decimal or C-style hex)."
+        },
+        "codepoint": {
+          "$ref": "#/$defs/codepointString",
+          "description": "SMuFL Unicode codepoint string."
+        },
+        "description": {
+          "type": "string"
+        },
+        "nameIsMakeMusic": {
+          "type": "boolean",
+          "description": "Whether Finale treated the glyph name as MakeMusic-specific."
+        },
+        "smuflFontName": {
+          "type": "string",
+          "description": "Name of the SMuFL font that supplied the optional glyph."
+        },
+        "xOffset": {
+          "$ref": "#/$defs/offsetString"
+        },
+        "yOffset": {
+          "$ref": "#/$defs/offsetString"
+        },
+        "alternate": {
+          "type": "boolean",
+          "description": "True if this entry intentionally differs from the canonical glyphnames mapping."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Free-form notes about this mapping."
+        }
+      }
+    }
+  }
+}

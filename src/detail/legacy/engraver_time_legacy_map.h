@@ -16,16 +16,16 @@
 namespace smufl_mapping::detail::legacy {
 
 constexpr std::pair<char32_t, LegacyGlyphInfo> engraverTimeLegacyGlyphs[] = {
-    {  48, { "timeSig0Large", 0xF440, "", SmuflGlyphSource::Finale } },
-    {  49, { "timeSig1Large", 0xF441, "", SmuflGlyphSource::Finale } },
-    {  50, { "timeSig2Large", 0xF442, "", SmuflGlyphSource::Finale } },
-    {  51, { "timeSig3Large", 0xF443, "", SmuflGlyphSource::Finale } },
-    {  52, { "timeSig4Large", 0xF444, "", SmuflGlyphSource::Finale } },
-    {  53, { "timeSig5Large", 0xF445, "", SmuflGlyphSource::Finale } },
-    {  54, { "timeSig6Large", 0xF446, "", SmuflGlyphSource::Finale } },
-    {  55, { "timeSig7Large", 0xF447, "", SmuflGlyphSource::Finale } },
-    {  56, { "timeSig8Large", 0xF448, "", SmuflGlyphSource::Finale } },
-    {  57, { "timeSig9Large", 0xF449, "", SmuflGlyphSource::Finale } },
+    {  48, { "timeSig0Large", 0xF440, "", SmuflGlyphSource::Finale, true } },
+    {  49, { "timeSig1Large", 0xF441, "", SmuflGlyphSource::Finale, true } },
+    {  50, { "timeSig2Large", 0xF442, "", SmuflGlyphSource::Finale, true } },
+    {  51, { "timeSig3Large", 0xF443, "", SmuflGlyphSource::Finale, true } },
+    {  52, { "timeSig4Large", 0xF444, "", SmuflGlyphSource::Finale, true } },
+    {  53, { "timeSig5Large", 0xF445, "", SmuflGlyphSource::Finale, true } },
+    {  54, { "timeSig6Large", 0xF446, "", SmuflGlyphSource::Finale, true } },
+    {  55, { "timeSig7Large", 0xF447, "", SmuflGlyphSource::Finale, true } },
+    {  56, { "timeSig8Large", 0xF448, "", SmuflGlyphSource::Finale, true } },
+    {  57, { "timeSig9Large", 0xF449, "", SmuflGlyphSource::Finale, true } },
 };
 
 } // namespace smufl_mapping::detail::legacy

@@ -23,6 +23,7 @@
 
 #include <string_view>
 #include <optional>
+#include <vector>
 
 namespace smufl_mapping {
 
@@ -54,6 +55,7 @@ struct LegacyGlyphInfo
     std::string_view description{};         ///< Since this field is usually empty, you can use `getGlyphInfo(name, source)`
                                             ///< to get the associated #SmuflGlyphInfo for this glyph. That contains the glyph description.
     SmuflGlyphSource source{};              ///< The source for this SMuFL glyph
+    bool alternate{false};                  ///< True if this entry reflects an alternate/non-canonical mapping.
 };
 
 /// @brief Look up a glyph name in the standard set, falling back to an optional glyph set if provided.
@@ -77,5 +79,12 @@ const std::string_view* getGlyphName(char32_t codepoint,
 /// @param codepoint The legacy font codepoint to search for. (Commonly in the 0x00..0xFF range, but may be larger).
 /// @return A pointer to the LegacyGlyphInfo, or nullptr if not found.
 const LegacyGlyphInfo* getLegacyGlyphInfo(std::string_view fontName, char32_t codepoint);
+
+/// @brief Return every legacy glyph mapping for a font/codepoint.
+/// @param fontName Legacy font name (case-insensitive, whitespace ignored).
+/// @param codepoint Legacy codepoint to look up.
+/// @return Vector of pointers; canonical entries appear first when present.
+std::vector<const LegacyGlyphInfo*> getAllLegacyGlyphInfo(std::string_view fontName,
+                                                          char32_t codepoint);
 
 } // namespace smufl_mapping

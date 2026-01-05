@@ -16,19 +16,19 @@
 namespace smufl_mapping::detail::legacy {
 
 constexpr std::pair<char32_t, LegacyGlyphInfo> patmmLegacyGlyphs[] = {
-    { 162, { "accidentalNatural", 0xE261, "", SmuflGlyphSource::Smufl } },
-    { 163, { "accidentalDoubleFlat", 0xE264, "", SmuflGlyphSource::Smufl } },
-    { 165, { "metNote8thUp", 0xECA7, "", SmuflGlyphSource::Smufl } },
-    { 167, { "accidentalDoubleSharp", 0xE263, "", SmuflGlyphSource::Smufl } },
-    { 176, { "accidentalSharp", 0xE262, "", SmuflGlyphSource::Smufl } },
-    { 182, { "accidentalThreeQuarterTonesSharpArrowUp", 0xE274, "", SmuflGlyphSource::Smufl } },
-    { 223, { "accidentalQuarterToneSharpNaturalArrowUp", 0xE272, "", SmuflGlyphSource::Smufl } },
-    { 8224, { "accidentalFlat", 0xE260, "", SmuflGlyphSource::Smufl } },
-    { 8226, { "accidentalQuarterToneFlatArrowUp", 0xE270, "", SmuflGlyphSource::Smufl } },
-    { 8706, { "metNote16thUp", 0xECA9, "", SmuflGlyphSource::Smufl } },
-    { 8719, { "metNoteWhole", 0xECA2, "", SmuflGlyphSource::Smufl } },
-    { 8734, { "metNoteQuarterUp", 0xECA5, "", SmuflGlyphSource::Smufl } },
-    { 8804, { "metNoteHalfUp", 0xECA3, "", SmuflGlyphSource::Smufl } },
+    { 162, { "accidentalNatural", 0xE261, "", SmuflGlyphSource::Smufl, false } },
+    { 163, { "accidentalDoubleFlat", 0xE264, "", SmuflGlyphSource::Smufl, false } },
+    { 165, { "metNote8thUp", 0xECA7, "", SmuflGlyphSource::Smufl, false } },
+    { 167, { "accidentalDoubleSharp", 0xE263, "", SmuflGlyphSource::Smufl, false } },
+    { 176, { "accidentalSharp", 0xE262, "", SmuflGlyphSource::Smufl, false } },
+    { 182, { "accidentalThreeQuarterTonesSharpArrowUp", 0xE274, "", SmuflGlyphSource::Smufl, false } },
+    { 223, { "accidentalQuarterToneSharpNaturalArrowUp", 0xE272, "", SmuflGlyphSource::Smufl, false } },
+    { 8224, { "accidentalFlat", 0xE260, "", SmuflGlyphSource::Smufl, false } },
+    { 8226, { "accidentalQuarterToneFlatArrowUp", 0xE270, "", SmuflGlyphSource::Smufl, false } },
+    { 8706, { "metNote16thUp", 0xECA9, "", SmuflGlyphSource::Smufl, false } },
+    { 8719, { "metNoteWhole", 0xECA2, "", SmuflGlyphSource::Smufl, false } },
+    { 8734, { "metNoteQuarterUp", 0xECA5, "", SmuflGlyphSource::Smufl, false } },
+    { 8804, { "metNoteHalfUp", 0xECA3, "", SmuflGlyphSource::Smufl, false } },
 };
 
 } // namespace smufl_mapping::detail::legacy

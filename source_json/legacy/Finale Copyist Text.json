@@ -1,324 +1,534 @@
 {
-	"enclosureParenOverLeft": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F723",
-		"legacyCodepoint": "91",
-		"description": ""
-	},
-	"enclosureParenOverExtension": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F724",
-		"legacyCodepoint": "92",
-		"description": ""
-	},
-	"enclosureParenOverRight": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F725",
-		"legacyCodepoint": "93",
-		"description": ""
-	},
-	"enclosureParenOverExtensionLong": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F726",
-		"legacyCodepoint": "94",
-		"description": ""
-	},
-	"enclosureBracketExtensionShort": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F727",
-		"legacyCodepoint": "95",
-		"description": ""
-	},
-	"csymDiminished": {
-		"codepoint": "U+E870",
-		"legacyCodepoint": "96",
-		"description": ""
-	},
-	"enclosureBracketLeft": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F720",
-		"legacyCodepoint": "123",
-		"description": ""
-	},
-	"enclosureBracketExtension": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F721",
-		"legacyCodepoint": "124",
-		"description": ""
-	},
-	"enclosureBracketRight": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F722",
-		"legacyCodepoint": "125",
-		"description": ""
-	},
-	"enclosureClosed": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F74A",
-		"legacyCodepoint": "126",
-		"description": ""
-	},
-	"enclosureParenUnderlineRightShortAlt2": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F749",
-		"legacyCodepoint": "162",
-		"description": ""
-	},
-	"enclosureParenOverRight2Long": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F746",
-		"legacyCodepoint": "165",
-		"description": ""
-	},
-	"enclosureParenUnderlineExtensionAlt": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F748",
-		"legacyCodepoint": "176",
-		"description": ""
-	},
-	"enclosureParenOverRight2Alt": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F743",
-		"legacyCodepoint": "177",
-		"description": ""
-	},
-	"enclosureBracketLeftLong": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F729",
-		"legacyCodepoint": "196",
-		"description": ""
-	},
-	"enclosureBracketLongExtension": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F72A",
-		"legacyCodepoint": "197",
-		"description": ""
-	},
-	"enclosureBracketRightLong": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F72B",
-		"legacyCodepoint": "198",
-		"description": ""
-	},
-	"textEnclosureFine": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F81F",
-		"legacyCodepoint": "200",
-		"description": ""
-	},
-	"textEnclosureCurvedArrow": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F814",
-		"legacyCodepoint": "201",
-		"description": ""
-	},
-	"textEnclosureSegmentCUrvedArrowShort": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F819",
-		"legacyCodepoint": "202",
-		"description": ""
-	},
-	"textEnclosureSegmentArrowJogUp": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F81B",
-		"legacyCodepoint": "203",
-		"description": ""
-	},
-	"textEnclosureSegmentArrowJogOver": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F81C",
-		"legacyCodepoint": "204",
-		"description": ""
-	},
-	"textEnclosureSegmentArrowJogDown": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F81D",
-		"legacyCodepoint": "205",
-		"description": ""
-	},
-	"textEnclosureCurvedArrowWHook": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F815",
-		"legacyCodepoint": "206",
-		"description": ""
-	},
-	"textEnclosureSegmentArrowDown": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F81E",
-		"legacyCodepoint": "207",
-		"description": ""
-	},
-	"accidentalFlat": {
-		"codepoint": "U+E260",
-		"legacyCodepoint": "209",
-		"description": ""
-	},
-	"textEnclosureSegmentLeftHook": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F816",
-		"legacyCodepoint": "210",
-		"description": ""
-	},
-	"textEnclosureExtensionShort": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F817",
-		"legacyCodepoint": "211",
-		"description": ""
-	},
-	"textEnclosureSegmentCUrvedArrowShort": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F819",
-		"legacyCodepoint": "212",
-		"description": ""
-	},
-	"textEnclosureSegmentCUrvedArrowShort": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F744",
-		"legacyCodepoint": "214",
-		"description": ""
-	},
-	"enclosureParenOverLeft2Alt": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F741",
-		"legacyCodepoint": "216",
-		"description": ""
-	},
-	"textEnclosureSegmentExtensionLong": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F818",
-		"legacyCodepoint": "217",
-		"description": ""
-	},
-	"accidentalNatural": {
-		"codepoint": "U+E261",
-		"legacyCodepoint": "224",
-		"description": ""
-	},
-	"metNote8thUp": {
-		"codepoint": "U+ECA7",
-		"legacyCodepoint": "226",
-		"description": ""
-	},
-	"metNoteQuarterUp": {
-		"codepoint": "U+ECA5",
-		"legacyCodepoint": "227",
-		"description": ""
-	},
-	"metNote16thUp": {
-		"codepoint": "U+ECA9",
-		"legacyCodepoint": "228",
-		"description": ""
-	},
-	"metNoteQuarterUp": {
-		"codepoint": "U+ECA5",
-		"legacyCodepoint": "229",
-		"description": ""
-	},
-	"metNoteHalfUp": {
-		"codepoint": "U+ECA3",
-		"legacyCodepoint": "231",
-		"description": ""
-	},
-	"enclosureBracketExtensionLong": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F73C",
-		"legacyCodepoint": "232",
-		"description": ""
-	},
-	"metNoteWhole": {
-		"codepoint": "U+ECA2",
-		"legacyCodepoint": "233",
-		"description": ""
-	},
-	"csymParensLeftTall": {
-		"codepoint": "U+E875",
-		"legacyCodepoint": "234",
-		"description": ""
-	},
-	"csymParensRightTall": {
-		"codepoint": "U+E876",
-		"legacyCodepoint": "235",
-		"description": ""
-	},
-	"textEnclosureExtensionShort": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F817",
-		"legacyCodepoint": "236",
-		"description": ""
-	},
-	"enclosureParenOverLeft2Alt": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F723",
-		"legacyCodepoint": "237",
-		"description": ""
-	},
-	"enclosureParenUnderlineExtensionAlt": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F748",
-		"legacyCodepoint": "238",
-		"description": ""
-	},
-	"enclosureParenUnderlineRight": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F731",
-		"legacyCodepoint": "239",
-		"description": ""
-	},
-	"onehalf": {
-		"codepoint": "U+00BD",
-		"legacyCodepoint": "241",
-		"description": ""
-	},
-	"x": {
-		"codepoint": "U+0078",
-		"legacyCodepoint": "242",
-		"description": ""
-	},
-	"coda": {
-		"codepoint": "U+E048",
-		"legacyCodepoint": "243",
-		"description": ""
-	},
-	"textEnclosureSegmentJogUp": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F811",
-		"legacyCodepoint": "245",
-		"description": ""
-	},
-	"textEnclosureSegmentJogDown": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F810",
-		"legacyCodepoint": "246",
-		"description": ""
-	},
-	"textEnclosureSegmentExtension": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F812",
-		"legacyCodepoint": "248",
-		"description": ""
-	},
-	"enclosureParenUnderlineLeftAlt2": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F747",
-		"legacyCodepoint": "249",
-		"description": ""
-	},
-	"textEnclosureSegmentArrow": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F813",
-		"legacyCodepoint": "250",
-		"description": ""
-	},
-	"enclosureParenUnderlineExtensionAlt": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F748",
-		"legacyCodepoint": "251",
-		"description": ""
-	},
-		"enclosureParenUnderlineRightShortAlt2": {
-		"nameIsMakeMusic": true,
-		"codepoint": "U+F749",
-		"legacyCodepoint": "252",
-		"description": ""
-	}
+    "enclosureParenOverLeft": [
+        {
+            "legacyCodepoints": [
+                "91"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F723",
+            "description": ""
+        }
+    ],
+    "enclosureParenOverExtension": [
+        {
+            "legacyCodepoints": [
+                "92"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F724",
+            "description": ""
+        }
+    ],
+    "enclosureParenOverRight": [
+        {
+            "legacyCodepoints": [
+                "93"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F725",
+            "description": ""
+        }
+    ],
+    "enclosureParenOverExtensionLong": [
+        {
+            "legacyCodepoints": [
+                "94"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F726",
+            "description": ""
+        }
+    ],
+    "enclosureBracketExtensionShort": [
+        {
+            "legacyCodepoints": [
+                "95"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F727",
+            "description": ""
+        }
+    ],
+    "csymDiminished": [
+        {
+            "legacyCodepoints": [
+                "96"
+            ],
+            "codepoint": "U+E870",
+            "description": ""
+        }
+    ],
+    "enclosureBracketLeft": [
+        {
+            "legacyCodepoints": [
+                "123"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F720",
+            "description": ""
+        }
+    ],
+    "enclosureBracketExtension": [
+        {
+            "legacyCodepoints": [
+                "124"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F721",
+            "description": ""
+        }
+    ],
+    "enclosureBracketRight": [
+        {
+            "legacyCodepoints": [
+                "125"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F722",
+            "description": ""
+        }
+    ],
+    "enclosureClosed": [
+        {
+            "legacyCodepoints": [
+                "126"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F74A",
+            "description": ""
+        }
+    ],
+    "enclosureParenUnderlineRightShortAlt2": [
+        {
+            "legacyCodepoints": [
+                "162"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F749",
+            "description": ""
+        },
+        {
+            "legacyCodepoints": [
+                "252"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F749",
+            "description": ""
+        }
+    ],
+    "enclosureParenOverRight2Long": [
+        {
+            "legacyCodepoints": [
+                "165"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F746",
+            "description": ""
+        }
+    ],
+    "enclosureParenUnderlineExtensionAlt": [
+        {
+            "legacyCodepoints": [
+                "176"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F748",
+            "description": ""
+        },
+        {
+            "legacyCodepoints": [
+                "238"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F748",
+            "description": ""
+        },
+        {
+            "legacyCodepoints": [
+                "251"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F748",
+            "description": ""
+        }
+    ],
+    "enclosureParenOverRight2Alt": [
+        {
+            "legacyCodepoints": [
+                "177"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F743",
+            "description": ""
+        }
+    ],
+    "enclosureBracketLeftLong": [
+        {
+            "legacyCodepoints": [
+                "196"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F729",
+            "description": ""
+        }
+    ],
+    "enclosureBracketLongExtension": [
+        {
+            "legacyCodepoints": [
+                "197"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F72A",
+            "description": ""
+        }
+    ],
+    "enclosureBracketRightLong": [
+        {
+            "legacyCodepoints": [
+                "198"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F72B",
+            "description": ""
+        }
+    ],
+    "textEnclosureFine": [
+        {
+            "legacyCodepoints": [
+                "200"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F81F",
+            "description": ""
+        }
+    ],
+    "textEnclosureCurvedArrow": [
+        {
+            "legacyCodepoints": [
+                "201"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F814",
+            "description": ""
+        }
+    ],
+    "textEnclosureSegmentCUrvedArrowShort": [
+        {
+            "legacyCodepoints": [
+                "202"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F819",
+            "description": ""
+        },
+        {
+            "legacyCodepoints": [
+                "212"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F819",
+            "description": ""
+        },
+        {
+            "legacyCodepoints": [
+                "214"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F744",
+            "description": "",
+            "alternate": true
+        }
+    ],
+    "textEnclosureSegmentArrowJogUp": [
+        {
+            "legacyCodepoints": [
+                "203"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F81B",
+            "description": ""
+        }
+    ],
+    "textEnclosureSegmentArrowJogOver": [
+        {
+            "legacyCodepoints": [
+                "204"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F81C",
+            "description": ""
+        }
+    ],
+    "textEnclosureSegmentArrowJogDown": [
+        {
+            "legacyCodepoints": [
+                "205"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F81D",
+            "description": ""
+        }
+    ],
+    "textEnclosureCurvedArrowWHook": [
+        {
+            "legacyCodepoints": [
+                "206"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F815",
+            "description": ""
+        }
+    ],
+    "textEnclosureSegmentArrowDown": [
+        {
+            "legacyCodepoints": [
+                "207"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F81E",
+            "description": ""
+        }
+    ],
+    "accidentalFlat": [
+        {
+            "legacyCodepoints": [
+                "209"
+            ],
+            "codepoint": "U+E260",
+            "description": ""
+        }
+    ],
+    "textEnclosureSegmentLeftHook": [
+        {
+            "legacyCodepoints": [
+                "210"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F816",
+            "description": ""
+        }
+    ],
+    "textEnclosureExtensionShort": [
+        {
+            "legacyCodepoints": [
+                "211"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F817",
+            "description": ""
+        },
+        {
+            "legacyCodepoints": [
+                "236"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F817",
+            "description": ""
+        }
+    ],
+    "enclosureParenOverLeft2Alt": [
+        {
+            "legacyCodepoints": [
+                "216"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F741",
+            "description": ""
+        },
+        {
+            "legacyCodepoints": [
+                "237"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F723",
+            "description": "",
+            "alternate": true
+        }
+    ],
+    "textEnclosureSegmentExtensionLong": [
+        {
+            "legacyCodepoints": [
+                "217"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F818",
+            "description": ""
+        }
+    ],
+    "accidentalNatural": [
+        {
+            "legacyCodepoints": [
+                "224"
+            ],
+            "codepoint": "U+E261",
+            "description": ""
+        }
+    ],
+    "metNote8thUp": [
+        {
+            "legacyCodepoints": [
+                "226"
+            ],
+            "codepoint": "U+ECA7",
+            "description": ""
+        }
+    ],
+    "metNoteQuarterUp": [
+        {
+            "legacyCodepoints": [
+                "227"
+            ],
+            "codepoint": "U+ECA5",
+            "description": ""
+        },
+        {
+            "legacyCodepoints": [
+                "229"
+            ],
+            "codepoint": "U+ECA5",
+            "description": ""
+        }
+    ],
+    "metNote16thUp": [
+        {
+            "legacyCodepoints": [
+                "228"
+            ],
+            "codepoint": "U+ECA9",
+            "description": ""
+        }
+    ],
+    "metNoteHalfUp": [
+        {
+            "legacyCodepoints": [
+                "231"
+            ],
+            "codepoint": "U+ECA3",
+            "description": ""
+        }
+    ],
+    "enclosureBracketExtensionLong": [
+        {
+            "legacyCodepoints": [
+                "232"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F73C",
+            "description": ""
+        }
+    ],
+    "metNoteWhole": [
+        {
+            "legacyCodepoints": [
+                "233"
+            ],
+            "codepoint": "U+ECA2",
+            "description": ""
+        }
+    ],
+    "csymParensLeftTall": [
+        {
+            "legacyCodepoints": [
+                "234"
+            ],
+            "codepoint": "U+E875",
+            "description": ""
+        }
+    ],
+    "csymParensRightTall": [
+        {
+            "legacyCodepoints": [
+                "235"
+            ],
+            "codepoint": "U+E876",
+            "description": ""
+        }
+    ],
+    "enclosureParenUnderlineRight": [
+        {
+            "legacyCodepoints": [
+                "239"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F731",
+            "description": ""
+        }
+    ],
+    "onehalf": [
+        {
+            "legacyCodepoints": [
+                "241"
+            ],
+            "codepoint": "U+00BD",
+            "description": ""
+        }
+    ],
+    "x": [
+        {
+            "legacyCodepoints": [
+                "242"
+            ],
+            "codepoint": "U+0078",
+            "description": ""
+        }
+    ],
+    "coda": [
+        {
+            "legacyCodepoints": [
+                "243"
+            ],
+            "codepoint": "U+E048",
+            "description": ""
+        }
+    ],
+    "textEnclosureSegmentJogUp": [
+        {
+            "legacyCodepoints": [
+                "245"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F811",
+            "description": ""
+        }
+    ],
+    "textEnclosureSegmentJogDown": [
+        {
+            "legacyCodepoints": [
+                "246"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F810",
+            "description": ""
+        }
+    ],
+    "textEnclosureSegmentExtension": [
+        {
+            "legacyCodepoints": [
+                "248"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F812",
+            "description": ""
+        }
+    ],
+    "enclosureParenUnderlineLeftAlt2": [
+        {
+            "legacyCodepoints": [
+                "249"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F747",
+            "description": ""
+        }
+    ],
+    "textEnclosureSegmentArrow": [
+        {
+            "legacyCodepoints": [
+                "250"
+            ],
+            "nameIsMakeMusic": true,
+            "codepoint": "U+F813",
+            "description": ""
+        }
+    ]
 }

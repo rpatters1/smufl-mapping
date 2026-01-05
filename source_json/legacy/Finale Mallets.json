@@ -1,387 +1,695 @@
 {
-	"pictBeaterSoftTimpaniRight": {
-		"codepoint": "U+E78A",
-		"legacyCodepoint": "33",
-		"description": ""
-	},
-	"pictBeaterHardTimpaniRight": {
-		"codepoint": "U+E792",
-		"legacyCodepoint": "35",
-		"description": ""
-	},
-	"pictBeaterWoodTimpaniRight": {
-		"codepoint": "U+E796",
-		"legacyCodepoint": "36",
-		"description": ""
-	},
-	"pictBeaterSoftXylophoneRight": {
-		"codepoint": "U+E772",
-		"legacyCodepoint": "37",
-		"description": ""
-	},
-	"pictBeaterHardXylophoneRight": {
-		"codepoint": "U+E77A",
-		"legacyCodepoint": "38",
-		"description": ""
-	},
-	"pictBeaterSoftYarnRight": {
-		"codepoint": "U+E7A4",
-		"legacyCodepoint": "40",
-		"description": ""
-	},
-	"pictBeaterMediumYarnRight": {
-		"codepoint": "U+E7A8",
-		"legacyCodepoint": "41",
-		"description": ""
-	},
-	"pictBeaterWoodXylophoneRight": {
-		"codepoint": "U+E77E",
-		"legacyCodepoint": "42",
-		"description": ""
-	},
-	"noteheadPlusBlack": {
-		"codepoint": "U+E0AF",
-		"legacyCodepoint": "43",
-		"description": ""
-	},
-	"pictBeaterMediumYarnLeft": {
-		"codepoint": "U+E7A9",
-		"legacyCodepoint": "48",
-		"description": ""
-	},
-	"pictBeaterSoftTimpaniLeft": {
-		"codepoint": "U+E78B",
-		"legacyCodepoint": "49",
-		"description": ""
-	},
-	"pictBeaterMediumTimpaniLeft": {
-		"codepoint": "U+E78F",
-		"legacyCodepoint": "50",
-		"description": ""
-	},
-	"pictBeaterHardTimpaniLeft": {
-		"codepoint": "U+E793",
-		"legacyCodepoint": "51",
-		"description": ""
-	},
-	"pictBeaterWoodTimpaniLeft": {
-		"codepoint": "U+E797",
-		"legacyCodepoint": "52",
-		"description": ""
-	},
-	"pictBeaterSoftXylophoneLeft": {
-		"codepoint": "U+E773",
-		"legacyCodepoint": "53",
-		"description": ""
-	},
-	"pictBeaterMediumXylophoneLeft": {
-		"codepoint": "U+E777",
-		"legacyCodepoint": "54",
-		"description": ""
-	},
-	"pictBeaterHardXylophoneLeft": {
-		"codepoint": "U+E77B",
-		"legacyCodepoint": "55",
-		"description": ""
-	},
-	"pictBeaterWoodXylophoneLeft": {
-		"codepoint": "U+E77F",
-		"legacyCodepoint": "56",
-		"description": ""
-	},
-	"pictBeaterSoftYarnLeft": {
-		"codepoint": "U+E7A5",
-		"legacyCodepoint": "57",
-		"description": ""
-	},
-	"pictBeaterHardYarnRight": {
-		"codepoint": "U+E7AC",
-		"legacyCodepoint": "58",
-		"description": ""
-	},
-	"pictBeaterHardYarnLeft": {
-		"codepoint": "U+E7AD",
-		"legacyCodepoint": "59",
-		"description": ""
-	},
-	"pictBeaterMediumTimpaniRight": {
-		"codepoint": "U+E78E",
-		"legacyCodepoint": "64",
-		"description": ""
-	},
-	"pictBeaterSoftBassDrumDown": {
-		"codepoint": "U+E799",
-		"legacyCodepoint": "65",
-		"description": ""
-	},
-	"pictBeaterTrianglePlain": {
-		"codepoint": "U+E7EF",
-		"legacyCodepoint": "66",
-		"description": ""
-	},
-	"pictBeaterSpoonWoodenMallet": {
-		"codepoint": "U+E7DC",
-		"legacyCodepoint": "67",
-		"description": ""
-	},
-	"pictBeaterHardBassDrumDown": {
-		"codepoint": "U+E79D",
-		"legacyCodepoint": "68",
-		"description": ""
-	},
-	"pictBeaterHardTimpaniDown": {
-		"codepoint": "U+E791",
-		"legacyCodepoint": "69",
-		"description": ""
-	},
-	"pictBeaterDoubleBassDrumDown": {
-		"codepoint": "U+E7A1",
-		"legacyCodepoint": "70",
-		"description": ""
-	},
-	"pictBeaterSnareSticksDown": {
-		"codepoint": "U+E7D2",
-		"legacyCodepoint": "71",
-		"description": ""
-	},
-	"pictBeaterJazzSticksDown": {
-		"codepoint": "U+E7D4",
-		"legacyCodepoint": "72",
-		"description": ""
-	},
-	"pictBeaterWoodXylophoneDown": {
-		"codepoint": "U+E77D",
-		"legacyCodepoint": "73",
-		"description": ""
-	},
-	"pictBeaterBrassMalletsDown": {
-		"codepoint": "U+E7DA",
-		"legacyCodepoint": "74",
-		"description": ""
-	},
-	"pictBeaterMalletDown": {
-		"codepoint": "U+E7EC",
-		"legacyCodepoint": "75",
-		"description": ""
-	},
-	"pictBeaterGuiroScraper": {
-		"codepoint": "U+E7DD",
-		"legacyCodepoint": "76",
-		"description": ""
-	},
-	"pictBeaterWireBrushesDown": {
-		"codepoint": "U+E7D8",
-		"legacyCodepoint": "77",
-		"description": ""
-	},
-	"pictBeaterBrassMalletsRight": {
-		"codepoint": "U+E7ED",
-		"legacyCodepoint": "78",
-		"description": ""
-	},
-	"pictBeaterSoftYarnDown": {
-		"codepoint": "U+E7A3",
-		"legacyCodepoint": "79",
-		"description": ""
-	},
-	"pictBeaterMediumYarnDown": {
-		"codepoint": "U+E7A7",
-		"legacyCodepoint": "80",
-		"description": ""
-	},
-	"pictBeaterSoftTimpaniDown": {
-		"codepoint": "U+E789",
-		"legacyCodepoint": "81",
-		"description": ""
-	},
-	"pictBeaterWoodTimpaniDown": {
-		"codepoint": "U+E795",
-		"legacyCodepoint": "82",
-		"description": ""
-	},
-	"pictBeaterMediumBassDrumDown": {
-		"codepoint": "U+E79B",
-		"legacyCodepoint": "83",
-		"description": ""
-	},
-	"pictBeaterSoftXylophoneDown": {
-		"codepoint": "U+E771",
-		"legacyCodepoint": "84",
-		"description": ""
-	},
-	"pictBeaterHardXylophoneDown": {
-		"codepoint": "U+E779",
-		"legacyCodepoint": "85",
-		"description": ""
-	},
-	"pictBeaterMediumTimpaniDown": {
-		"codepoint": "U+E78D",
-		"legacyCodepoint": "87",
-		"description": ""
-	},
-	"pictBeaterMetalHammer": {
-		"codepoint": "U+E7E0",
-		"legacyCodepoint": "88",
-		"description": ""
-	},
-	"pictBeaterMediumXylophoneDown": {
-		"codepoint": "U+E775",
-		"legacyCodepoint": "89",
-		"description": ""
-	},
-	"pictBeaterKnittingNeedle": {
-		"codepoint": "U+E7E2",
-		"legacyCodepoint": "90",
-		"description": ""
-	},
-	"pictBeaterHardYarnUp": {
-		"codepoint": "U+E7AA",
-		"legacyCodepoint": "91",
-		"description": ""
-	},
-	"pictBeaterFinger": {
-		"codepoint": "U+E7E4",
-		"legacyCodepoint": "92",
-		"description": ""
-	},
-	"pictBeaterHand": {
-		"codepoint": "U+E7E3",
-		"legacyCodepoint": "93",
-		"description": ""
-	},
-	"pictBeaterMediumXylophoneRight": {
-		"codepoint": "U+E776",
-		"legacyCodepoint": "94",
-		"description": ""
-	},
-	"pictBeaterSoftBassDrumUp": {
-		"codepoint": "U+E798",
-		"legacyCodepoint": "97",
-		"description": ""
-	},
-	"pictBeaterHardBassDrumUp": {
-		"codepoint": "U+E79C",
-		"legacyCodepoint": "100",
-		"description": ""
-	},
-	"pictBeaterHardTimpaniUp": {
-		"codepoint": "U+E790",
-		"legacyCodepoint": "101",
-		"description": ""
-	},
-	"pictBeaterDoubleBassDrumUp": {
-		"codepoint": "U+E7A0",
-		"legacyCodepoint": "102",
-		"description": ""
-	},
-	"pictBeaterSnareSticksUp": {
-		"codepoint": "U+E7D1",
-		"legacyCodepoint": "103",
-		"description": ""
-	},
-	"pictBeaterJazzSticksUp": {
-		"codepoint": "U+E7D3",
-		"legacyCodepoint": "104",
-		"description": ""
-	},
-	"pictBeaterWoodXylophoneUp": {
-		"codepoint": "U+E77C",
-		"legacyCodepoint": "105",
-		"description": ""
-	},
-	"pictBeaterBrassMalletsUp": {
-		"codepoint": "U+E7D9",
-		"legacyCodepoint": "106",
-		"description": ""
-	},
-	"pictBeaterMallet": {
-		"codepoint": "U+E7DF",
-		"legacyCodepoint": "107",
-		"description": ""
-	},
-	"pictBeaterTriangleUp": {
-		"codepoint": "U+E7D5",
-		"legacyCodepoint": "108",
-		"description": ""
-	},
-	"pictBeaterWireBrushesUp": {
-		"codepoint": "U+E7D7",
-		"legacyCodepoint": "109",
-		"description": ""
-	},
-	"pictBeaterBrassMalletsLeft": {
-		"codepoint": "U+E7EE",
-		"legacyCodepoint": "110",
-		"description": ""
-	},
-	"pictBeaterSoftYarnUp": {
-		"codepoint": "U+E7A2",
-		"legacyCodepoint": "111",
-		"description": ""
-	},
-	"pictBeaterMediumYarnUp": {
-		"codepoint": "U+E7A6",
-		"legacyCodepoint": "112",
-		"description": ""
-	},
-	"pictBeaterSoftTimpaniUp": {
-		"codepoint": "U+E788",
-		"legacyCodepoint": "113",
-		"description": ""
-	},
-	"pictBeaterWoodTimpaniUp": {
-		"codepoint": "U+E794",
-		"legacyCodepoint": "114",
-		"description": ""
-	},
-	"pictBeaterMediumBassDrumUp": {
-		"codepoint": "U+E79A",
-		"legacyCodepoint": "115",
-		"description": ""
-	},
-	"pictBeaterSoftXylophoneUp": {
-		"codepoint": "U+E770",
-		"legacyCodepoint": "116",
-		"description": ""
-	},
-	"pictBeaterHardXylophoneUp": {
-		"codepoint": "U+E778",
-		"legacyCodepoint": "117",
-		"description": ""
-	},
-	"pictBeaterMediumTimpaniUp": {
-		"codepoint": "U+E78C",
-		"legacyCodepoint": "119",
-		"description": ""
-	},
-	"pictBeaterHammer": {
-		"codepoint": "U+E7E1",
-		"legacyCodepoint": "120",
-		"description": ""
-	},
-	"pictBeaterMediumXylophoneUp": {
-		"codepoint": "U+E774",
-		"legacyCodepoint": "121",
-		"description": ""
-	},
-	"pictCoins": {
-		"codepoint": "U+E7E7",
-		"legacyCodepoint": "122",
-		"description": ""
-	},
-	"pictBeaterHardYarnDown": {
-		"codepoint": "U+E7AB",
-		"legacyCodepoint": "123",
-		"description": ""
-	},
-	"pictBeaterFingernails": {
-		"codepoint": "U+E7E6",
-		"legacyCodepoint": "124",
-		"description": ""
-	},
-	"pictBeaterFist": {
-		"codepoint": "U+E7E5",
-		"legacyCodepoint": "125",
-		"description": ""
-	}
+    "pictBeaterSoftTimpaniRight": [
+        {
+            "legacyCodepoints": [
+                "33"
+            ],
+            "codepoint": "U+E78A",
+            "description": ""
+        }
+    ],
+    "pictBeaterHardTimpaniRight": [
+        {
+            "legacyCodepoints": [
+                "35"
+            ],
+            "codepoint": "U+E792",
+            "description": ""
+        }
+    ],
+    "pictBeaterWoodTimpaniRight": [
+        {
+            "legacyCodepoints": [
+                "36"
+            ],
+            "codepoint": "U+E796",
+            "description": ""
+        }
+    ],
+    "pictBeaterSoftXylophoneRight": [
+        {
+            "legacyCodepoints": [
+                "37"
+            ],
+            "codepoint": "U+E772",
+            "description": ""
+        }
+    ],
+    "pictBeaterHardXylophoneRight": [
+        {
+            "legacyCodepoints": [
+                "38"
+            ],
+            "codepoint": "U+E77A",
+            "description": ""
+        }
+    ],
+    "pictBeaterSoftYarnRight": [
+        {
+            "legacyCodepoints": [
+                "40"
+            ],
+            "codepoint": "U+E7A4",
+            "description": ""
+        }
+    ],
+    "pictBeaterMediumYarnRight": [
+        {
+            "legacyCodepoints": [
+                "41"
+            ],
+            "codepoint": "U+E7A8",
+            "description": ""
+        }
+    ],
+    "pictBeaterWoodXylophoneRight": [
+        {
+            "legacyCodepoints": [
+                "42"
+            ],
+            "codepoint": "U+E77E",
+            "description": ""
+        }
+    ],
+    "noteheadPlusBlack": [
+        {
+            "legacyCodepoints": [
+                "43"
+            ],
+            "codepoint": "U+E0AF",
+            "description": ""
+        }
+    ],
+    "pictBeaterMediumYarnLeft": [
+        {
+            "legacyCodepoints": [
+                "48"
+            ],
+            "codepoint": "U+E7A9",
+            "description": ""
+        }
+    ],
+    "pictBeaterSoftTimpaniLeft": [
+        {
+            "legacyCodepoints": [
+                "49"
+            ],
+            "codepoint": "U+E78B",
+            "description": ""
+        }
+    ],
+    "pictBeaterMediumTimpaniLeft": [
+        {
+            "legacyCodepoints": [
+                "50"
+            ],
+            "codepoint": "U+E78F",
+            "description": ""
+        }
+    ],
+    "pictBeaterHardTimpaniLeft": [
+        {
+            "legacyCodepoints": [
+                "51"
+            ],
+            "codepoint": "U+E793",
+            "description": ""
+        }
+    ],
+    "pictBeaterWoodTimpaniLeft": [
+        {
+            "legacyCodepoints": [
+                "52"
+            ],
+            "codepoint": "U+E797",
+            "description": ""
+        }
+    ],
+    "pictBeaterSoftXylophoneLeft": [
+        {
+            "legacyCodepoints": [
+                "53"
+            ],
+            "codepoint": "U+E773",
+            "description": ""
+        }
+    ],
+    "pictBeaterMediumXylophoneLeft": [
+        {
+            "legacyCodepoints": [
+                "54"
+            ],
+            "codepoint": "U+E777",
+            "description": ""
+        }
+    ],
+    "pictBeaterHardXylophoneLeft": [
+        {
+            "legacyCodepoints": [
+                "55"
+            ],
+            "codepoint": "U+E77B",
+            "description": ""
+        }
+    ],
+    "pictBeaterWoodXylophoneLeft": [
+        {
+            "legacyCodepoints": [
+                "56"
+            ],
+            "codepoint": "U+E77F",
+            "description": ""
+        }
+    ],
+    "pictBeaterSoftYarnLeft": [
+        {
+            "legacyCodepoints": [
+                "57"
+            ],
+            "codepoint": "U+E7A5",
+            "description": ""
+        }
+    ],
+    "pictBeaterHardYarnRight": [
+        {
+            "legacyCodepoints": [
+                "58"
+            ],
+            "codepoint": "U+E7AC",
+            "description": ""
+        }
+    ],
+    "pictBeaterHardYarnLeft": [
+        {
+            "legacyCodepoints": [
+                "59"
+            ],
+            "codepoint": "U+E7AD",
+            "description": ""
+        }
+    ],
+    "pictBeaterMediumTimpaniRight": [
+        {
+            "legacyCodepoints": [
+                "64"
+            ],
+            "codepoint": "U+E78E",
+            "description": ""
+        }
+    ],
+    "pictBeaterSoftBassDrumDown": [
+        {
+            "legacyCodepoints": [
+                "65"
+            ],
+            "codepoint": "U+E799",
+            "description": ""
+        }
+    ],
+    "pictBeaterTrianglePlain": [
+        {
+            "legacyCodepoints": [
+                "66"
+            ],
+            "codepoint": "U+E7EF",
+            "description": ""
+        }
+    ],
+    "pictBeaterSpoonWoodenMallet": [
+        {
+            "legacyCodepoints": [
+                "67"
+            ],
+            "codepoint": "U+E7DC",
+            "description": ""
+        }
+    ],
+    "pictBeaterHardBassDrumDown": [
+        {
+            "legacyCodepoints": [
+                "68"
+            ],
+            "codepoint": "U+E79D",
+            "description": ""
+        }
+    ],
+    "pictBeaterHardTimpaniDown": [
+        {
+            "legacyCodepoints": [
+                "69"
+            ],
+            "codepoint": "U+E791",
+            "description": ""
+        }
+    ],
+    "pictBeaterDoubleBassDrumDown": [
+        {
+            "legacyCodepoints": [
+                "70"
+            ],
+            "codepoint": "U+E7A1",
+            "description": ""
+        }
+    ],
+    "pictBeaterSnareSticksDown": [
+        {
+            "legacyCodepoints": [
+                "71"
+            ],
+            "codepoint": "U+E7D2",
+            "description": ""
+        }
+    ],
+    "pictBeaterJazzSticksDown": [
+        {
+            "legacyCodepoints": [
+                "72"
+            ],
+            "codepoint": "U+E7D4",
+            "description": ""
+        }
+    ],
+    "pictBeaterWoodXylophoneDown": [
+        {
+            "legacyCodepoints": [
+                "73"
+            ],
+            "codepoint": "U+E77D",
+            "description": ""
+        }
+    ],
+    "pictBeaterBrassMalletsDown": [
+        {
+            "legacyCodepoints": [
+                "74"
+            ],
+            "codepoint": "U+E7DA",
+            "description": ""
+        }
+    ],
+    "pictBeaterMalletDown": [
+        {
+            "legacyCodepoints": [
+                "75"
+            ],
+            "codepoint": "U+E7EC",
+            "description": ""
+        }
+    ],
+    "pictBeaterGuiroScraper": [
+        {
+            "legacyCodepoints": [
+                "76"
+            ],
+            "codepoint": "U+E7DD",
+            "description": ""
+        }
+    ],
+    "pictBeaterWireBrushesDown": [
+        {
+            "legacyCodepoints": [
+                "77"
+            ],
+            "codepoint": "U+E7D8",
+            "description": ""
+        }
+    ],
+    "pictBeaterBrassMalletsRight": [
+        {
+            "legacyCodepoints": [
+                "78"
+            ],
+            "codepoint": "U+E7ED",
+            "description": ""
+        }
+    ],
+    "pictBeaterSoftYarnDown": [
+        {
+            "legacyCodepoints": [
+                "79"
+            ],
+            "codepoint": "U+E7A3",
+            "description": ""
+        }
+    ],
+    "pictBeaterMediumYarnDown": [
+        {
+            "legacyCodepoints": [
+                "80"
+            ],
+            "codepoint": "U+E7A7",
+            "description": ""
+        }
+    ],
+    "pictBeaterSoftTimpaniDown": [
+        {
+            "legacyCodepoints": [
+                "81"
+            ],
+            "codepoint": "U+E789",
+            "description": ""
+        }
+    ],
+    "pictBeaterWoodTimpaniDown": [
+        {
+            "legacyCodepoints": [
+                "82"
+            ],
+            "codepoint": "U+E795",
+            "description": ""
+        }
+    ],
+    "pictBeaterMediumBassDrumDown": [
+        {
+            "legacyCodepoints": [
+                "83"
+            ],
+            "codepoint": "U+E79B",
+            "description": ""
+        }
+    ],
+    "pictBeaterSoftXylophoneDown": [
+        {
+            "legacyCodepoints": [
+                "84"
+            ],
+            "codepoint": "U+E771",
+            "description": ""
+        }
+    ],
+    "pictBeaterHardXylophoneDown": [
+        {
+            "legacyCodepoints": [
+                "85"
+            ],
+            "codepoint": "U+E779",
+            "description": ""
+        }
+    ],
+    "pictBeaterMediumTimpaniDown": [
+        {
+            "legacyCodepoints": [
+                "87"
+            ],
+            "codepoint": "U+E78D",
+            "description": ""
+        }
+    ],
+    "pictBeaterMetalHammer": [
+        {
+            "legacyCodepoints": [
+                "88"
+            ],
+            "codepoint": "U+E7E0",
+            "description": ""
+        }
+    ],
+    "pictBeaterMediumXylophoneDown": [
+        {
+            "legacyCodepoints": [
+                "89"
+            ],
+            "codepoint": "U+E775",
+            "description": ""
+        }
+    ],
+    "pictBeaterKnittingNeedle": [
+        {
+            "legacyCodepoints": [
+                "90"
+            ],
+            "codepoint": "U+E7E2",
+            "description": ""
+        }
+    ],
+    "pictBeaterHardYarnUp": [
+        {
+            "legacyCodepoints": [
+                "91"
+            ],
+            "codepoint": "U+E7AA",
+            "description": ""
+        }
+    ],
+    "pictBeaterFinger": [
+        {
+            "legacyCodepoints": [
+                "92"
+            ],
+            "codepoint": "U+E7E4",
+            "description": ""
+        }
+    ],
+    "pictBeaterHand": [
+        {
+            "legacyCodepoints": [
+                "93"
+            ],
+            "codepoint": "U+E7E3",
+            "description": ""
+        }
+    ],
+    "pictBeaterMediumXylophoneRight": [
+        {
+            "legacyCodepoints": [
+                "94"
+            ],
+            "codepoint": "U+E776",
+            "description": ""
+        }
+    ],
+    "pictBeaterSoftBassDrumUp": [
+        {
+            "legacyCodepoints": [
+                "97"
+            ],
+            "codepoint": "U+E798",
+            "description": ""
+        }
+    ],
+    "pictBeaterHardBassDrumUp": [
+        {
+            "legacyCodepoints": [
+                "100"
+            ],
+            "codepoint": "U+E79C",
+            "description": ""
+        }
+    ],
+    "pictBeaterHardTimpaniUp": [
+        {
+            "legacyCodepoints": [
+                "101"
+            ],
+            "codepoint": "U+E790",
+            "description": ""
+        }
+    ],
+    "pictBeaterDoubleBassDrumUp": [
+        {
+            "legacyCodepoints": [
+                "102"
+            ],
+            "codepoint": "U+E7A0",
+            "description": ""
+        }
+    ],
+    "pictBeaterSnareSticksUp": [
+        {
+            "legacyCodepoints": [
+                "103"
+            ],
+            "codepoint": "U+E7D1",
+            "description": ""
+        }
+    ],
+    "pictBeaterJazzSticksUp": [
+        {
+            "legacyCodepoints": [
+                "104"
+            ],
+            "codepoint": "U+E7D3",
+            "description": ""
+        }
+    ],
+    "pictBeaterWoodXylophoneUp": [
+        {
+            "legacyCodepoints": [
+                "105"
+            ],
+            "codepoint": "U+E77C",
+            "description": ""
+        }
+    ],
+    "pictBeaterBrassMalletsUp": [
+        {
+            "legacyCodepoints": [
+                "106"
+            ],
+            "codepoint": "U+E7D9",
+            "description": ""
+        }
+    ],
+    "pictBeaterMallet": [
+        {
+            "legacyCodepoints": [
+                "107"
+            ],
+            "codepoint": "U+E7DF",
+            "description": ""
+        }
+    ],
+    "pictBeaterTriangleUp": [
+        {
+            "legacyCodepoints": [
+                "108"
+            ],
+            "codepoint": "U+E7D5",
+            "description": ""
+        }
+    ],
+    "pictBeaterWireBrushesUp": [
+        {
+            "legacyCodepoints": [
+                "109"
+            ],
+            "codepoint": "U+E7D7",
+            "description": ""
+        }
+    ],
+    "pictBeaterBrassMalletsLeft": [
+        {
+            "legacyCodepoints": [
+                "110"
+            ],
+            "codepoint": "U+E7EE",
+            "description": ""
+        }
+    ],
+    "pictBeaterSoftYarnUp": [
+        {
+            "legacyCodepoints": [
+                "111"
+            ],
+            "codepoint": "U+E7A2",
+            "description": ""
+        }
+    ],
+    "pictBeaterMediumYarnUp": [
+        {
+            "legacyCodepoints": [
+                "112"
+            ],
+            "codepoint": "U+E7A6",
+            "description": ""
+        }
+    ],
+    "pictBeaterSoftTimpaniUp": [
+        {
+            "legacyCodepoints": [
+                "113"
+            ],
+            "codepoint": "U+E788",
+            "description": ""
+        }
+    ],
+    "pictBeaterWoodTimpaniUp": [
+        {
+            "legacyCodepoints": [
+                "114"
+            ],
+            "codepoint": "U+E794",
+            "description": ""
+        }
+    ],
+    "pictBeaterMediumBassDrumUp": [
+        {
+            "legacyCodepoints": [
+                "115"
+            ],
+            "codepoint": "U+E79A",
+            "description": ""
+        }
+    ],
+    "pictBeaterSoftXylophoneUp": [
+        {
+            "legacyCodepoints": [
+                "116"
+            ],
+            "codepoint": "U+E770",
+            "description": ""
+        }
+    ],
+    "pictBeaterHardXylophoneUp": [
+        {
+            "legacyCodepoints": [
+                "117"
+            ],
+            "codepoint": "U+E778",
+            "description": ""
+        }
+    ],
+    "pictBeaterMediumTimpaniUp": [
+        {
+            "legacyCodepoints": [
+                "119"
+            ],
+            "codepoint": "U+E78C",
+            "description": ""
+        }
+    ],
+    "pictBeaterHammer": [
+        {
+            "legacyCodepoints": [
+                "120"
+            ],
+            "codepoint": "U+E7E1",
+            "description": ""
+        }
+    ],
+    "pictBeaterMediumXylophoneUp": [
+        {
+            "legacyCodepoints": [
+                "121"
+            ],
+            "codepoint": "U+E774",
+            "description": ""
+        }
+    ],
+    "pictCoins": [
+        {
+            "legacyCodepoints": [
+                "122"
+            ],
+            "codepoint": "U+E7E7",
+            "description": ""
+        }
+    ],
+    "pictBeaterHardYarnDown": [
+        {
+            "legacyCodepoints": [
+                "123"
+            ],
+            "codepoint": "U+E7AB",
+            "description": ""
+        }
+    ],
+    "pictBeaterFingernails": [
+        {
+            "legacyCodepoints": [
+                "124"
+            ],
+            "codepoint": "U+E7E6",
+            "description": ""
+        }
+    ],
+    "pictBeaterFist": [
+        {
+            "legacyCodepoints": [
+                "125"
+            ],
+            "codepoint": "U+E7E5",
+            "description": ""
+        }
+    ]
 }

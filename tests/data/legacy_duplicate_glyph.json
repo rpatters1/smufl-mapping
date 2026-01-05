@@ -1,0 +1,29 @@
+{
+    "glyphOriginal": [
+        {
+            "legacyCodepoints": [
+                "100"
+            ],
+            "codepoint": "U+E000",
+            "description": "original entry"
+        }
+    ],
+    "glyphDuplicate": [
+        {
+            "legacyCodepoints": [
+                "200"
+            ],
+            "codepoint": "U+E001",
+            "description": "first version"
+        }
+    ],
+    "glyphDuplicate": [
+        {
+            "legacyCodepoints": [
+                "201"
+            ],
+            "codepoint": "U+E002",
+            "description": "second version"
+        }
+    ]
+}

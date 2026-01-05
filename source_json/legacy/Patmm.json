@@ -1,67 +1,119 @@
 {
-	"accidentalNatural": {
-		"codepoint": "U+E261",
-		"legacyCodepoint": "162",
-		"description": ""
-	},
-	"accidentalDoubleFlat": {
-		"codepoint": "U+E264",
-		"legacyCodepoint": "163",
-		"description": ""
-	},
-	"metNote8thUp": {
-		"codepoint": "U+ECA7",
-		"legacyCodepoint": "165",
-		"description": ""
-	},
-	"accidentalDoubleSharp": {
-		"codepoint": "U+E263",
-		"legacyCodepoint": "167",
-		"description": ""
-	},
-	"accidentalSharp": {
-		"codepoint": "U+E262",
-		"legacyCodepoint": "176",
-		"description": ""
-	},
-	"accidentalThreeQuarterTonesSharpArrowUp": {
-		"codepoint": "U+E274",
-		"legacyCodepoint": "182",
-		"description": ""
-	},
-	"accidentalQuarterToneSharpNaturalArrowUp": {
-		"codepoint": "U+E272",
-		"legacyCodepoint": "223",
-		"description": ""
-	},
-	"accidentalFlat": {
-		"codepoint": "U+E260",
-		"legacyCodepoint": "8224",
-		"description": ""
-	},
-	"accidentalQuarterToneFlatArrowUp": {
-		"codepoint": "U+E270",
-		"legacyCodepoint": "8226",
-		"description": ""
-	},
-	"metNote16thUp": {
-		"codepoint": "U+ECA9",
-		"legacyCodepoint": "8706",
-		"description": ""
-	},
-	"metNoteWhole": {
-		"codepoint": "U+ECA2",
-		"legacyCodepoint": "8719",
-		"description": ""
-	},
-	"metNoteQuarterUp": {
-		"codepoint": "U+ECA5",
-		"legacyCodepoint": "8734",
-		"description": ""
-	},
-	"metNoteHalfUp": {
-		"codepoint": "U+ECA3",
-		"legacyCodepoint": "8804",
-		"description": ""
-	}
+    "accidentalNatural": [
+        {
+            "legacyCodepoints": [
+                "162"
+            ],
+            "codepoint": "U+E261",
+            "description": ""
+        }
+    ],
+    "accidentalDoubleFlat": [
+        {
+            "legacyCodepoints": [
+                "163"
+            ],
+            "codepoint": "U+E264",
+            "description": ""
+        }
+    ],
+    "metNote8thUp": [
+        {
+            "legacyCodepoints": [
+                "165"
+            ],
+            "codepoint": "U+ECA7",
+            "description": ""
+        }
+    ],
+    "accidentalDoubleSharp": [
+        {
+            "legacyCodepoints": [
+                "167"
+            ],
+            "codepoint": "U+E263",
+            "description": ""
+        }
+    ],
+    "accidentalSharp": [
+        {
+            "legacyCodepoints": [
+                "176"
+            ],
+            "codepoint": "U+E262",
+            "description": ""
+        }
+    ],
+    "accidentalThreeQuarterTonesSharpArrowUp": [
+        {
+            "legacyCodepoints": [
+                "182"
+            ],
+            "codepoint": "U+E274",
+            "description": ""
+        }
+    ],
+    "accidentalQuarterToneSharpNaturalArrowUp": [
+        {
+            "legacyCodepoints": [
+                "223"
+            ],
+            "codepoint": "U+E272",
+            "description": ""
+        }
+    ],
+    "accidentalFlat": [
+        {
+            "legacyCodepoints": [
+                "8224"
+            ],
+            "codepoint": "U+E260",
+            "description": ""
+        }
+    ],
+    "accidentalQuarterToneFlatArrowUp": [
+        {
+            "legacyCodepoints": [
+                "8226"
+            ],
+            "codepoint": "U+E270",
+            "description": ""
+        }
+    ],
+    "metNote16thUp": [
+        {
+            "legacyCodepoints": [
+                "8706"
+            ],
+            "codepoint": "U+ECA9",
+            "description": ""
+        }
+    ],
+    "metNoteWhole": [
+        {
+            "legacyCodepoints": [
+                "8719"
+            ],
+            "codepoint": "U+ECA2",
+            "description": ""
+        }
+    ],
+    "metNoteQuarterUp": [
+        {
+            "legacyCodepoints": [
+                "8734"
+            ],
+            "codepoint": "U+ECA5",
+            "description": ""
+        }
+    ],
+    "metNoteHalfUp": [
+        {
+            "legacyCodepoints": [
+                "8804"
+            ],
+            "codepoint": "U+ECA3",
+            "description": ""
+        }
+    ]
 }
