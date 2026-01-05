@@ -22,7 +22,6 @@ constexpr std::pair<char32_t, LegacyGlyphInfo> maestrotimesLegacyGlyphs[] = {
     { 171, { "dynamicRinforzando", 0xE523, "", SmuflGlyphSource::Smufl, false } },
     { 172, { "dynamicPPP", 0xE52A, "", SmuflGlyphSource::Smufl, false } },
     { 175, { "accidentalFlat", 0xE260, "", SmuflGlyphSource::Smufl, false } },
-    { 175, { "accidentalFlat", 0xE260, "", SmuflGlyphSource::Smufl, false } },
     { 176, { "ottava", 0xE510, "", SmuflGlyphSource::Smufl, false } },
     { 177, { "csymAugmented", 0xE872, "", SmuflGlyphSource::Smufl, false } },
     { 181, { "dynamicFFF", 0xE530, "", SmuflGlyphSource::Smufl, false } },

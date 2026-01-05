@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-import json
 import sys
-from collections import OrderedDict
 from datetime import datetime
 from pathlib import Path
+
+from json_utils import load_json_strict
 
 BASE_DIR = Path(__file__).resolve().parent.parent  # root of repo
 SOURCE_DIR = BASE_DIR / "source_json" / "legacy"
@@ -20,7 +20,7 @@ def parse_codepoint(uplus: str) -> int:
 
 def load_glyphnames(path):
     with path.open("r", encoding="utf-8") as f:
-        data = json.load(f)
+        data = load_json_strict(f, location=str(path))
     name_to_codepoint = {}
     for name, props in data.items():
         if "codepoint" in props:
@@ -43,7 +43,7 @@ def normalize_font_key(name: str) -> str:
 
 def process_legacy_file(path: Path, finale_map: dict, bravura_map: dict) -> tuple[str, Path]:
     with path.open("r", encoding="utf-8") as f:
-        data = json.load(f, object_pairs_hook=OrderedDict)
+        data = load_json_strict(f, location=str(path))
 
     fontname = path.stem
     varname = sanitize_var_name(fontname) + "LegacyGlyphs"

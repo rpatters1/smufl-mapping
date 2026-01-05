@@ -5,7 +5,9 @@ import json
 import re
 import sys
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Set
+
+from json_utils import DuplicateKeyError, load_json_strict
 
 
 CODEPOINT_RE = re.compile(r"^U\+[0-9A-Fa-f]{4,6}$")
@@ -33,7 +35,7 @@ def _err(path: Path, glyph: str, entry_idx: int, message: str) -> ValidationErro
     return ValidationError(prefix)
 
 
-def validate_entry(path: Path, glyph: str, entry_idx: int, entry: Dict) -> None:
+def validate_entry(path: Path, glyph: str, entry_idx: int, entry: Dict) -> Set[str]:
     extra_keys = set(entry.keys()) - ALLOWED_KEYS
     if extra_keys:
         raise _err(path, glyph, entry_idx, f"unexpected fields: {sorted(extra_keys)}")
@@ -85,13 +87,17 @@ def validate_entry(path: Path, glyph: str, entry_idx: int, entry: Dict) -> None:
     if "alternate" in entry and not isinstance(entry["alternate"], bool):
         raise _err(path, glyph, entry_idx, "'alternate' must be a boolean")
 
+    return seen
+
 
 def validate_file(path: Path) -> None:
     try:
         with path.open("r", encoding="utf-8") as handle:
-            data = json.load(handle)
+            data = load_json_strict(handle, location=str(path))
     except json.JSONDecodeError as exc:
         raise ValidationError(f"{path}: invalid JSON: {exc}") from exc
+    except DuplicateKeyError as exc:
+        raise ValidationError(str(exc)) from exc
 
     if not isinstance(data, dict):
         raise ValidationError(f"{path}: top-level structure must be an object")
@@ -103,6 +109,7 @@ def validate_file(path: Path) -> None:
         if not isinstance(entries, list) or not entries:
             raise ValidationError(f"{path}: glyph '{glyph}' must map to a non-empty array")
 
+        accumulated: Set[str] = set()
         for idx, entry in enumerate(entries):
             if not isinstance(entry, dict):
                 raise ValidationError(
@@ -112,7 +119,14 @@ def validate_file(path: Path) -> None:
                 raise ValidationError(
                     f"{path}: glyph '{glyph}' entry {idx} uses deprecated 'legacyCodepoint'"
                 )
-            validate_entry(path, glyph, idx, entry)
+            entry_codes = validate_entry(path, glyph, idx, entry)
+            overlap = accumulated.intersection(entry_codes)
+            if overlap:
+                dup_list = ", ".join(sorted(overlap))
+                raise ValidationError(
+                    f"{path}: glyph '{glyph}' entry {idx} reuses legacy codepoint(s): {dup_list}"
+                )
+            accumulated.update(entry_codes)
 
 
 def main() -> int:

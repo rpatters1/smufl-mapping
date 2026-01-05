@@ -8,7 +8,11 @@ The authoritative schema lives in [`docs/legacy_mapping.schema.json`](legacy_map
 
 - The file is a JSON object.
 - **Keys** are SMuFL glyph names (strings). Leading and trailing whitespace is ignored.
-- **Values** are arrays of entry objects. Even if only one mapping exists, it must be wrapped in an array. This keeps the files valid JSON while preserving multiple legacy mappings per glyph.
+- **Values** are arrays of entry objects. Even if only one mapping exists, it must be wrapped in an array. This keeps the files valid JSON while preserving multiple legacy mappings per glyph. Each entry in that array may itself list multiple legacy codepoints, which means you can express “1 glyph ↔ N legacy slots” in two ways:
+  1. One entry with a multiple `legacyCodepoints` elements.
+  2. Multiple entry objects that differ only by the legacy element(s).
+
+   Both approaches expand to the same generated output.
 
 ### Entry object fields
 
