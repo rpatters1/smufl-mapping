@@ -40,15 +40,22 @@ target_include_directories(smufl_mapping_tests
 include(GoogleTest)
 gtest_discover_tests(smufl_mapping_tests)
 
-add_test(
-    NAME legacy_duplicate_codepoints_overwrite
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/duplicate_legacy_codepoints_test.py
+function(add_python_legacy_test test_name script)
+    add_test(
+        NAME ${test_name}
+        COMMAND Python3::Interpreter ${CMAKE_CURRENT_SOURCE_DIR}/${script}
+    )
+endfunction()
+
+add_python_legacy_test(
+    legacy_duplicate_codepoints_overwrite
+    duplicate_legacy_codepoints_test.py
 )
-add_test(
-    NAME legacy_duplicate_legacycodepoints_across_entries
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/duplicate_legacy_entry_codepoints_test.py
+add_python_legacy_test(
+    legacy_duplicate_legacycodepoints_across_entries
+    duplicate_legacy_entry_codepoints_test.py
 )
-add_test(
-    NAME legacy_duplicate_legacycodepoints_in_array
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/duplicate_legacy_array_codepoints_test.py
+add_python_legacy_test(
+    legacy_duplicate_legacycodepoints_in_array
+    duplicate_legacy_array_codepoints_test.py
 )
