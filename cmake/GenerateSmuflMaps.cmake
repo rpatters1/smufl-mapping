@@ -13,8 +13,23 @@ function(generate_smuflmap_headers)
 
     file(MAKE_DIRECTORY "${OUTPUT_DIR}")
 
+    if(NOT DEFINED SMUFL_W3C_SOURCE_DIR)
+        if(DEFINED smufl_w3c_SOURCE_DIR)
+            set(SMUFL_W3C_SOURCE_DIR "${smufl_w3c_SOURCE_DIR}")
+        endif()
+    endif()
+
+    if(NOT SMUFL_W3C_SOURCE_DIR)
+        message(FATAL_ERROR "SMUFL_W3C_SOURCE_DIR is not set. Fetch w3c/smufl first.")
+    endif()
+
+    set(SMUFL_W3C_GLYPHNAMES_JSON "${SMUFL_W3C_SOURCE_DIR}/metadata/glyphnames.json")
+    if(NOT EXISTS "${SMUFL_W3C_GLYPHNAMES_JSON}")
+        message(FATAL_ERROR "SMUFL glyphnames.json does not exist: ${SMUFL_W3C_GLYPHNAMES_JSON}")
+    endif()
+
     set(INPUTS
-        "${FONTMAP_SOURCES_DIR}/glyphnames.json|${OUTPUT_DIR}/glyphnames_smufl.h"
+        "${SMUFL_W3C_GLYPHNAMES_JSON}|${OUTPUT_DIR}/glyphnames_smufl.h"
         "${FONTMAP_SOURCES_DIR}/glyphnamesFinale.json|${OUTPUT_DIR}/glyphnames_finale.h"
         "${FONTMAP_SOURCES_DIR}/glyphnamesBravura.json|${OUTPUT_DIR}/glyphnames_bravura.h"
     )

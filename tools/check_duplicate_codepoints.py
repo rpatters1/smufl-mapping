@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import os
 from pathlib import Path
 
 
@@ -36,11 +37,30 @@ def find_conflicts(std_map: dict[int, str], optional_map: dict[int, str], label:
     return conflicts
 
 
+def default_smufl_glyphnames_path() -> Path:
+    base_dir = Path(__file__).resolve().parent.parent
+    env_root = os.environ.get("SMUFL_W3C_DIR")
+    if env_root:
+        candidate = Path(env_root) / "metadata" / "glyphnames.json"
+        if candidate.exists():
+            return candidate
+
+    candidate = base_dir / "build" / "_deps" / "smufl_w3c-src" / "metadata" / "glyphnames.json"
+    if candidate.exists():
+        return candidate
+
+    legacy = base_dir / "source_json" / "glyphnames.json"
+    if legacy.exists():
+        return legacy
+
+    return candidate
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Detect duplicate SMuFL codepoints between standard and optional glyph sets."
     )
-    parser.add_argument("--std", type=Path, default=Path("source_json/glyphnames.json"))
+    parser.add_argument("--std", type=Path, default=default_smufl_glyphnames_path())
     parser.add_argument("--finale", type=Path, default=Path("source_json/glyphnamesFinale.json"))
     parser.add_argument("--bravura", type=Path, default=Path("source_json/glyphnamesBravura.json"))
     args = parser.parse_args()

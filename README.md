@@ -56,6 +56,13 @@ FetchContent_MakeAvailable(smufl_mapping)
 target_link_libraries(your_target PRIVATE smufl_mapping)
 ```
 
+By default, the build regenerates headers (requires Python and fetches `w3c/smufl`).
+To skip Python and use the checked-in generated headers (no FetchContent), set:
+
+```cmake
+set(SMUFL_MAPPING_USE_PREGENERATED_HEADERS ON)
+```
+
 Then in C++:
 
 ```cpp
@@ -71,11 +78,18 @@ See `src/smufl_mapping.h` for a complete list of functions.
 
 ---
 
+## VS Code setup
+
+Starter VS Code configs are available in `.vscode_template/` for macOS, Linux, and Windows.
+See `.vscode_template/README.md` for setup instructions.
+
+---
+
 ## Generated Files
 
 This project includes auto-generated headers derived from SMuFL metadata:
 
-- `src/detail/glyphnames_smufl.h` — from `glyphnames.json` (official glyph definitions)
+- `src/detail/glyphnames_smufl.h` — from `metadata/glyphnames.json` in the fetched `w3c/smufl` repo (official glyph definitions)
 - `src/detail/glyphnames_finale.h` — from `glyphnamesFinale.json` (list of optional-range glyphs shared by all MakeMusic SMuFL fonts)
 - `src/detail/glyphnames_bravura.h` — from `glyphnamesBravura.json` (optional-range glyphs extracted from Bravura font)
 - `src/detail/legacy/...` — legacy font mappings from legacy mapping files in `source_json/legacy`
@@ -92,5 +106,5 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## Credits
 
-- SMuFL data from [https://w3c.github.io/smufl](https://w3c.github.io/smufl)
+- SMuFL data from the `w3c/smufl` repository and published spec: [https://w3c.github.io/smufl](https://w3c.github.io/smufl)
 - Finale glyph metadata © MakeMusic, used under fair use for interoperability.

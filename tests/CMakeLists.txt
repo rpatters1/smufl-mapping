@@ -47,15 +47,19 @@ function(add_python_legacy_test test_name script)
     )
 endfunction()
 
-add_python_legacy_test(
-    legacy_duplicate_codepoints_overwrite
-    duplicate_legacy_codepoints_test.py
-)
-add_python_legacy_test(
-    legacy_duplicate_legacycodepoints_across_entries
-    duplicate_legacy_entry_codepoints_test.py
-)
-add_python_legacy_test(
-    legacy_duplicate_legacycodepoints_in_array
-    duplicate_legacy_array_codepoints_test.py
-)
+if(TARGET Python3::Interpreter)
+    add_python_legacy_test(
+        legacy_duplicate_codepoints_overwrite
+        duplicate_legacy_codepoints_test.py
+    )
+    add_python_legacy_test(
+        legacy_duplicate_legacycodepoints_across_entries
+        duplicate_legacy_entry_codepoints_test.py
+    )
+    add_python_legacy_test(
+        legacy_duplicate_legacycodepoints_in_array
+        duplicate_legacy_array_codepoints_test.py
+    )
+else()
+    message(STATUS "Skipping Python legacy tests: Python3::Interpreter not available.")
+endif()

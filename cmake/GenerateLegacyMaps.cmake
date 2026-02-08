@@ -15,17 +15,32 @@ function(generate_legacy_fontmap_headers)
 
     file(GLOB LEGACY_JSON_FILES "${SOURCE_DIR}/*.json")
 
+    if(NOT DEFINED SMUFL_W3C_SOURCE_DIR)
+        if(DEFINED smufl_w3c_SOURCE_DIR)
+            set(SMUFL_W3C_SOURCE_DIR "${smufl_w3c_SOURCE_DIR}")
+        endif()
+    endif()
+
+    if(NOT SMUFL_W3C_SOURCE_DIR)
+        message(FATAL_ERROR "SMUFL_W3C_SOURCE_DIR is not set. Fetch w3c/smufl first.")
+    endif()
+
+    set(SMUFL_W3C_GLYPHNAMES_JSON "${SMUFL_W3C_SOURCE_DIR}/metadata/glyphnames.json")
+    if(NOT EXISTS "${SMUFL_W3C_GLYPHNAMES_JSON}")
+        message(FATAL_ERROR "SMUFL glyphnames.json does not exist: ${SMUFL_W3C_GLYPHNAMES_JSON}")
+    endif()
+
     set(LEGACY_VALIDATION_STAMP "${CMAKE_BINARY_DIR}/legacy_mappings_validated.stamp")
     add_custom_command(
         OUTPUT "${LEGACY_VALIDATION_STAMP}"
         COMMAND ${Python3_EXECUTABLE} "${VALIDATOR_SCRIPT}" --legacy-dir "${SOURCE_DIR}"
-        COMMAND ${Python3_EXECUTABLE} "${DUPLICATE_SCRIPT}" --std "${SMUFL_MAPPING_ROOT}/source_json/glyphnames.json" --finale "${SMUFL_MAPPING_ROOT}/source_json/glyphnamesFinale.json" --bravura "${SMUFL_MAPPING_ROOT}/source_json/glyphnamesBravura.json"
+        COMMAND ${Python3_EXECUTABLE} "${DUPLICATE_SCRIPT}" --std "${SMUFL_W3C_GLYPHNAMES_JSON}" --finale "${SMUFL_MAPPING_ROOT}/source_json/glyphnamesFinale.json" --bravura "${SMUFL_MAPPING_ROOT}/source_json/glyphnamesBravura.json"
         COMMAND ${CMAKE_COMMAND} -E touch "${LEGACY_VALIDATION_STAMP}"
         DEPENDS
             ${LEGACY_JSON_FILES}
             "${VALIDATOR_SCRIPT}"
             "${DUPLICATE_SCRIPT}"
-            "${SMUFL_MAPPING_ROOT}/source_json/glyphnames.json"
+            "${SMUFL_W3C_GLYPHNAMES_JSON}"
             "${SMUFL_MAPPING_ROOT}/source_json/glyphnamesFinale.json"
             "${SMUFL_MAPPING_ROOT}/source_json/glyphnamesBravura.json"
         COMMENT "Validating legacy mapping JSON"

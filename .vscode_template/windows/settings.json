@@ -1,0 +1,6 @@
+{
+    "cmake.generator": "Visual Studio 17 2022",
+    "cmake.configureArgs": [
+        "-DSMUFL_MAPPING_USE_PREGENERATED_HEADERS=OFF"
+    ]
+}
