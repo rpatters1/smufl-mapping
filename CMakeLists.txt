@@ -16,7 +16,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 message(STATUS "Smufl_mapping C++ standard: ${CMAKE_CXX_STANDARD}")
 
-option(SMUFL_MAPPING_USE_PREGENERATED_HEADERS "Use checked-in generated headers (no Python, no FetchContent)" OFF)
+option(SMUFL_MAPPING_USE_PREGENERATED_HEADERS "Use checked-in generated headers (no Python, no FetchContent)" ON)
 
 if(NOT SMUFL_MAPPING_USE_PREGENERATED_HEADERS)
     find_package(Python3 REQUIRED COMPONENTS Interpreter)
@@ -51,6 +51,7 @@ else()
     )
     file(GLOB GENERATED_LEGACY_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/src/detail/legacy/*.h")
     list(APPEND GENERATED_LEGACY_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/src/detail/glyphnames_legacy.h")
+    message(STATUS "Using checked-in generated headers (no Python, no FetchContent).")
 endif()
 
 # Library target
