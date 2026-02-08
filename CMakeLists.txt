@@ -16,15 +16,42 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 message(STATUS "Smufl_mapping C++ standard: ${CMAKE_CXX_STANDARD}")
 
-find_package(Python3 REQUIRED COMPONENTS Interpreter)
+option(SMUFL_MAPPING_USE_PREGENERATED_HEADERS "Use checked-in generated headers (no Python, no FetchContent)" OFF)
 
-# Generate auto headers
-include(cmake/GenerateSmuflMaps.cmake)
-generate_smuflmap_headers()
-add_custom_target(generate_smuflmaps DEPENDS ${SMUFL_MAPPING_GENERATED_HEADERS})
-include(cmake/GenerateLegacyMaps.cmake)
-generate_legacy_fontmap_headers()
-add_custom_target(generate_legacy_maps DEPENDS ${GENERATED_LEGACY_HEADERS})
+if(NOT SMUFL_MAPPING_USE_PREGENERATED_HEADERS)
+    find_package(Python3 REQUIRED COMPONENTS Interpreter)
+endif()
+
+include(FetchContent)
+
+if(NOT SMUFL_MAPPING_USE_PREGENERATED_HEADERS)
+    # Fetch SMuFL spec
+    FetchContent_Declare(
+        smufl_w3c
+        GIT_REPOSITORY https://github.com/w3c/smufl.git
+        GIT_TAG 753f551ca6f96bf24ba38aa2d8a317e706238c51
+        SOURCE_SUBDIR _cmake_disabled_please_ignore # this is a hack to prevent FetchContent_Declare from running the fetched content cmake.
+        # see https://stackoverflow.com/questions/79261625/cmake-fetchcontent-with-header-only-project/79261858#79261858
+    )
+    FetchContent_MakeAvailable(smufl_w3c)
+    message(STATUS "smufl_w3c fetched at: ${smufl_w3c_SOURCE_DIR}")
+
+    # Generate auto headers
+    include(cmake/GenerateSmuflMaps.cmake)
+    generate_smuflmap_headers()
+    add_custom_target(generate_smuflmaps DEPENDS ${SMUFL_MAPPING_GENERATED_HEADERS})
+    include(cmake/GenerateLegacyMaps.cmake)
+    generate_legacy_fontmap_headers()
+    add_custom_target(generate_legacy_maps DEPENDS ${GENERATED_LEGACY_HEADERS})
+else()
+    set(SMUFL_MAPPING_GENERATED_HEADERS
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/detail/glyphnames_smufl.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/detail/glyphnames_finale.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/detail/glyphnames_bravura.h"
+    )
+    file(GLOB GENERATED_LEGACY_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/src/detail/legacy/*.h")
+    list(APPEND GENERATED_LEGACY_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/src/detail/glyphnames_legacy.h")
+endif()
 
 # Library target
 add_library(smufl_mapping STATIC
@@ -34,10 +61,12 @@ add_library(smufl_mapping STATIC
     ${GENERATED_LEGACY_HEADERS}
 )
 
-add_dependencies(smufl_mapping
-    generate_smuflmaps
-    generate_legacy_maps
-)
+if(NOT SMUFL_MAPPING_USE_PREGENERATED_HEADERS)
+    add_dependencies(smufl_mapping
+        generate_smuflmaps
+        generate_legacy_maps
+    )
+endif()
 
 # Public headers are in src/
 target_include_directories(smufl_mapping
@@ -64,4 +93,3 @@ if(smufl_mapping_BUILD_TESTING)
 else()
     message(STATUS "Testing not enabled for smufl_mapping_BUILD_TESTING.")
 endif()
-

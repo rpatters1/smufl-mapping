@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-and-test:
-    name: Build and Test on ${{ matrix.os }}
+    name: Build and Test on ${{ matrix.os }} (generated)
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -47,13 +47,60 @@ jobs:
 
       # Step 4: Configure CMake
       - name: Configure CMake
-        run: cmake -S . -B build -G "${{ matrix.generator }}"
+        run: cmake -S . -B build -G "${{ matrix.generator }}" -DSMUFL_MAPPING_USE_PREGENERATED_HEADERS=OFF
 
       # Step 5: Build with CMake
       - name: Build
         run: cmake --build build --parallel 2
 
       # Step 6: Run tests (separate handling for Windows multi-config)
+      - name: Run tests (Windows)
+        if: matrix.os == 'windows-latest'
+        run: ctest --test-dir build --output-on-failure -C Release
+
+      - name: Run tests (Unix & macOS)
+        if: matrix.os != 'windows-latest'
+        run: ctest --test-dir build --output-on-failure
+
+  build-and-test-pregen:
+    name: Build and Test on ${{ matrix.os }} (pre-generated)
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        include:
+          - os: ubuntu-latest
+            generator: Ninja
+          - os: macos-latest
+            generator: Ninja
+          - os: windows-latest
+            generator: "Visual Studio 17 2022"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Display preinstalled tools
+        run: |
+          cmake --version
+
+      - name: Install Ninja on Ubuntu
+        if: matrix.os == 'ubuntu-latest'
+        run: sudo apt-get update && sudo apt-get install -y ninja-build
+
+      - name: Install Ninja on macOS
+        if: matrix.os == 'macos-latest'
+        run: brew install ninja
+
+      - name: Verify Ninja Installation
+        if: matrix.os != 'windows-latest'
+        run: ninja --version || echo "Ninja is not available on this platform"
+
+      - name: Configure CMake
+        run: cmake -S . -B build -G "${{ matrix.generator }}" -DSMUFL_MAPPING_USE_PREGENERATED_HEADERS=ON
+
+      - name: Build
+        run: cmake --build build --parallel 2
+
       - name: Run tests (Windows)
         if: matrix.os == 'windows-latest'
         run: ctest --test-dir build --output-on-failure -C Release

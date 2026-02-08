@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++ Debug smufl_mapping_tests (gdb)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/tests/smufl_mapping_tests",
+            "args": [],
+            "cwd": "${workspaceFolder}/tests",
+            "stopAtEntry": false,
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "preLaunchTask": "build"
+        },
+        {
+            "name": "CTest full suite",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/usr/bin/ctest",
+            "args": ["--output-on-failure"],
+            "cwd": "${workspaceFolder}/build",
+            "stopAtEntry": false,
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "preLaunchTask": "build"
+        }
+    ]
+}

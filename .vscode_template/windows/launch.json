@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++ Debug smufl_mapping_tests (VS)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\build\\tests\\Release\\smufl_mapping_tests.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}\\tests",
+            "stopAtEntry": false,
+            "environment": [],
+            "preLaunchTask": "build"
+        },
+        {
+            "name": "CTest full suite",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "ctest",
+            "args": ["--output-on-failure", "-C", "Release"],
+            "cwd": "${workspaceFolder}\\build",
+            "stopAtEntry": false,
+            "environment": [],
+            "preLaunchTask": "build"
+        }
+    ]
+}
