@@ -9,7 +9,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "cmake --build build --config Release",
+            "command": "cmake --build build --config Debug",
             "dependsOn": ["configure"],
             "group": {
                 "kind": "build",

@@ -1,8 +1,14 @@
 # VS Code Templates
 
 These templates provide starter VS Code configs for macOS, Linux, and Windows.
-They default to building with generated headers enabled
+They default to always building the generated headers.
 (`-DSMUFL_MAPPING_USE_PREGENERATED_HEADERS=OFF`).
+
+## Suggested extensions
+- C/C++ (`ms-vscode.cpptools`)
+- CMake Tools (`ms-vscode.cmake-tools`)
+- CMake (`twxs.cmake`)
+- CodeLLDB (`vadimcn.vscode-lldb`) (macOS)
 
 ## Setup
 
@@ -22,4 +28,4 @@ Notes:
 - The `configure` task sets the CMake generator and the SMuFL mapping option.
 - The `build` task depends on `configure`.
 - The `CTest` launch config runs tests from the build directory.
-- On Windows, the launch config assumes a `Release` configuration.
+- On Windows, the launch config assumes a `Debug` configuration.
